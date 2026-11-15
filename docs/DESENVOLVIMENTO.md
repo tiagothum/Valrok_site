@@ -76,7 +76,7 @@ tests/test_site.py
 
 | Rota | Página | Dados |
 |---|---|---|
-| `/` | Início: hero, status, notícias, pilares, ranking, roadmap, CTA | notícias (site) + API pública |
+| `/` | Início: hero, status, notícias, últimos vídeos do YouTube, pilares, classes, ranking, roadmap, CTA | notícias (site) + feed do YouTube + API pública |
 | `/jogo` | Visão geral do jogo | estático |
 | `/classes` (`#guerreiro`, `#mercenario`, `#druida`) | Classes: retrato, especializações e habilidades | `content/classes.json` |
 | `/noticias`, `/noticias/{slug}` | Lista (filtro por categoria) e artigo | `content/news.json` |
@@ -104,8 +104,17 @@ ranking `{updated_at, items:[...]}`; erros `{message?, detail?, fields?:{campo:m
 
 ### Recursos externos
 
-**Nenhum.** Fontes, ícones e imagens são locais. A CSP pode começar com tudo em `'self'`
+**Nenhum no navegador.** Fontes, ícones e imagens são locais. A CSP pode começar com tudo em `'self'`
 (única exceção: `img-src data:` para a textura de ruído inline no CSS).
+
+**No servidor do site (YouTube):** a home lista os últimos vídeos do canal
+(`YOUTUBE_CHANNEL_ID`, padrão `UCqMkw73corJp2z1P1QEmPzA` = @ValrokMMORPG).
+- O FastAPI lê o feed público `https://www.youtube.com/feeds/videos.xml?channel_id=…` (sem chave de API), com cache de 15 min (`app/youtube.py`).
+- As miniaturas passam pela rota `/yt-thumb/<id>.jpg` (busca em `i.ytimg.com`, cache de 6 h; só aceita ids válidos de 11 caracteres). O navegador não carrega nada do Google, então a CSP continua `'self'`.
+- Cada card abre o vídeo direto no YouTube (Shorts em `/shorts/<id>`). Se o feed falhar, a seção mostra só o link do canal.
+- Em produção, o processo do site precisa de saída HTTPS para `www.youtube.com` e `i.ytimg.com`.
+
+Links sociais (rodapé): `YOUTUBE_URL`, `INSTAGRAM_URL` e `DISCORD_URL`.
 
 ## Publicar na Vercel
 

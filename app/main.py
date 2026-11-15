@@ -19,6 +19,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from .config import BASE_DIR, settings
+from .youtube import fetch_thumb, latest_videos
 
 app = FastAPI(
     title="Valrok Site",
@@ -135,7 +136,17 @@ def render(request: Request, template: str, page: str, status_code: int = 200, *
 # ---------------------------------------------------------------------------
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    return render(request, "index.html", "inicio", news=load_news()[:3], classes=load_classes())
+    videos = await latest_videos(settings.youtube_channel_id, limit=4)
+    return render(request, "index.html", "inicio", news=load_news()[:3], classes=load_classes(), videos=videos)
+
+
+@app.get("/yt-thumb/{video_id}.jpg", include_in_schema=False)
+async def yt_thumb(video_id: str):
+    """Miniatura do YouTube servida pelo próprio site (CSP 'self', sem rastreio no navegador)."""
+    data = await fetch_thumb(video_id)
+    if data is None:
+        raise HTTPException(status_code=404)
+    return Response(data, media_type="image/jpeg", headers={"Cache-Control": "public, max-age=86400"})
 
 
 @app.get("/classes", response_class=HTMLResponse)
@@ -247,6 +258,6 @@ if settings.dev_api_proxy:
 # ---------------------------------------------------------------------------
 @app.exception_handler(StarletteHTTPException)
 async def http_error(request: Request, exc: StarletteHTTPException):
-    if request.url.path.startswith(("/api/", "/static/")):
+    if request.url.path.startswith(("/api/", "/static/", "/yt-thumb/")):
         return JSONResponse({"detail": exc.detail}, status_code=exc.status_code)
     return render(request, "erro.html", "erro", status_code=exc.status_code, code=exc.status_code)

@@ -32,6 +32,9 @@ class Settings:
     # CSP em modo observação (Report-Only) até todas as telas serem validadas.
     csp_report_only: bool
     discord_url: str
+    youtube_url: str
+    youtube_channel_id: str
+    instagram_url: str
     asset_version: str
 
     @property
@@ -63,6 +66,10 @@ def load_settings() -> Settings:
         valrokapi_url=os.getenv("VALROKAPI_URL", "http://127.0.0.1:8000").rstrip("/"),
         csp_report_only=_bool("CSP_REPORT_ONLY", True),
         discord_url=os.getenv("DISCORD_URL", "#"),
+        youtube_url=os.getenv("YOUTUBE_URL", "https://www.youtube.com/@ValrokMMORPG"),
+        # Vazio desativa a seção de vídeos (fica só o link do canal).
+        youtube_channel_id=os.getenv("YOUTUBE_CHANNEL_ID", "UCqMkw73corJp2z1P1QEmPzA"),
+        instagram_url=os.getenv("INSTAGRAM_URL", "https://www.instagram.com/valrok.mmorpg/"),
         # ASSET_VERSION > ID do deploy na Vercel > commit; em dev muda a cada reinício.
         asset_version=_asset_version(env),
     )

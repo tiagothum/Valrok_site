@@ -52,6 +52,42 @@
   </div>
 </section>
 
+<section class="section section--tight videos" aria-labelledby="videos-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">Direto do canal</p>
+      <h2 class="section-title" id="videos-title">Últimos vídeos</h2>
+      <a class="link-arrow" href="{{ settings.youtube_url }}" rel="noopener" target="_blank">{{ icon("youtube", "ico--xs") }} Ver canal no YouTube {{ icon("chevron", "ico--xs") }}</a>
+    </header>
+    {% if videos %}
+    <div class="video-grid">
+      {% for v in videos %}
+      <a class="video-card" href="{{ v.url }}" rel="noopener" target="_blank" data-reveal>
+        <span class="video-card__thumb">
+          <img src="{{ v.thumb }}" alt="" width="320" height="180" loading="lazy">
+          <span class="video-card__play" aria-hidden="true">{{ icon("play") }}</span>
+          {% if v.is_short %}<span class="badge video-card__badge">Short</span>{% endif %}
+        </span>
+        <span class="video-card__body">
+          <span class="video-card__title">{{ v.title }}</span>
+          <span class="video-card__meta">{{ v.date_br }}{% if v.views is not none %} · {{ "{:,}".format(v.views).replace(",", ".") }} visualizações{% endif %}</span>
+        </span>
+        <span class="visually-hidden">(abre no YouTube)</span>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="panel video-empty">
+      <p class="mt-0">Devlogs, PvP e novidades do desenvolvimento em vídeo.</p>
+      <a class="btn btn--steel" href="{{ settings.youtube_url }}" rel="noopener" target="_blank">{{ icon("youtube", "ico--sm") }} Assistir no YouTube</a>
+    </div>
+    {% endif %}
+    <p class="video-cta">
+      <a class="btn btn--ember" href="{{ settings.youtube_url }}?sub_confirmation=1" rel="noopener" target="_blank">{{ icon("youtube", "ico--sm") }} Inscreva-se no canal</a>
+    </p>
+  </div>
+</section>
+
 <section class="section section--dark pillars" aria-labelledby="pillars-title">
   <div class="container">
     <header class="section-head section-head--center">

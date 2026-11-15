@@ -16,6 +16,8 @@ CONTENT = ROOT / "app" / "content"
 IMG = "app/static/img"
 DOCS = "docs/readme"
 SITE = "https://valrok.com.br"
+YOUTUBE = "https://www.youtube.com/@ValrokMMORPG"
+INSTAGRAM = "https://www.instagram.com/valrok.mmorpg/"
 
 classes = json.loads((CONTENT / "classes.json").read_text(encoding="utf-8"))
 news = sorted(json.loads((CONTENT / "news.json").read_text(encoding="utf-8")), key=lambda n: n["date"], reverse=True)
@@ -44,6 +46,8 @@ w(f'''<p align="center">
 
 <p align="center">
   <a href="{SITE}"><b>valrok.com.br</b></a> &nbsp;·&nbsp;
+  <a href="{YOUTUBE}">YouTube</a> &nbsp;·&nbsp;
+  <a href="{INSTAGRAM}">Instagram</a> &nbsp;·&nbsp;
   <a href="#classes">Classes</a> &nbsp;·&nbsp;
   <a href="#paginas">Páginas</a> &nbsp;·&nbsp;
   <a href="#fase-do-projeto">Fase do projeto</a>
@@ -156,10 +160,12 @@ w(f'''<p align="center"><img src="{DOCS}/print-classes.webp" alt="Página de cla
 | **Guia** | Primeiros passos: conta, combate, progressão e economia. |
 | **Suporte** | Perguntas frequentes e canais de contato. |
 | **Regras** | Código de conduta do jogo. |
-| **Discord** | Comunidade e anúncios. |
+| **Discord** | Comunidade e anúncios (ícone ao lado de Conta). |
+
+No rodapé ficam os links oficiais: [YouTube]({YOUTUBE}), [Instagram]({INSTAGRAM}) e Discord.
 | **Conta** ▾ | Entrar e Criar conta — ou, já conectado, Minha conta e Sair. |
 
-**Início** reúne tudo: o hero com a arte do jogo, o status do servidor, as últimas notícias, os pilares, as classes,
+**Início** reúne tudo: o hero com a arte do jogo, o status do servidor, as últimas notícias, os últimos vídeos do canal no YouTube, os pilares, as classes,
 o ranking, a jornada do projeto e o convite para criar conta.
 
 <table>

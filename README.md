@@ -9,6 +9,8 @@
 
 <p align="center">
   <a href="https://valrok.com.br"><b>valrok.com.br</b></a> &nbsp;·&nbsp;
+  <a href="https://www.youtube.com/@ValrokMMORPG">YouTube</a> &nbsp;·&nbsp;
+  <a href="https://www.instagram.com/valrok.mmorpg/">Instagram</a> &nbsp;·&nbsp;
   <a href="#classes">Classes</a> &nbsp;·&nbsp;
   <a href="#paginas">Páginas</a> &nbsp;·&nbsp;
   <a href="#fase-do-projeto">Fase do projeto</a>
@@ -259,10 +261,12 @@ Estudioso das runas antigas, o Mage dobra o fogo e o gelo à sua vontade e grava
 | **Guia** | Primeiros passos: conta, combate, progressão e economia. |
 | **Suporte** | Perguntas frequentes e canais de contato. |
 | **Regras** | Código de conduta do jogo. |
-| **Discord** | Comunidade e anúncios. |
+| **Discord** | Comunidade e anúncios (ícone ao lado de Conta). |
+
+No rodapé ficam os links oficiais: [YouTube](https://www.youtube.com/@ValrokMMORPG), [Instagram](https://www.instagram.com/valrok.mmorpg/) e Discord.
 | **Conta** ▾ | Entrar e Criar conta — ou, já conectado, Minha conta e Sair. |
 
-**Início** reúne tudo: o hero com a arte do jogo, o status do servidor, as últimas notícias, os pilares, as classes,
+**Início** reúne tudo: o hero com a arte do jogo, o status do servidor, as últimas notícias, os últimos vídeos do canal no YouTube, os pilares, as classes,
 o ranking, a jornada do projeto e o convite para criar conta.
 
 <table>

@@ -180,3 +180,57 @@ def test_classes_page_branch_filter_markup():
     assert html.count('data-branch="') == 8
     assert html.count("data-skill-branch=") == 48
     assert 'class="skill__desc"' in html and "skill__level" not in html
+
+
+SAMPLE_FEED = """<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <title>Valrok MMORPG</title>
+ <entry><yt:videoId>14QfItlE4GM</yt:videoId><title>Todas as Classes Prontas | Devlog</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=14QfItlE4GM"/><published>2026-11-14T18:58:09+00:00</published>
+  <media:group><media:community><media:statistics views="73"/></media:community></media:group></entry>
+ <entry><yt:videoId>vbj5Z3tG8eo</yt:videoId><title>Mage Elemental PVP | Valrok Devlog #godot #mmorpg #shorts</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/vbj5Z3tG8eo"/><published>2026-11-04T18:15:56+00:00</published></entry>
+ <entry><yt:videoId>../../etc</yt:videoId><title>inválido</title><published>2026-11-01T00:00:00+00:00</published></entry>
+</feed>"""
+
+
+def test_youtube_feed_parsing():
+    from app.youtube import parse_feed
+
+    vids = parse_feed(SAMPLE_FEED)
+    assert [v.id for v in vids] == ["14QfItlE4GM", "vbj5Z3tG8eo"]  # id inválido descartado
+    assert vids[0].url == "https://www.youtube.com/watch?v=14QfItlE4GM" and vids[0].views == 73
+    assert vids[1].is_short and vids[1].url.endswith("/shorts/vbj5Z3tG8eo")
+    assert vids[1].title == "Mage Elemental PVP | Valrok Devlog"  # hashtags removidas
+    assert vids[0].thumb == "/yt-thumb/14QfItlE4GM.jpg"
+
+
+def test_home_videos_and_social_links(monkeypatch):
+    import app.main as m
+    from app.youtube import parse_feed
+
+    async def fake(channel_id, limit=4):
+        return parse_feed(SAMPLE_FEED)[:limit]
+
+    monkeypatch.setattr(m, "latest_videos", fake)
+    html = client.get("/").text
+    assert "Últimos vídeos" in html and 'href="https://www.youtube.com/watch?v=14QfItlE4GM"' in html
+    assert 'src="/yt-thumb/14QfItlE4GM.jpg"' in html
+    assert "https://www.instagram.com/valrok.mmorpg/" in html and "https://www.youtube.com/@ValrokMMORPG" in html
+    assert "tiktok" not in html.lower()
+
+
+def test_home_without_videos_shows_channel_link(monkeypatch):
+    import app.main as m
+
+    async def empty(channel_id, limit=4):
+        return []
+
+    monkeypatch.setattr(m, "latest_videos", empty)
+    html = client.get("/").text
+    assert "Assistir no YouTube" in html
+
+
+def test_yt_thumb_rejects_invalid_id():
+    assert client.get("/yt-thumb/..%2F..%2Fetc.jpg").status_code == 404
+    assert client.get("/yt-thumb/abc.jpg").status_code == 404
