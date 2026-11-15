@@ -206,8 +206,8 @@ main:focus { outline: none; }
 .nav-bar__logo { width: 56px; height: 56px; margin: 0; align-self: center; filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .8)) drop-shadow(0 0 12px rgba(105, 192, 202, .2)); transition: transform .3s var(--ease), filter .3s; }
 /* Hover: brilho rúnico bem mais intenso */
 .nav-bar__brand:hover .nav-bar__logo, .nav-bar__brand:focus-visible .nav-bar__logo {
-  transform: scale(1.08);
-  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .85)) drop-shadow(0 0 8px rgba(156, 237, 255, .75)) drop-shadow(0 0 22px rgba(105, 192, 202, .85)) drop-shadow(0 0 40px rgba(62, 145, 163, .6));
+  transform: scale(1.06);
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .85)) drop-shadow(0 0 6px rgba(156, 237, 255, .5)) drop-shadow(0 0 18px rgba(105, 192, 202, .6)) drop-shadow(0 0 32px rgba(62, 145, 163, .38));
 }
 .nav-bar__wordmark {
   font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: .16em; text-transform: uppercase;
