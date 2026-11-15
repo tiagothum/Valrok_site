@@ -202,8 +202,13 @@ main:focus { outline: none; }
   background: rgba(9, 13, 15, .6); border-radius: var(--radius) 0 0 var(--radius); border-right: 1px solid var(--vk-border-subtle); color: var(--bone);
 }
 .nav-bar__brand:hover { color: var(--bone); }
-.nav-bar__logo { width: 64px; height: 64px; margin: 6px 0 -14px; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .8)) drop-shadow(0 0 14px rgba(105, 192, 202, .19)); transition: transform .3s var(--ease), filter .3s; }
-.nav-bar__brand:hover .nav-bar__logo { transform: scale(1.06); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .8)) drop-shadow(0 0 22px rgba(105, 192, 202, .39)); }
+/* Logo centralizado verticalmente com o nome (sem "vazar" para baixo da barra) */
+.nav-bar__logo { width: 56px; height: 56px; margin: 0; align-self: center; filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .8)) drop-shadow(0 0 12px rgba(105, 192, 202, .2)); transition: transform .3s var(--ease), filter .3s; }
+/* Hover: brilho rúnico bem mais intenso */
+.nav-bar__brand:hover .nav-bar__logo, .nav-bar__brand:focus-visible .nav-bar__logo {
+  transform: scale(1.08);
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .85)) drop-shadow(0 0 8px rgba(156, 237, 255, .75)) drop-shadow(0 0 22px rgba(105, 192, 202, .85)) drop-shadow(0 0 40px rgba(62, 145, 163, .6));
+}
 .nav-bar__wordmark {
   font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: .16em; text-transform: uppercase;
   background: linear-gradient(180deg, #E4F2F5 0%, #B9D8DF 55%, #69C0CA 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -672,7 +677,7 @@ a.card:hover { transform: translateY(-3px); color: inherit; }
   .site-header { padding: 8px 8px 0; height: calc(var(--header-h) + 8px); }
   .nav-bar { padding-right: 8px; }
   .nav-bar__brand { padding: 0 12px 0 8px; gap: 6px; }
-  .nav-bar__logo { width: 48px; height: 48px; margin: 4px 0 -8px; }
+  .nav-bar__logo { width: 44px; height: 44px; margin: 0; }
   .nav-bar__wordmark { font-size: 1.1rem; letter-spacing: .1em; }
   .nav-account { padding: 0 10px; }
   .nav-account__label, .nav-account .chev { display: none; }
@@ -905,3 +910,4 @@ button.branch { width: 100%; text-align: left; color: inherit; font: inherit; cu
 .video-empty p { margin: 0; color: var(--muted); }
 @media (max-width: 1080px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .video-grid { grid-template-columns: 1fr; } }
+.nav-bar__wordmark { line-height: 1; display: block; }
