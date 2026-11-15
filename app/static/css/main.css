@@ -752,7 +752,6 @@ a.card:hover { transform: translateY(-3px); color: inherit; }
 .class-pick__img { position: absolute; z-index: -1; left: 50%; top: 10px; height: 100%; width: auto; max-width: none; transform: translateX(-50%); filter: saturate(.75) brightness(.8); transition: transform .6s var(--ease), filter .4s; }
 .class-pick:hover .class-pick__img, .class-pick[aria-selected="true"] .class-pick__img { filter: none; transform: translateX(-50%) scale(1.04); }
 .class-pick__name { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: .12em; text-transform: uppercase; text-shadow: 0 2px 12px #000; }
-.class-pick__tag { font-size: .92rem; color: var(--text); text-shadow: 0 1px 8px #000; }
 .class-pick::before { content: ""; position: absolute; inset: 40% 0 0; z-index: -1; background: linear-gradient(180deg, transparent, rgba(9, 13, 15, .92) 70%); }
 
 .class-detail { position: relative; overflow: hidden; padding: clamp(56px, 8vw, 100px) 0; }
@@ -795,7 +794,6 @@ a.card:hover { transform: translateY(-3px); color: inherit; }
   .class-pick { min-height: 230px; padding: 12px 8px 14px; }
   .class-pick__img { top: 6px; }
   .class-pick__name { font-size: 1rem; letter-spacing: .06em; }
-  .class-pick__tag { display: none; }
   .classes-teaser .class-pick { min-height: 260px; }
   .class-detail__grid, .branches { grid-template-columns: 1fr; }
   .class-detail__portrait { position: static; }
