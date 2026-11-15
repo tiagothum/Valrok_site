@@ -1,15 +1,15 @@
 /**
- * Roadmap cinematográfico — "Crônicas das Classes" (protótipo).
+ * Vitrine cinematográfica das classes (home e página de Classes).
  *
  * Interações:
  *  - mover o mouse: câmera em parallax 3D (camadas em profundidades diferentes) + luz que segue o cursor;
  *  - clicar na cena: avança (clique no terço esquerdo volta), com flash anamórfico, letterbox,
  *    onda de choque e explosão de partículas a partir do ponto clicado;
- *  - linha do tempo: clique num capítulo; a barra avança sozinha (autoplay) e pausa com o mouse em cima;
+ *  - linha das classes: clique numa classe; a barra avança sozinha (autoplay) e pausa com o mouse em cima;
  *  - teclado (setas), botões laterais e arrastar no celular.
  * Respeita prefers-reduced-motion (sem 3D, partículas ou autoplay).
  *
- * Futuramente cada cena será uma etapa do roadmap; os dados vêm do HTML (data-saga-scene).
+ * Os dados de cada cena vêm do HTML (data-saga-scene).
  */
 
 const AUTOPLAY_MS = 8000;
@@ -203,7 +203,7 @@ export function initSaga() {
     }
 
     nodes.forEach((b, i) => b.setAttribute("aria-pressed", String(i === next)));
-    live.textContent = `Capítulo ${next + 1} de ${n}: ${to.querySelector("[data-saga-split]").getAttribute("aria-label")}`;
+    live.textContent = `Classe ${next + 1} de ${n}: ${to.querySelector("[data-saga-split]").getAttribute("aria-label")}`;
     idx = next; autoT = 0; setFill();
 
     setTimeout(() => {

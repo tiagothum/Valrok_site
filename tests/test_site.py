@@ -242,7 +242,7 @@ def test_classes_saga_roadmap_section():
 
     n = len(load_classes())
     html = client.get("/classes").text
-    assert 'data-saga-stage' in html and "Crônicas das Classes" in html
+    assert 'data-saga-stage' in html
     assert html.count("data-saga-scene=") == n and html.count("data-saga-go=") == n
     assert '/static/css/saga.css' in html
     # nada do que já existia foi removido
@@ -257,3 +257,16 @@ def test_home_has_saga_instead_of_classes_teaser():
     assert "classes-teaser" not in html and "Escolha seu caminho" not in html
     assert html.count("data-saga-scene=") == n and "/static/css/saga.css" in html
     assert 'href="/classes#guerreiro"' in html  # "Ver a classe" leva à página de Classes
+
+
+def test_saga_is_class_showcase_without_roadmap_wording():
+    """Vitrine de classes: sem roadmap/capítulos/tutorial; na home o título é só "Classes"."""
+    import re
+
+    for path in ("/", "/classes"):
+        html = client.get(path).text
+        section = html[html.index("data-saga"):html.index("</section>", html.index("data-saga"))]
+        for word in ("Roadmap", "protótipo", "Crônicas", "Capítulo", "Clique para avançar", "Escolha seu caminho"):
+            assert word not in section, (path, word)
+    home = client.get("/").text
+    assert re.search(r'<h2 class="section-title" id="saga-title">Classes</h2>', home)

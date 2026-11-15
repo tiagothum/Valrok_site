@@ -67,7 +67,7 @@
 </section>
 {% endfor %}
 
-{% set saga_link_base = "#" %}{% include "_saga.html" %}
+{% set saga_link_base = "#" %}{% set saga_head = false %}{% include "_saga.html" %}
 
 <section class="cta-band" aria-labelledby="cta-classes">
   <canvas class="embers" data-embers data-density="0.6" aria-hidden="true"></canvas>

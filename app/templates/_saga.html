@@ -1,21 +1,19 @@
-{# Roadmap cinematográfico "Crônicas das Classes" — usado na home e na página de Classes.
-   Variáveis: classes (lista) e saga_link_base ("#" na página de Classes, "/classes#" na home). #}
+{# Vitrine cinematográfica das classes — usada na home e na página de Classes.
+   Variáveis:
+     classes          lista de classes (content/classes.json)
+     saga_link_base   "#" na página de Classes, "/classes#" na home
+     saga_head        mostra o título da seção (home: sim; página de Classes: não) #}
 {% from "_macros.html" import icon %}
 {% set saga_link_base = saga_link_base | default("#") %}
-{# ======================================================================
-   ROADMAP CINEMATOGRÁFICO (protótipo): timeline das classes.
-   Futuramente cada "capítulo" será uma etapa do roadmap do jogo.
-   ====================================================================== #}
 {% set saga_art = {"guerreiro": "viking-battle", "mercenario": "lethal-daggers", "druida": "soul-burst", "mago": "magma-spires"} %}
-{% set romanos = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"] %}
-<section class="saga" aria-labelledby="saga-title" data-saga>
+<section class="saga{% if not saga_head %} saga--bare{% endif %}" {% if saga_head %}aria-labelledby="saga-title"{% else %}aria-label="Classes"{% endif %} data-saga>
+  {% if saga_head %}
   <div class="container saga__head">
-    <p class="eyebrow">Roadmap · protótipo</p>
-    <h2 class="section-title" id="saga-title">Crônicas das Classes</h2>
-    <p class="section-lead">Mova o mouse para olhar ao redor. Clique na cena ou num capítulo da linha do tempo para viajar entre as classes.</p>
+    <h2 class="section-title" id="saga-title">Classes</h2>
   </div>
+  {% endif %}
 
-  <div class="saga__stage" data-saga-stage tabindex="0" role="region" aria-roledescription="linha do tempo cinematográfica" aria-label="Crônicas das Classes — use as setas para navegar">
+  <div class="saga__stage" data-saga-stage tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Classes de Valrok — use as setas para trocar de classe">
     <div class="saga__letterbox saga__letterbox--top" aria-hidden="true"></div>
     <div class="saga__world" data-saga-world>
       {% for c in classes %}
@@ -25,7 +23,6 @@
         <div class="saga__layer saga__layer--hero"><img class="saga__hero" src="/static/img/classes/{{ c.slug }}-retrato-900.webp" alt="{{ c.name }}" loading="lazy"></div>
         <div class="saga__layer saga__layer--copy">
           <div class="saga__copy">
-            <p class="saga__chapter">Capítulo {{ romanos[loop.index0] }}</p>
             <h3 class="saga__title" data-saga-split>{{ c.name }}</h3>
             <p class="saga__epithet">{{ c.tagline }}</p>
             <p class="saga__text">{{ c.description }}</p>
@@ -39,20 +36,19 @@
     <div class="saga__spot" aria-hidden="true"></div>
     <div class="saga__flash" data-saga-flash aria-hidden="true"><span class="saga__streak"></span></div>
     <div class="saga__letterbox saga__letterbox--bottom" aria-hidden="true"></div>
-    <button class="saga__nav saga__nav--prev" type="button" data-saga-prev aria-label="Capítulo anterior">{{ icon("chevron", "ico--sm") }}</button>
-    <button class="saga__nav saga__nav--next" type="button" data-saga-next aria-label="Próximo capítulo">{{ icon("chevron", "ico--sm") }}</button>
-    <p class="saga__hint" aria-hidden="true">Clique para avançar</p>
+    <button class="saga__nav saga__nav--prev" type="button" data-saga-prev aria-label="Classe anterior">{{ icon("chevron", "ico--sm") }}</button>
+    <button class="saga__nav saga__nav--next" type="button" data-saga-next aria-label="Próxima classe">{{ icon("chevron", "ico--sm") }}</button>
     <p class="visually-hidden" aria-live="polite" data-saga-live></p>
   </div>
 
-  <nav class="container saga__timeline" aria-label="Linha do tempo das classes">
+  <nav class="container saga__timeline" aria-label="Escolher classe">
     <div class="saga__rail" aria-hidden="true"><span class="saga__rail-fill" data-saga-fill></span></div>
     <ol class="saga__nodes">
       {% for c in classes %}
       <li>
-        <button class="saga__node class--{{ c.accent }}" type="button" data-saga-go="{{ loop.index0 }}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-label="Capítulo {{ romanos[loop.index0] }}: {{ c.name }}">
+        <button class="saga__node class--{{ c.accent }}" type="button" data-saga-go="{{ loop.index0 }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">
           <span class="saga__gem"><img src="/static/img/classes/{{ c.slug }}-ramo-{{ c.branches[0].key }}.webp" alt="" width="44" height="44" loading="lazy"></span>
-          <span class="saga__node-label"><span class="saga__node-num">{{ romanos[loop.index0] }}</span>{{ c.name }}</span>
+          <span class="saga__node-label">{{ c.name }}</span>
         </button>
       </li>
       {% endfor %}
