@@ -100,3 +100,33 @@ def test_settings_environments(monkeypatch):
     monkeypatch.setenv("VALROK_ENV", "prod")
     with pytest.raises(RuntimeError):
         load_settings()
+
+
+def test_skill_icon_master_rule():
+    """Regra fixa: ícones de skills só da versão "_m" (master); maior versão vence; Square > solto."""
+    import sys
+    sys.path.insert(0, str(APP_DIR.parent / "tools"))
+    from import_skill_icons import pick_masters
+
+    names = [
+        "UI/Skills/Mercenary/Icons/FireArrow/Square/mercenary_fire_arrow_g_icon.png",
+        "UI/Skills/Mercenary/Icons/FireArrow/Square/mercenary_fire_arrow_m_icon.png",
+        "UI/Skills/Mercenary/Icons/FireArrow/Square/mercenary_fire_arrow_m_icon_v5.png",
+        "UI/Skills/Mercenary/Icons/FireArrow/Square/mercenary_fire_arrow_m_icon_v2.png",
+        "UI/Skills/Mercenary/Icons/FireArrow/Hotbar_45x59/mercenary_fire_arrow_m_hotbar.png",
+        "UI/Skills/Mercenary/Icons/mercenary_fire_arrow_m_icon.png",
+        "UI/Skills/Mercenary/Icons/mercenary_hemlock_blade_m_icon.png",
+        "UI/Skills/Mercenary/Icons/PiercingMastery/Square/mercenary_piercing_mastery_x_icon.png",
+        "UI/Skills/Mercenary/Icons/PiercingMastery/Square/mercenary_piercing_mastery_m_icon.png",
+        "UI/Skills/Druid/Icons/Wither/Square/wither_p.png",
+        "UI/Skills/Druid/Icons/Wither/Square/wither_m.png",
+        "UI/Skills/Mage/Icons/RunicReflection/Square/mage_runic_reflection_icon.png",
+        "UI/Skills/Warrior/Icons/warrior_shield_wall_icon.png",
+    ]
+    chosen, missing = pick_masters(names)
+    assert chosen[("Mercenary", "fire-arrow")].endswith("Square/mercenary_fire_arrow_m_icon_v5.png")
+    assert chosen[("Mercenary", "hemlock-blade")].endswith("Icons/mercenary_hemlock_blade_m_icon.png")
+    assert chosen[("Mercenary", "piercing-mastery")].endswith("_m_icon.png")
+    assert chosen[("Druid", "wither")].endswith("wither_m.png")
+    assert ("Mage", "runic-reflection") in missing and ("Mage", "runic-reflection") not in chosen
+    assert ("Warrior", "shield-wall") not in chosen  # arquivo sem "_m" nunca é usado

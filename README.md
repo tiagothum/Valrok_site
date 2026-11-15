@@ -178,4 +178,24 @@ CSP no Nginx.
 
 ### Arte do jogo
 
-As imagens em `static/img/art/` (telas de loading) e `static/img/classes/` (retratos, emblemas e ícones de skills) vieram dos pacotes `Icons_Valrok.zip` e `UI.zip`, convertidas para WebP. Para adicionar uma skill: coloque `{classe}-{chave}.webp` (128×128) em `static/img/classes/skills/` e inclua `{"key", "name"}` no `classes.json`.
+As imagens em `static/img/art/` (telas de loading) e `static/img/classes/` (retratos, emblemas e ícones de skills) vieram dos pacotes `Icons_Valrok.zip` e `UI.zip`, convertidas para WebP.
+
+#### Regra fixa: ícones de skills = versão master ("_m")
+
+Os ícones de skills usam **sempre** a versão **"_m" (master)** de cada skill do `UI.zip`
+(`UI/Skills/<Classe>/Icons/<Skill>/Square/*_m*.png`). Nunca as variantes `_g`, `_p`, `_x` nem o ícone genérico sem marcador.
+
+- Mais de uma versão "_m" (`_m_icon`, `_m_icon_v2`, `_m_icon_v5`…) → vale a **de maior número**.
+- Skill sem pasta própria → aceita o arquivo "_m" solto em `UI/Skills/<Classe>/Icons/`.
+- Skill **sem** versão "_m" → **não entra no site** até o master existir (ex.: Runic Reflection, hoje).
+
+Para atualizar os ícones, use a ferramenta que aplica a regra (precisa de Pillow: `pip install pillow`):
+
+```bash
+python tools/import_skill_icons.py ../UI.zip --dry-run   # mostra o que será usado
+python tools/import_skill_icons.py ../UI.zip             # grava em static/img/classes/skills/
+```
+
+Ela avisa quais skills do `classes.json` estão sem master e quais masters do pacote ainda não estão no site.
+Para adicionar uma skill nova: inclua `{"key", "name"}` no `classes.json` (a `key` é o nome da pasta em kebab-case,
+ex.: `PredatorsFury` → `predators-fury`) e rode a ferramenta. O teste `test_skill_icon_master_rule` protege a regra.

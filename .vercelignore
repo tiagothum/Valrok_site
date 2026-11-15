@@ -6,3 +6,4 @@ tests/
 .env
 *.log
 vercel.api-rewrites.example.json
+tools/
