@@ -1,201 +1,343 @@
-# Valrok — site oficial
+<p align="center">
+  <img src="docs/readme/banner.jpg" alt="Valrok — RPG de ação multiplayer persistente, desenvolvido no Brasil" width="100%">
+</p>
 
-Site do Valrok em **HTML/CSS/JS puro** servido por **FastAPI** (Python 3.12), seguindo o
-*Guia de desenvolvimento e integração do novo site Valrok* (09/11/2026).
+<p align="center">
+  <b>Site oficial do Valrok</b> — notícias, classes, ranking, guia e a sua conta em um só lugar.<br>
+  <sub>Produção 100% brasileira e independente · Godot Engine · Pré-Alfa</sub>
+</p>
 
-O site **não** acessa o banco do jogo e **não** possui `JWT_SECRET_KEY`, `GAME_SERVER_TOKEN`
-nem credenciais do PostgreSQL. Contas, sessão, personagens e dados do jogo pertencem à
-**valrokapi**, consumida pelo navegador em `/api/...` na mesma origem.
+<p align="center">
+  <a href="https://valrok.com.br"><b>valrok.com.br</b></a> &nbsp;·&nbsp;
+  <a href="#classes">Classes</a> &nbsp;·&nbsp;
+  <a href="#paginas">Páginas</a> &nbsp;·&nbsp;
+  <a href="#identidade-visual">Identidade visual</a> &nbsp;·&nbsp;
+  <a href="#fase-do-projeto">Fase do projeto</a>
+</p>
 
-## Executar localmente
+<p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
 
-```bash
-python -m venv .venv
-.venv\Scripts\python -m pip install -r requirements.txt      # Windows
-.venv\Scripts\python -m uvicorn app.main:app --port 8080
-```
+## ⚔️ O jogo
 
-Abra http://127.0.0.1:8080. Em desenvolvimento o **modo simulado** fica ligado (selo amarelo no
-canto inferior): as respostas da API vêm de `app/static/js/mock.js`.
+**Valrok** é um RPG de ação multiplayer persistente em desenvolvimento ativo. Ele resgata a essência desafiadora e a
+progressão profunda dos RPGs que marcaram os anos 2000, unindo **combate melee físico** a um **mundo em constante evolução**.
 
-- Conta de teste simulada: usuário `teste`, senha `valrok123` (existe só no navegador, em `sessionStorage`).
-- Estados de erro: use o usuário `erro500`, `lento` ou `offline`; 5 logins errados seguidos → `429` com `Retry-After`.
+<p align="center"><img src="docs/readme/print-inicio.webp" alt="Página inicial do site do Valrok" width="100%"></p>
 
-Para usar a valrokapi real em dev: `MOCK_API=false DEV_API_PROXY=true VALROKAPI_URL=http://127.0.0.1:8000`
-(o proxy de dev remove o prefixo `/api`, como o Nginx fará, e recusa `/internal/*`).
+### Os pilares de Valrok
 
-### Testes
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <img src="app/static/img/art/viking-battle-800.webp" alt="" width="100%"><br>
+      <h3>I · Combate de ação</h3>
+      Combos fluidos de espada, esquivas táticas e reações físicas reais a cada impacto. Posicionamento e tempo decidem o confronto — nada de combate travado.
+    </td>
+    <td width="33%" valign="top">
+      <img src="app/static/img/art/undead-clash-800.webp" alt="" width="100%"><br>
+      <h3>II · Economia e guildas</h3>
+      Um mundo de cooperação e disputa territorial. Comércio direto entre jogadores e a construção de um império ao lado da sua guilda.
+    </td>
+    <td width="33%" valign="top">
+      <img src="app/static/img/art/soul-burst-800.webp" alt="" width="100%"><br>
+      <h3>III · Progressão profunda</h3>
+      Atributos, habilidades ativas e builds que recompensam estratégia. O grind volta a ter significado.
+    </td>
+  </tr>
+</table>
 
-```bash
-.venv\Scripts\python -m pytest -q
-```
+<p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
 
-Cobrem: todas as páginas (200 + cabeçalhos CSP/segurança), 404 em HTML, robots/sitemap, ausência de
-script/estilo/handlers inline, ausência de `localStorage`, `innerHTML`, `Authorization` e
-`X-Game-Server-Token` no JS.
+<a id="classes"></a>
 
-## Configuração (variáveis de ambiente)
+## 🛡️ As classes
 
-Ver `.env.example`. `VALROK_ENV` aceita `development`, `staging` ou `production`. Principais: `VALROK_ENV`, `MOCK_API`, `DEV_API_PROXY`, `VALROKAPI_URL`,
-`CSP_REPORT_ONLY`, `DISCORD_URL`, `SITE_URL`, `ASSET_VERSION`.
-Com `VALROK_ENV=production` o processo **recusa iniciar** se `MOCK_API` ou `DEV_API_PROXY` estiverem ligados.
+**4 classes, 8 especializações e 48 habilidades.** Cada classe tem duas formas de lutar.
+Os nomes seguem os arquivos do jogo, e os ícones são sempre a versão **master** de cada skill.
 
-## Estrutura
+<table>
+  <tr>
+    <td align="center" width="25%" valign="top">
+      <img src="app/static/img/classes/guerreiro-retrato-420.webp" alt="Warrior" height="300"><br>
+      <h3>Warrior</h3>
+      <sub><i>Aço, escudo e fúria na linha de frente.</i></sub>
+    </td>
+    <td align="center" width="25%" valign="top">
+      <img src="app/static/img/classes/mercenario-retrato-420.webp" alt="Mercenary" height="300"><br>
+      <h3>Mercenary</h3>
+      <sub><i>Flechas certeiras e lâminas nas sombras.</i></sub>
+    </td>
+    <td align="center" width="25%" valign="top">
+      <img src="app/static/img/classes/druida-retrato-420.webp" alt="Druid" height="300"><br>
+      <h3>Druid</h3>
+      <sub><i>A fúria da tempestade e a força da natureza.</i></sub>
+    </td>
+    <td align="center" width="25%" valign="top">
+      <img src="app/static/img/classes/mago-retrato-420.webp" alt="Mage" height="300"><br>
+      <h3>Mage</h3>
+      <sub><i>Fogo, gelo e runas arcanas.</i></sub>
+    </td>
+  </tr>
+</table>
 
-```
-app/
-  main.py            FastAPI: páginas, cabeçalhos de segurança, sitemap, health, proxy de dev
-  config.py          configuração não secreta e validada
-  content/news.json  notícias (conteúdo editorial do site, não do banco do jogo)
-  content/classes.json  classes, especializações e skills (textos editáveis)
-  templates/         Jinja2: base.html (header/footer), _macros.html e uma página por rota
-  static/css/main.css   design system: paleta "Azul Gelo Rúnico" (tokens --vk-* em :root)
-  static/js/
-    app.js           entrada comum (header, efeitos, sessão, módulo da página)
-    api.js           ÚNICO cliente HTTP: base /api, fetch, parsing, ApiError (0/400/401/403/409/422/429/5xx)
-    session.js       estado visual da sessão; token CSRF só em memória; logout via API
-    mock.js          simulação da valrokapi (somente dev)
-    ui.js widgets.js utilidades de interface e widgets públicos
-    pages/           login.js, register.js, account.js, ranking.js
-  static/fonts/      Alegreya (principal: títulos e texto) e Lato (interface) — auto-hospedadas (OFL)
-  static/img/        logo e sprite de ícones SVG
-  static/media/      coloque hero.mp4 aqui para ativar o vídeo de fundo da home
-tests/test_site.py
-```
+### Warrior
 
-## Inventário
+<img align="right" src="app/static/img/classes/guerreiro-retrato-420.webp" alt="" width="150">
 
-### Páginas e rotas do site (FastAPI)
+Mestre do combate corpo a corpo, o Warrior avança onde os outros recuam. Machados pesados, escudos e golpes giratórios fazem dele o pilar de qualquer grupo — seja abrindo caminho com fúria ou segurando a linha com aço.
 
-| Rota | Página | Dados |
-|---|---|---|
-| `/` | Início: hero, status, notícias, pilares, ranking, roadmap, CTA | notícias (site) + API pública |
-| `/jogo` | Visão geral do jogo | estático |
-| `/classes` (`#guerreiro`, `#mercenario`, `#druida`) | Classes: retrato, especializações e habilidades | `content/classes.json` |
-| `/noticias`, `/noticias/{slug}` | Lista (filtro por categoria) e artigo | `content/news.json` |
-| `/download` | Plataformas, passos, requisitos | estático + status |
-| `/ranking` (`#jogadores`, `#guildas`) | Ranking com abas e busca | API pública |
-| `/guia`, `/regras`, `/suporte` | Guia, regras, FAQ | estático |
-| `/entrar`, `/cadastro`, `/conta` | Login, cadastro, minha conta | API (sessão web) |
-| `/health`, `/robots.txt`, `/sitemap.xml`, `/favicon.ico` | utilitários | — |
+**Estilo:** Corpo a corpo · Linha de frente · Resistência
 
-### Endpoints da valrokapi consumidos (vistos pelo navegador)
+| | Especialização | |
+|:-:|:--|:--|
+| <img src="app/static/img/classes/guerreiro-ramo-berserker.webp" width="56" alt=""> | **Berserker** | Fúria e machados. Dano bruto, golpes sangrentos e ataques que ficam mais perigosos quanto maior o risco. |
+| <img src="app/static/img/classes/guerreiro-ramo-vanguard.webp" width="56" alt=""> | **Vanguard** | Escudo e aço. Proteção, investidas e controle do campo de batalha para defender os aliados. |
 
-| Chamada | Uso | Situação |
-|---|---|---|
-| `POST /api/auth/register` | Cadastro | **Real hoje** (contrato final de erros/senha a fechar) |
-| `POST /api/auth/web/login` | Login → cookie `__Host-valrok_session` | **Proposto** — simulado |
-| `GET /api/auth/web/session` | Usuário, papel e `csrf_token` | **Proposto** — simulado |
-| `POST /api/auth/web/logout` (com `X-CSRF-Token`) | Revoga sessão | **Proposto** — simulado |
-| `GET /api/account/overview` | Minha conta + personagens | Existe com JWT; **adaptar à sessão web** — simulado |
-| `GET /api/public/server-status` | Status/fase/contas | **Sem contrato** — simulado |
-| `GET /api/public/ranking/players` · `/guilds` | Ranking | **Sem contrato** — simulado |
+<p>
+  <img src="app/static/img/classes/skills/guerreiro-cleaving-strike.webp" width="52" title="Cleaving Strike" alt="Cleaving Strike">
+  <img src="app/static/img/classes/skills/guerreiro-bloody-throw.webp" width="52" title="Bloody Throw" alt="Bloody Throw">
+  <img src="app/static/img/classes/skills/guerreiro-rising-blade.webp" width="52" title="Rising Blade" alt="Rising Blade">
+  <img src="app/static/img/classes/skills/guerreiro-predators-fury.webp" width="52" title="Predator's Fury" alt="Predator's Fury">
+  <img src="app/static/img/classes/skills/guerreiro-seismic-impact.webp" width="52" title="Seismic Impact" alt="Seismic Impact">
+  <img src="app/static/img/classes/skills/guerreiro-battle-renewal.webp" width="52" title="Battle Renewal" alt="Battle Renewal">
+  <img src="app/static/img/classes/skills/guerreiro-disarming-charge.webp" width="52" title="Disarming Charge" alt="Disarming Charge">
+  <img src="app/static/img/classes/skills/guerreiro-shield-charge.webp" width="52" title="Shield Charge" alt="Shield Charge">
+  <img src="app/static/img/classes/skills/guerreiro-shield-throw.webp" width="52" title="Shield Throw" alt="Shield Throw">
+  <img src="app/static/img/classes/skills/guerreiro-shield-wall.webp" width="52" title="Shield Wall" alt="Shield Wall">
+  <img src="app/static/img/classes/skills/guerreiro-steel-vortex.webp" width="52" title="Steel Vortex" alt="Steel Vortex">
+  <img src="app/static/img/classes/skills/guerreiro-whirling-slash.webp" width="52" title="Whirling Slash" alt="Whirling Slash">
+</p>
+<sub>Cleaving Strike · Bloody Throw · Rising Blade · Predator's Fury · Seismic Impact · Battle Renewal · Disarming Charge · Shield Charge · Shield Throw · Shield Wall · Steel Vortex · Whirling Slash</sub>
 
-Formatos assumidos pela interface (ajustar quando o contrato fechar): sessão
-`{user:{id,username,role}, csrf_token}`; overview `{account:{id,username,email,role,status,created_at}, characters:[{name,level,map,last_seen}]}`;
-ranking `{updated_at, items:[...]}`; erros `{message?, detail?, fields?:{campo:msg}}` + `Retry-After` em 429.
+<br clear="right">
 
-### Recursos externos
+### Mercenary
 
-**Nenhum.** Fontes, ícones e imagens são locais. A CSP pode começar com tudo em `'self'`
-(única exceção: `img-src data:` para a textura de ruído inline no CSS).
+<img align="right" src="app/static/img/classes/mercenario-retrato-420.webp" alt="" width="150">
 
-## Publicar na Vercel
+Ágil e letal, o Mercenary escolhe quando e onde lutar. Domina o arco com flechas de fogo, veneno e correntes, ou se esconde nas sombras para desferir punhaladas precisas antes que o inimigo perceba.
 
-Arquivos já preparados: `pyproject.toml` (entrada `app.main:app` + dependências), `.python-version` (3.12),
-`vercel.json` e `.vercelignore` (não envia `.venv`, testes nem caches — o envio fica em ~4 MB).
+**Estilo:** Distância · Agilidade · Golpes críticos
 
-### 1. Primeira publicação (prévia, com dados simulados)
+| | Especialização | |
+|:-:|:--|:--|
+| <img src="app/static/img/classes/mercenario-ramo-archer.webp" width="56" alt=""> | **Archer** | Arco e flechas especiais. Dano à distância, fogo, veneno e chuva de flechas para controlar o combate. |
+| <img src="app/static/img/classes/mercenario-ramo-rogue.webp" width="56" alt=""> | **Rogue** | Lâminas e sombras. Furtividade, mobilidade e golpes críticos a curta distância. |
 
-Dentro da pasta `valrok-site`:
+<p>
+  <img src="app/static/img/classes/skills/mercenario-fire-arrow.webp" width="52" title="Fire Arrow" alt="Fire Arrow">
+  <img src="app/static/img/classes/skills/mercenario-pestilent-arrow.webp" width="52" title="Pestilent Arrow" alt="Pestilent Arrow">
+  <img src="app/static/img/classes/skills/mercenario-shackling-arrow.webp" width="52" title="Shackling Arrow" alt="Shackling Arrow">
+  <img src="app/static/img/classes/skills/mercenario-arrow-rain.webp" width="52" title="Arrow Rain" alt="Arrow Rain">
+  <img src="app/static/img/classes/skills/mercenario-eagle-eye.webp" width="52" title="Eagle Eye" alt="Eagle Eye">
+  <img src="app/static/img/classes/skills/mercenario-piercing-mastery.webp" width="52" title="Piercing Mastery" alt="Piercing Mastery">
+  <img src="app/static/img/classes/skills/mercenario-lethal-focus.webp" width="52" title="Lethal Focus" alt="Lethal Focus">
+  <img src="app/static/img/classes/skills/mercenario-shadow-stab.webp" width="52" title="Shadow Stab" alt="Shadow Stab">
+  <img src="app/static/img/classes/skills/mercenario-hemlock-blade.webp" width="52" title="Hemlock Blade" alt="Hemlock Blade">
+  <img src="app/static/img/classes/skills/mercenario-shadow-veil.webp" width="52" title="Shadow Veil" alt="Shadow Veil">
+  <img src="app/static/img/classes/skills/mercenario-ravens-step.webp" width="52" title="Raven's Step" alt="Raven's Step">
+  <img src="app/static/img/classes/skills/mercenario-wild-stride.webp" width="52" title="Wild Stride" alt="Wild Stride">
+</p>
+<sub>Fire Arrow · Pestilent Arrow · Shackling Arrow · Arrow Rain · Eagle Eye · Piercing Mastery · Lethal Focus · Shadow Stab · Hemlock Blade · Shadow Veil · Raven's Step · Wild Stride</sub>
 
-```bash
-npm i -g vercel
-vercel login
-vercel          # cria o projeto e gera um link de prévia
-vercel --prod   # publica em produção (domínio *.vercel.app)
-```
+<br clear="right">
 
-Ou pelo GitHub: suba o repositório, importe em vercel.com/new e defina **Root Directory = `valrok-site`**.
+### Druid
 
-Na Vercel, sem nenhuma variável, o site sobe como `staging` com `MOCK_API=true` (selo amarelo "Modo simulado").
-Defina em *Settings → Environment Variables*: `SITE_URL` (URL pública) e `DISCORD_URL`.
+<img align="right" src="app/static/img/classes/druida-retrato-420.webp" alt="" width="150">
 
-### 2. Integração real (quando a valrokapi tiver as rotas de sessão web)
+Guardião dos bosques antigos, o Druid canaliza o vento, o raio e a própria terra. Pode invocar tempestades sobre os inimigos ou fazer a vida brotar para proteger e curar seus aliados.
 
-1. Copie o conteúdo de `vercel.api-rewrites.example.json` para `vercel.json` e troque `HOST-DA-VALROKAPI` pelo
-   host HTTPS público da API. Só as rotas web são repassadas; `/internal/*` nunca é exposto.
-2. Variáveis: `VALROK_ENV=production`, `MOCK_API=false`, `SITE_URL=https://valrok.com.br`.
-   O site se recusa a iniciar em produção com `MOCK_API=true`.
-3. Teste em um subdomínio (ex.: `novo.valrok.com.br`) o cookie `__Host-valrok_session`, CSRF e Origin antes de mover
-   o domínio principal — trocar o Nginx pela Vercel exige essa revisão (guia, seção 2).
-4. Antes de apontar `valrok.com.br` para a Vercel, confirme que o cliente Godot e o gameserver não usam esse mesmo host para a API.
+**Estilo:** Natureza · Controle · Suporte
 
-A versão de CSS/JS usa automaticamente o ID do deploy (`VERCEL_DEPLOYMENT_ID`). CSS/JS são sempre revalidados (ETag);
-fontes e imagens têm cache de 7 dias.
+| | Especialização | |
+|:-:|:--|:--|
+| <img src="app/static/img/classes/druida-ramo-stormcaller.webp" width="56" alt=""> | **Stormcaller** | Vento, raio e terra. Controle de área e dano elemental que devasta grupos de inimigos. |
+| <img src="app/static/img/classes/druida-ramo-verdant.webp" width="56" alt=""> | **Verdant** | Vida e raízes. Cura, proteção e venenos da natureza que sustentam o grupo. |
 
-## Publicação em servidor próprio (Nginx + Supervisor — proposta)
+<p>
+  <img src="app/static/img/classes/skills/druida-thunderstorm.webp" width="52" title="Thunderstorm" alt="Thunderstorm">
+  <img src="app/static/img/classes/skills/druida-gale-strike.webp" width="52" title="Gale Strike" alt="Gale Strike">
+  <img src="app/static/img/classes/skills/druida-wither.webp" width="52" title="Wither" alt="Wither">
+  <img src="app/static/img/classes/skills/druida-dust-veil.webp" width="52" title="Dust Veil" alt="Dust Veil">
+  <img src="app/static/img/classes/skills/druida-groves-blessing.webp" width="52" title="Grove's Blessing" alt="Grove's Blessing">
+  <img src="app/static/img/classes/skills/druida-tree-of-life.webp" width="52" title="Tree of Life" alt="Tree of Life">
+  <img src="app/static/img/classes/skills/druida-renewing-touch.webp" width="52" title="Renewing Touch" alt="Renewing Touch">
+  <img src="app/static/img/classes/skills/druida-lifeblood-sap.webp" width="52" title="Lifeblood Sap" alt="Lifeblood Sap">
+  <img src="app/static/img/classes/skills/druida-natures-aegis.webp" width="52" title="Nature's Aegis" alt="Nature's Aegis">
+  <img src="app/static/img/classes/skills/druida-venomous-roots.webp" width="52" title="Venomous Roots" alt="Venomous Roots">
+  <img src="app/static/img/classes/skills/druida-venomous-vine.webp" width="52" title="Venomous Vine" alt="Venomous Vine">
+  <img src="app/static/img/classes/skills/druida-cursed-spores.webp" width="52" title="Cursed Spores" alt="Cursed Spores">
+</p>
+<sub>Thunderstorm · Gale Strike · Wither · Dust Veil · Grove's Blessing · Tree of Life · Renewing Touch · Lifeblood Sap · Nature's Aegis · Venomous Roots · Venomous Vine · Cursed Spores</sub>
 
-Supervisor (processo separado da valrokapi):
+<br clear="right">
 
-```ini
-[program:valrok-site]
-directory=/srv/valrok-site
-command=/srv/valrok-site/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8081 --workers 2 --proxy-headers --forwarded-allow-ips=127.0.0.1
-environment=VALROK_ENV="production",MOCK_API="false",SITE_URL="https://valrok.com.br",ASSET_VERSION="2026111501",CSP_REPORT_ONLY="true"
-autorestart=true
-```
+### Mage
 
-Nginx (trecho):
+<img align="right" src="app/static/img/classes/mago-retrato-420.webp" alt="" width="150">
 
-```nginx
-location /static/ { alias /srv/valrok-site/app/static/; expires 7d; add_header X-Content-Type-Options nosniff; }
+Estudioso das runas antigas, o Mage dobra o fogo e o gelo à sua vontade e grava selos arcanos no próprio campo de batalha. Pode devastar grupos com meteoros e lanças glaciais ou aprisionar e confundir inimigos com inscrições rúnicas.
 
-# Somente rotas web que o navegador usa; nunca /internal/
-location ~ ^/api/(auth/register|auth/web/|account/|public/) {
-    rewrite ^/api/(.*)$ /$1 break;
-    proxy_pass http://127.0.0.1:8000;   # valrokapi
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}
-location /api/ { return 404; }
+**Estilo:** Distância · Magia elemental · Controle
 
-location / { proxy_pass http://127.0.0.1:8081; proxy_set_header Host $host; proxy_set_header X-Forwarded-Proto $scheme; }
-```
+| | Especialização | |
+|:-:|:--|:--|
+| <img src="app/static/img/classes/mago-ramo-elemental.webp" width="56" alt=""> | **Elemental** | Fogo e gelo. Dano explosivo à distância, áreas de efeito e o equilíbrio entre chamas e geada. |
+| <img src="app/static/img/classes/mago-ramo-runebinder.webp" width="56" alt=""> | **Runebinder** | Runas e selos arcanos. Controle do campo, armadilhas rúnicas e mobilidade para manter a distância. |
 
-A CSP é enviada pelo FastAPI em toda resposta HTML (inclusive erros). Comece com
-`CSP_REPORT_ONLY=true`, navegue por todas as telas, e só então mude para `false`. Não duplique a
-CSP no Nginx.
+<p>
+  <img src="app/static/img/classes/skills/mago-fireball.webp" width="52" title="Fireball" alt="Fireball">
+  <img src="app/static/img/classes/skills/mago-meteor.webp" width="52" title="Meteor" alt="Meteor">
+  <img src="app/static/img/classes/skills/mago-glacial-lance.webp" width="52" title="Glacial Lance" alt="Glacial Lance">
+  <img src="app/static/img/classes/skills/mago-glacial-prison.webp" width="52" title="Glacial Prison" alt="Glacial Prison">
+  <img src="app/static/img/classes/skills/mago-frostfire-aura.webp" width="52" title="Frostfire Aura" alt="Frostfire Aura">
+  <img src="app/static/img/classes/skills/mago-elemental-focus.webp" width="52" title="Elemental Focus" alt="Elemental Focus">
+  <img src="app/static/img/classes/skills/mago-arcane-inscription.webp" width="52" title="Arcane Inscription" alt="Arcane Inscription">
+  <img src="app/static/img/classes/skills/mago-runic-detonation.webp" width="52" title="Runic Detonation" alt="Runic Detonation">
+  <img src="app/static/img/classes/skills/mago-domain-of-seals.webp" width="52" title="Domain of Seals" alt="Domain of Seals">
+  <img src="app/static/img/classes/skills/mago-arcane-collapse.webp" width="52" title="Arcane Collapse" alt="Arcane Collapse">
+  <img src="app/static/img/classes/skills/mago-temporal-arcane.webp" width="52" title="Temporal Arcane" alt="Temporal Arcane">
+  <img src="app/static/img/classes/skills/mago-blink.webp" width="52" title="Blink" alt="Blink">
+</p>
+<sub>Fireball · Meteor · Glacial Lance · Glacial Prison · Frostfire Aura · Elemental Focus · Arcane Inscription · Runic Detonation · Domain of Seals · Arcane Collapse · Temporal Arcane · Blink</sub>
 
-## Pendências antes da integração final (guia, seção 11)
+<br clear="right">
 
-- valrokapi publicar `/auth/web/login|session|logout`, adaptar `/account/overview` e definir rotas públicas de status e ranking.
-- Fechar política de senha, formato de erros e recuperação de senha (hoje a página orienta o suporte).
-- Substituir as artes procedurais por screenshots/vídeo do jogo (`static/media/hero.mp4`).
-- Revisar textos de notícias, regras, roadmap e requisitos de sistema (são rascunhos).
-- Classes, especializações e skills usam os nomes em inglês dos arquivos do jogo (`UI.zip`); as descrições em `content/classes.json` estão em português e devem ser revisadas. Wither (Druid) substituiu Erosion, que saiu do jogo.
+<p align="center"><img src="docs/readme/print-classes.webp" alt="Página de classes do site" width="100%"></p>
+
+<p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
+
+<a id="paginas"></a>
+
+## 🗺️ O site, página por página
+
+O menu segue o padrão dos sites da Blizzard: uma barra flutuante com a marca à esquerda, menus com título e subtítulo,
+selos de destaque e a área da conta com o botão **Jogar grátis** à direita.
+
+| Menu | O que tem lá |
+|:--|:--|
+| **Visão geral** | O que é Valrok, combate, progressão, economia e guildas, e a tecnologia por trás do jogo. |
+| **Classes** ▾ | Warrior, Mercenary, Druid e Mage — retrato, estilo de jogo, especializações e todas as habilidades. |
+| **Notícias** <sub>`NOVO`</sub> | Anúncios, diários de desenvolvimento e novidades sobre os testes, com filtro por categoria. |
+| **Ranking** ▾ | Top jogadores e top guildas, com busca por nome. O ranking oficial começa com o Alfa. |
+| **Download** <sub>`ALFA`</sub> | Plataformas, como entrar no Alfa fechado e requisitos de sistema. |
+| **···** | Guia do iniciante, Suporte & FAQ, Regras e Discord. |
+| **Conta** ▾ | Entrar e Criar conta — ou, já conectado, Minha conta e Sair. |
+
+**Início** reúne tudo: o hero com a arte do jogo, o status do servidor, as últimas notícias, os pilares, as classes,
+o ranking, a jornada do projeto e o convite para criar conta.
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/readme/print-noticias.webp" alt="Página de notícias" width="100%"></td>
+    <td width="50%"><img src="docs/readme/print-ranking.webp" alt="Página de ranking" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Notícias</sub></td>
+    <td align="center"><sub>Ranking</sub></td>
+  </tr>
+</table>
+
+### 📜 Notícias publicadas
+
+<table>
+  <tr>
+    <td width="25%" valign="top">
+      <img src="app/static/img/art/magma-spires-800.webp" alt="" width="100%"><br>
+      <sub><code>ANÚNCIO</code> · 15 nov 2026</sub><br>
+      <b>Um novo portal para Valrok</b><br>
+      <sub>O site oficial foi reconstruído do zero: notícias, ranking, guia, suporte e sua conta em um só lugar.</sub>
+    </td>
+    <td width="25%" valign="top">
+      <img src="app/static/img/art/viking-battle-800.webp" alt="" width="100%"><br>
+      <sub><code>DESENVOLVIMENTO</code> · 8 nov 2026</sub><br>
+      <b>Diário de desenvolvimento: o peso de cada golpe</b><br>
+      <sub>Como estamos construindo um combate melee físico, com combos, esquivas e reação real a cada impacto.</sub>
+    </td>
+    <td width="25%" valign="top">
+      <img src="app/static/img/art/lethal-daggers-800.webp" alt="" width="100%"><br>
+      <sub><code>TESTES</code> · 30 out 2026</sub><br>
+      <b>Alfa fechado: como garantir sua vaga</b><br>
+      <sub>Crie sua conta agora para reservar o nome do personagem e entrar na fila do teste Alfa fechado.</sub>
+    </td>
+    <td width="25%" valign="top">
+      <img src="app/static/img/art/undead-clash-800.webp" alt="" width="100%"><br>
+      <sub><code>DESENVOLVIMENTO</code> · 18 out 2026</sub><br>
+      <b>Economia de jogadores e guildas fortes</b><br>
+      <sub>Um mundo baseado em cooperação e disputa territorial, com trocas diretas entre jogadores.</sub>
+    </td>
+  </tr>
+</table>
+
+### 👤 Conta do jogador
+
+- **Criar conta** — grátis; reserva o nome do personagem e coloca o jogador na fila de convites do Alfa fechado.
+- **Entrar** — acesso com usuário e senha.
+- **Minha conta** — dados da conta, personagens criados e o status do convite do Alfa.
+
+A sessão é protegida pelo servidor do jogo: o site nunca guarda senha, token ou dados sensíveis no navegador.
+<sub>Enquanto a integração com o servidor é concluída, essas telas funcionam com dados de demonstração.</sub>
+
+<p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
+
+<a id="identidade-visual"></a>
+
+## 🧊 Identidade visual
+
+A identidade do site nasce da **tela de habilidades do jogo** e do **ValrokLauncher**: a paleta **Azul Gelo Rúnico**,
+com detalhes em bronze e ouro para manter o clima de fantasia sombria medieval.
+
+<p align="center"><img src="docs/readme/paleta.png" alt="Paleta Azul Gelo Rúnico" width="100%"></p>
+
+<p align="center"><img src="docs/readme/tipografia.png" alt="Tipografia: Alegreya e Lato" width="100%"></p>
+
+<p align="center"><img src="docs/readme/componentes.png" alt="Botões, selos e etiquetas" width="100%"></p>
+
+- **Botão principal** — gradiente de gelo luminoso com texto escuro, para ações como *Criar conta grátis* e *Jogar grátis*.
+- **Botão rúnico** — fundo de gelo escuro com borda azul, fiel aos botões da tela de habilidades.
+- **Cards** — superfície escura com borda ardósia; ao passar o mouse, ganham tinta de gelo e um brilho rúnico.
+- **Molduras e ornamentos** — cantos e divisores em bronze, com o losango rúnico como assinatura.
+- **Efeitos** — partículas rúnicas azul-gelo com algumas faíscas douradas, e arte do jogo em movimento lento no topo das páginas.
+
+### A marca
+
+<p align="center"><img src="app/static/img/logo-icon.png" alt="Logo do Valrok" width="160"></p>
+
+<p align="center">O emblema <b>VK</b> em ferro forjado, com runas azuis e veios de brasa.</p>
 
 ### Arte do jogo
 
-As imagens em `static/img/art/` (telas de loading) e `static/img/classes/` (retratos, emblemas e ícones de skills) vieram dos pacotes `Icons_Valrok.zip` e `UI.zip`, convertidas para WebP.
+<p align="center">
+  <img src="app/static/img/art/viking-battle-800.webp" width="19%" alt="Viking Battle">
+  <img src="app/static/img/art/undead-clash-800.webp" width="19%" alt="Undead Clash">
+  <img src="app/static/img/art/soul-burst-800.webp" width="19%" alt="Soul Burst">
+  <img src="app/static/img/art/magma-spires-800.webp" width="19%" alt="Magma Spires">
+  <img src="app/static/img/art/lethal-daggers-800.webp" width="19%" alt="Lethal Daggers">
+</p>
+<p align="center"><sub>Telas de carregamento do jogo, usadas no topo das páginas, nas notícias e nos destaques.</sub></p>
 
-#### Regra fixa: ícones de skills = versão master ("_m")
+<p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
 
-Os ícones de skills usam **sempre** a versão **"_m" (master)** de cada skill do `UI.zip`
-(`UI/Skills/<Classe>/Icons/<Skill>/Square/*_m*.png`). Nunca as variantes `_g`, `_p`, `_x` nem o ícone genérico sem marcador.
+<a id="fase-do-projeto"></a>
 
-- Mais de uma versão "_m" (`_m_icon`, `_m_icon_v2`, `_m_icon_v5`…) → vale a **de maior número**.
-- Skill sem pasta própria → aceita o arquivo "_m" solto em `UI/Skills/<Classe>/Icons/`.
-- Skill **sem** versão "_m" → **não entra no site** até o master existir (ex.: Runic Reflection, hoje).
+## 🔥 Fase do projeto
 
-Para atualizar os ícones, use a ferramenta que aplica a regra (precisa de Pillow: `pip install pillow`):
+| | Fase | |
+|:-:|:--|:--|
+| ◆ | **Protótipo** | Combate, movimentação e servidor persistente. |
+| 🔷 | **Pré-Alfa** — *agora* | Habilidades, inventário, economia e telemetria. |
+| ◇ | Alfa fechado | Primeiros jogadores convidados por ondas. |
+| ◇ | Beta aberto | Guildas, territórios e balanceamento. |
+| ◇ | Lançamento | O mundo de Valrok aberto a todos. |
 
-```bash
-python tools/import_skill_icons.py ../UI.zip --dry-run   # mostra o que será usado
-python tools/import_skill_icons.py ../UI.zip             # grava em static/img/classes/skills/
-```
+**Crie sua conta em [valrok.com.br](https://valrok.com.br), reserve o nome do seu personagem e entre na fila do Alfa fechado.**
 
-Ela avisa quais skills do `classes.json` estão sem master e quais masters do pacote ainda não estão no site.
-Para adicionar uma skill nova: inclua `{"key", "name"}` no `classes.json` (a `key` é o nome da pasta em kebab-case,
-ex.: `PredatorsFury` → `predators-fury`) e rode a ferramenta. O teste `test_skill_icon_master_rule` protege a regra.
+<p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
+
+<p align="center">
+  <img src="app/static/img/logo-icon.png" width="56" alt=""><br>
+  <b>VALROK</b><br>
+  <sub>© 2026 Valrok · Produção brasileira e independente · Em desenvolvimento ativo — conteúdo sujeito a mudanças</sub><br>
+  <sub>Documentação técnica (instalação, testes e publicação): <a href="docs/DESENVOLVIMENTO.md">docs/DESENVOLVIMENTO.md</a></sub>
+</p>

@@ -7,3 +7,4 @@ tests/
 *.log
 vercel.api-rewrites.example.json
 tools/
+docs/
