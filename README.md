@@ -174,7 +174,7 @@ CSP no Nginx.
 - Fechar política de senha, formato de erros e recuperação de senha (hoje a página orienta o suporte).
 - Substituir as artes procedurais por screenshots/vídeo do jogo (`static/media/hero.mp4`).
 - Revisar textos de notícias, regras, roadmap e requisitos de sistema (são rascunhos).
-- Revisar em `content/classes.json` os nomes em português das skills e especializações (traduzidos a partir dos nomes dos arquivos) e as descrições das classes. Os ícones de classes e skills foram atualizados a partir do `UI.zip` (base do jogo): inclui o Mago, a skill Definhar (Wither) do Druida, que substituiu Erosão, e o Impacto Sísmico do Guerreiro.
+- Classes, especializações e skills usam os nomes em inglês dos arquivos do jogo (`UI.zip`); as descrições em `content/classes.json` estão em português e devem ser revisadas. Wither (Druid) substituiu Erosion, que saiu do jogo.
 
 ### Arte do jogo
 

@@ -1,106 +1,298 @@
 [
   {
     "slug": "guerreiro",
-    "name": "Guerreiro",
+    "name": "Warrior",
     "accent": "ember",
     "tagline": "Aço, escudo e fúria na linha de frente.",
-    "tags": ["Corpo a corpo", "Linha de frente", "Resistência"],
-    "description": "Mestre do combate corpo a corpo, o Guerreiro avança onde os outros recuam. Machados pesados, escudos e golpes giratórios fazem dele o pilar de qualquer grupo — seja abrindo caminho com fúria ou segurando a linha com aço.",
+    "tags": [
+      "Corpo a corpo",
+      "Linha de frente",
+      "Resistência"
+    ],
+    "description": "Mestre do combate corpo a corpo, o Warrior avança onde os outros recuam. Machados pesados, escudos e golpes giratórios fazem dele o pilar de qualquer grupo — seja abrindo caminho com fúria ou segurando a linha com aço.",
     "branches": [
-      { "key": "berserker", "name": "Berserker", "text": "Fúria e machados. Dano bruto, golpes sangrentos e ataques que ficam mais perigosos quanto maior o risco." },
-      { "key": "vanguard", "name": "Vanguarda", "text": "Escudo e aço. Proteção, investidas e controle do campo de batalha para defender os aliados." }
+      {
+        "key": "berserker",
+        "name": "Berserker",
+        "text": "Fúria e machados. Dano bruto, golpes sangrentos e ataques que ficam mais perigosos quanto maior o risco."
+      },
+      {
+        "key": "vanguard",
+        "name": "Vanguard",
+        "text": "Escudo e aço. Proteção, investidas e controle do campo de batalha para defender os aliados."
+      }
     ],
     "skills": [
-      { "key": "cleaving-strike", "name": "Golpe Fendente" },
-      { "key": "bloody-throw", "name": "Arremesso Sangrento" },
-      { "key": "rising-blade", "name": "Lâmina Ascendente" },
-      { "key": "predators-fury", "name": "Fúria do Predador" },
-      { "key": "seismic-impact", "name": "Impacto Sísmico" },
-      { "key": "battle-renewal", "name": "Renovação de Batalha" },
-      { "key": "disarming-charge", "name": "Investida Desarmante" },
-      { "key": "shield-charge", "name": "Investida de Escudo" },
-      { "key": "shield-throw", "name": "Arremesso de Escudo" },
-      { "key": "shield-wall", "name": "Muralha de Escudos" },
-      { "key": "steel-vortex", "name": "Vórtice de Aço" },
-      { "key": "whirling-slash", "name": "Corte Giratório" }
+      {
+        "key": "cleaving-strike",
+        "name": "Cleaving Strike"
+      },
+      {
+        "key": "bloody-throw",
+        "name": "Bloody Throw"
+      },
+      {
+        "key": "rising-blade",
+        "name": "Rising Blade"
+      },
+      {
+        "key": "predators-fury",
+        "name": "Predator's Fury"
+      },
+      {
+        "key": "seismic-impact",
+        "name": "Seismic Impact"
+      },
+      {
+        "key": "battle-renewal",
+        "name": "Battle Renewal"
+      },
+      {
+        "key": "disarming-charge",
+        "name": "Disarming Charge"
+      },
+      {
+        "key": "shield-charge",
+        "name": "Shield Charge"
+      },
+      {
+        "key": "shield-throw",
+        "name": "Shield Throw"
+      },
+      {
+        "key": "shield-wall",
+        "name": "Shield Wall"
+      },
+      {
+        "key": "steel-vortex",
+        "name": "Steel Vortex"
+      },
+      {
+        "key": "whirling-slash",
+        "name": "Whirling Slash"
+      }
     ]
   },
   {
     "slug": "mercenario",
-    "name": "Mercenário",
+    "name": "Mercenary",
     "accent": "shadow",
     "tagline": "Flechas certeiras e lâminas nas sombras.",
-    "tags": ["Distância", "Agilidade", "Golpes críticos"],
-    "description": "Ágil e letal, o Mercenário escolhe quando e onde lutar. Domina o arco com flechas de fogo, veneno e correntes, ou se esconde nas sombras para desferir punhaladas precisas antes que o inimigo perceba.",
+    "tags": [
+      "Distância",
+      "Agilidade",
+      "Golpes críticos"
+    ],
+    "description": "Ágil e letal, o Mercenary escolhe quando e onde lutar. Domina o arco com flechas de fogo, veneno e correntes, ou se esconde nas sombras para desferir punhaladas precisas antes que o inimigo perceba.",
     "branches": [
-      { "key": "archer", "name": "Arqueiro", "text": "Arco e flechas especiais. Dano à distância, fogo, veneno e chuva de flechas para controlar o combate." },
-      { "key": "rogue", "name": "Ladino", "text": "Lâminas e sombras. Furtividade, mobilidade e golpes críticos a curta distância." }
+      {
+        "key": "archer",
+        "name": "Archer",
+        "text": "Arco e flechas especiais. Dano à distância, fogo, veneno e chuva de flechas para controlar o combate."
+      },
+      {
+        "key": "rogue",
+        "name": "Rogue",
+        "text": "Lâminas e sombras. Furtividade, mobilidade e golpes críticos a curta distância."
+      }
     ],
     "skills": [
-      { "key": "fire-arrow", "name": "Flecha de Fogo" },
-      { "key": "pestilent-arrow", "name": "Flecha Pestilenta" },
-      { "key": "shackling-arrow", "name": "Flecha Aprisionadora" },
-      { "key": "arrow-rain", "name": "Chuva de Flechas" },
-      { "key": "eagle-eye", "name": "Olho de Águia" },
-      { "key": "piercing-mastery", "name": "Maestria Perfurante" },
-      { "key": "lethal-focus", "name": "Foco Letal" },
-      { "key": "shadow-stab", "name": "Punhalada Sombria" },
-      { "key": "hemlock-blade", "name": "Lâmina de Cicuta" },
-      { "key": "shadow-veil", "name": "Véu das Sombras" },
-      { "key": "ravens-step", "name": "Passo do Corvo" },
-      { "key": "wild-stride", "name": "Passada Selvagem" }
+      {
+        "key": "fire-arrow",
+        "name": "Fire Arrow"
+      },
+      {
+        "key": "pestilent-arrow",
+        "name": "Pestilent Arrow"
+      },
+      {
+        "key": "shackling-arrow",
+        "name": "Shackling Arrow"
+      },
+      {
+        "key": "arrow-rain",
+        "name": "Arrow Rain"
+      },
+      {
+        "key": "eagle-eye",
+        "name": "Eagle Eye"
+      },
+      {
+        "key": "piercing-mastery",
+        "name": "Piercing Mastery"
+      },
+      {
+        "key": "lethal-focus",
+        "name": "Lethal Focus"
+      },
+      {
+        "key": "shadow-stab",
+        "name": "Shadow Stab"
+      },
+      {
+        "key": "hemlock-blade",
+        "name": "Hemlock Blade"
+      },
+      {
+        "key": "shadow-veil",
+        "name": "Shadow Veil"
+      },
+      {
+        "key": "ravens-step",
+        "name": "Raven's Step"
+      },
+      {
+        "key": "wild-stride",
+        "name": "Wild Stride"
+      }
     ]
   },
   {
     "slug": "druida",
-    "name": "Druida",
+    "name": "Druid",
     "accent": "verdant",
     "tagline": "A fúria da tempestade e a força da natureza.",
-    "tags": ["Natureza", "Controle", "Suporte"],
-    "description": "Guardião dos bosques antigos, o Druida canaliza o vento, o raio e a própria terra. Pode invocar tempestades sobre os inimigos ou fazer a vida brotar para proteger e curar seus aliados.",
+    "tags": [
+      "Natureza",
+      "Controle",
+      "Suporte"
+    ],
+    "description": "Guardião dos bosques antigos, o Druid canaliza o vento, o raio e a própria terra. Pode invocar tempestades sobre os inimigos ou fazer a vida brotar para proteger e curar seus aliados.",
     "branches": [
-      { "key": "stormcaller", "name": "Conjurador da Tempestade", "text": "Vento, raio e terra. Controle de área e dano elemental que devasta grupos de inimigos." },
-      { "key": "verdant", "name": "Verdejante", "text": "Vida e raízes. Cura, proteção e venenos da natureza que sustentam o grupo." }
+      {
+        "key": "stormcaller",
+        "name": "Stormcaller",
+        "text": "Vento, raio e terra. Controle de área e dano elemental que devasta grupos de inimigos."
+      },
+      {
+        "key": "verdant",
+        "name": "Verdant",
+        "text": "Vida e raízes. Cura, proteção e venenos da natureza que sustentam o grupo."
+      }
     ],
     "skills": [
-      { "key": "thunderstorm", "name": "Tempestade" },
-      { "key": "gale-strike", "name": "Golpe de Vendaval" },
-      { "key": "wither", "name": "Definhar" },
-      { "key": "dust-veil", "name": "Véu de Poeira" },
-      { "key": "groves-blessing", "name": "Bênção do Bosque" },
-      { "key": "tree-of-life", "name": "Árvore da Vida" },
-      { "key": "renewing-touch", "name": "Toque Renovador" },
-      { "key": "lifeblood-sap", "name": "Seiva Vital" },
-      { "key": "natures-aegis", "name": "Égide da Natureza" },
-      { "key": "venomous-roots", "name": "Raízes Venenosas" },
-      { "key": "venomous-vine", "name": "Vinha Venenosa" },
-      { "key": "cursed-spores", "name": "Esporos Amaldiçoados" }
+      {
+        "key": "thunderstorm",
+        "name": "Thunderstorm"
+      },
+      {
+        "key": "gale-strike",
+        "name": "Gale Strike"
+      },
+      {
+        "key": "wither",
+        "name": "Wither"
+      },
+      {
+        "key": "dust-veil",
+        "name": "Dust Veil"
+      },
+      {
+        "key": "groves-blessing",
+        "name": "Grove's Blessing"
+      },
+      {
+        "key": "tree-of-life",
+        "name": "Tree of Life"
+      },
+      {
+        "key": "renewing-touch",
+        "name": "Renewing Touch"
+      },
+      {
+        "key": "lifeblood-sap",
+        "name": "Lifeblood Sap"
+      },
+      {
+        "key": "natures-aegis",
+        "name": "Nature's Aegis"
+      },
+      {
+        "key": "venomous-roots",
+        "name": "Venomous Roots"
+      },
+      {
+        "key": "venomous-vine",
+        "name": "Venomous Vine"
+      },
+      {
+        "key": "cursed-spores",
+        "name": "Cursed Spores"
+      }
     ]
   },
   {
     "slug": "mago",
-    "name": "Mago",
+    "name": "Mage",
     "accent": "arcane",
     "tagline": "Fogo, gelo e runas arcanas.",
-    "tags": ["Distância", "Magia elemental", "Controle"],
-    "description": "Estudioso das runas antigas, o Mago dobra o fogo e o gelo à sua vontade e grava selos arcanos no próprio campo de batalha. Pode devastar grupos com meteoros e lanças glaciais ou aprisionar e confundir inimigos com inscrições rúnicas.",
+    "tags": [
+      "Distância",
+      "Magia elemental",
+      "Controle"
+    ],
+    "description": "Estudioso das runas antigas, o Mage dobra o fogo e o gelo à sua vontade e grava selos arcanos no próprio campo de batalha. Pode devastar grupos com meteoros e lanças glaciais ou aprisionar e confundir inimigos com inscrições rúnicas.",
     "branches": [
-      { "key": "elemental", "name": "Elementalista", "text": "Fogo e gelo. Dano explosivo à distância, áreas de efeito e o equilíbrio entre chamas e geada." },
-      { "key": "runebinder", "name": "Selador de Runas", "text": "Runas e selos arcanos. Controle do campo, armadilhas rúnicas e mobilidade para manter a distância." }
+      {
+        "key": "elemental",
+        "name": "Elemental",
+        "text": "Fogo e gelo. Dano explosivo à distância, áreas de efeito e o equilíbrio entre chamas e geada."
+      },
+      {
+        "key": "runebinder",
+        "name": "Runebinder",
+        "text": "Runas e selos arcanos. Controle do campo, armadilhas rúnicas e mobilidade para manter a distância."
+      }
     ],
     "skills": [
-      { "key": "fireball", "name": "Bola de Fogo" },
-      { "key": "meteor", "name": "Meteoro" },
-      { "key": "glacial-lance", "name": "Lança Glacial" },
-      { "key": "glacial-prison", "name": "Prisão Glacial" },
-      { "key": "frostfire-aura", "name": "Aura de Fogo Gélido" },
-      { "key": "elemental-focus", "name": "Foco Elemental" },
-      { "key": "arcane-inscription", "name": "Inscrição Arcana" },
-      { "key": "runic-detonation", "name": "Detonação Rúnica" },
-      { "key": "domain-of-seals", "name": "Domínio dos Selos" },
-      { "key": "arcane-collapse", "name": "Colapso Arcano" },
-      { "key": "runic-reflection", "name": "Reflexo Rúnico" },
-      { "key": "blink", "name": "Lampejo" }
+      {
+        "key": "fireball",
+        "name": "Fireball"
+      },
+      {
+        "key": "meteor",
+        "name": "Meteor"
+      },
+      {
+        "key": "glacial-lance",
+        "name": "Glacial Lance"
+      },
+      {
+        "key": "glacial-prison",
+        "name": "Glacial Prison"
+      },
+      {
+        "key": "frostfire-aura",
+        "name": "Frostfire Aura"
+      },
+      {
+        "key": "elemental-focus",
+        "name": "Elemental Focus"
+      },
+      {
+        "key": "arcane-inscription",
+        "name": "Arcane Inscription"
+      },
+      {
+        "key": "runic-detonation",
+        "name": "Runic Detonation"
+      },
+      {
+        "key": "domain-of-seals",
+        "name": "Domain of Seals"
+      },
+      {
+        "key": "arcane-collapse",
+        "name": "Arcane Collapse"
+      },
+      {
+        "key": "runic-reflection",
+        "name": "Runic Reflection"
+      },
+      {
+        "key": "blink",
+        "name": "Blink"
+      }
     ]
   }
 ]
