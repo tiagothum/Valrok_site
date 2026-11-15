@@ -234,3 +234,16 @@ def test_home_without_videos_shows_channel_link(monkeypatch):
 def test_yt_thumb_rejects_invalid_id():
     assert client.get("/yt-thumb/..%2F..%2Fetc.jpg").status_code == 404
     assert client.get("/yt-thumb/abc.jpg").status_code == 404
+
+
+def test_classes_saga_roadmap_section():
+    """Roadmap cinematográfico: uma cena e um capítulo por classe, sem script/estilo inline."""
+    from app.main import load_classes
+
+    n = len(load_classes())
+    html = client.get("/classes").text
+    assert 'data-saga-stage' in html and "Crônicas das Classes" in html
+    assert html.count("data-saga-scene=") == n and html.count("data-saga-go=") == n
+    assert '/static/css/saga.css' in html
+    # nada do que já existia foi removido
+    assert html.count("data-class-panel=") == n and html.count('data-branch="') == 2 * n
