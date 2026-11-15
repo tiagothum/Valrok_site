@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, icon %}
+{% block title %}Classes — Valrok{% endblock %}
+{% block description %}Conheça as classes de Valrok: Guerreiro, Mercenário e Druida — especializações e habilidades.{% endblock %}
+{% block content %}
+{{ page_hero("Escolha seu caminho", "Classes", "Três caminhos, seis especializações. Cada classe tem duas formas de lutar — escolha a sua.", "ember", image="viking-battle") }}
+
+<section class="section section--tight class-picker-wrap">
+  <div class="container">
+    <div class="class-picker" role="tablist" aria-label="Classes" data-class-tabs>
+      {% for c in classes %}
+      <a class="class-pick class--{{ c.accent }}" href="#{{ c.slug }}" role="tab" id="tab-{{ c.slug }}" aria-controls="{{ c.slug }}" aria-selected="{{ 'true' if loop.first else 'false' }}" data-class-tab="{{ c.slug }}">
+        <span class="class-pick__glow" aria-hidden="true"></span>
+        <img class="class-pick__img" src="/static/img/classes/{{ c.slug }}-retrato-420.webp" alt="" width="420" height="560" loading="lazy">
+        <span class="class-pick__name">{{ c.name }}</span>
+        <span class="class-pick__tag">{{ c.tagline }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% for c in classes %}
+<section class="class-detail class--{{ c.accent }}" id="{{ c.slug }}" role="tabpanel" aria-labelledby="tab-{{ c.slug }}" data-class-panel="{{ c.slug }}">
+  <div class="class-detail__bg" aria-hidden="true"></div>
+  <div class="container class-detail__grid">
+    <div class="class-detail__portrait">
+      <span class="class-detail__halo" aria-hidden="true"></span>
+      <img src="/static/img/classes/{{ c.slug }}-retrato-900.webp" alt="Retrato da classe {{ c.name }}" width="900" height="1200" loading="lazy">
+    </div>
+
+    <div class="class-detail__info">
+      <p class="eyebrow">Classe</p>
+      <h2 class="class-detail__name">{{ c.name }}</h2>
+      <ul class="class-tags">{% for t in c.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+      <p class="class-detail__desc">{{ c.description }}</p>
+
+      <h3 class="class-sub">Especializações</h3>
+      <div class="branches">
+        {% for b in c.branches %}
+        <div class="branch">
+          <img class="branch__emblem" src="/static/img/classes/{{ c.slug }}-ramo-{{ b.key }}.webp" alt="" width="96" height="96" loading="lazy">
+          <div>
+            <h4 class="branch__name">{{ b.name }}</h4>
+            <p>{{ b.text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <h3 class="class-sub">Habilidades <span class="muted">({{ c.skills|length }})</span></h3>
+      <ul class="skills">
+        {% for s in c.skills %}
+        <li class="skill" tabindex="0">
+          <span class="skill__frame"><img src="/static/img/classes/skills/{{ c.slug }}-{{ s.key }}.webp" alt="" width="128" height="128" loading="lazy"></span>
+          <span class="skill__name">{{ s.name }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endfor %}
+
+<section class="cta-band" aria-labelledby="cta-classes">
+  <canvas class="embers" data-embers data-density="0.6" aria-hidden="true"></canvas>
+  <div class="container cta-band__inner">
+    <h2 class="cta-band__title" id="cta-classes">Já escolheu seu caminho?</h2>
+    <p>Crie sua conta, reserve o nome do personagem e entre na fila do Alfa fechado.</p>
+    <div class="hero__cta">
+      <a class="btn btn--ember btn--lg" href="/cadastro">Criar conta grátis</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

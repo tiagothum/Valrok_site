@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, icon, status_box %}
+{% block title %}Download — Valrok{% endblock %}
+{% block content %}
+{{ page_hero("Prepare-se para a batalha", "Download", "O cliente de Valrok será liberado para contas convidadas no teste Alfa fechado.", "blood", image="viking-battle") }}
+
+<section class="section section--tight">
+  <div class="container download-hero">
+    <div>
+      <div class="panel platform">
+        {{ icon("monitor") }}
+        <div>
+          <div class="platform__name">Windows</div>
+          <div class="platform__meta">Cliente Alfa · em breve</div>
+        </div>
+        <a class="btn btn--ember" aria-disabled="true" href="/cadastro">{{ icon("download", "ico--sm") }} Em breve</a>
+      </div>
+      <div class="panel platform">
+        {{ icon("monitor") }}
+        <div>
+          <div class="platform__name">Linux</div>
+          <div class="platform__meta">Em avaliação</div>
+        </div>
+        <span class="tag">Planejado</span>
+      </div>
+      <div class="alert alert--info mt-lg">O download será liberado por ondas para quem tiver conta criada. Crie a sua para entrar na fila.</div>
+    </div>
+    <div>
+      {{ status_box() }}
+      <ol class="steps mt-lg">
+        <li><div><h3>Crie sua conta</h3><p>Grátis. Reserva o nome do seu personagem.</p></div></li>
+        <li><div><h3>Aguarde o convite</h3><p>Avisaremos por e-mail e no Discord quando sua onda for liberada.</p></div></li>
+        <li><div><h3>Baixe e jogue</h3><p>Instale o cliente, entre com sua conta e crie seu personagem.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark section--tight">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">Hardware</p>
+      <h2 class="section-title">Requisitos do sistema</h2>
+      <p class="section-lead">Estimativa preliminar — os valores finais serão publicados com o cliente Alfa.</p>
+    </header>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th scope="col"></th><th scope="col">Mínimo</th><th scope="col">Recomendado</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Sistema</th><td>Windows 10 64-bit</td><td>Windows 10/11 64-bit</td></tr>
+          <tr><th scope="row">Processador</th><td>Dual-core 2.5 GHz</td><td>Quad-core 3.0 GHz</td></tr>
+          <tr><th scope="row">Memória</th><td>4 GB RAM</td><td>8 GB RAM</td></tr>
+          <tr><th scope="row">Vídeo</th><td>Compatível com Vulkan / OpenGL 3.3</td><td>GPU dedicada, 2 GB</td></tr>
+          <tr><th scope="row">Armazenamento</th><td colspan="2">A definir</td></tr>
+          <tr><th scope="row">Internet</th><td colspan="2">Conexão banda larga (jogo online)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

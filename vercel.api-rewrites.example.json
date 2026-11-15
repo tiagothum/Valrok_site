@@ -1,0 +1,26 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "app/main.py": {
+      "maxDuration": 15
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/auth/register",
+      "destination": "https://HOST-DA-VALROKAPI/auth/register"
+    },
+    {
+      "source": "/api/auth/web/:path*",
+      "destination": "https://HOST-DA-VALROKAPI/auth/web/:path*"
+    },
+    {
+      "source": "/api/account/:path*",
+      "destination": "https://HOST-DA-VALROKAPI/account/:path*"
+    },
+    {
+      "source": "/api/public/:path*",
+      "destination": "https://HOST-DA-VALROKAPI/public/:path*"
+    }
+  ]
+}

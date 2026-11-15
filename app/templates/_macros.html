@@ -1,0 +1,55 @@
+{% macro icon(name, cls="") -%}
+<svg class="ico {{ cls }}" aria-hidden="true"><use href="/static/img/icons.svg#i-{{ name }}"></use></svg>
+{%- endmacro %}
+
+{% macro date_br(iso) -%}
+{%- set p = iso.split("-") -%}
+{%- set meses = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"] -%}
+{{ p[2] }} {{ meses[p[1]|int - 1] }} {{ p[0] }}
+{%- endmacro %}
+
+{% macro news_card(n, featured=False) -%}
+<article class="news-card{% if featured %} news-card--featured{% endif %}" data-reveal>
+  <a class="news-card__link" href="/noticias/{{ n.slug }}">
+    <div class="news-card__art art art--{{ n.art }}{% if n.image %} art--photo{% endif %}" aria-hidden="true">
+      {% if n.image %}<img class="art__img" src="/static/img/art/{{ n.image }}-{{ '1376' if featured else '800' }}.webp" alt="" loading="lazy" width="800" height="447">{% else %}<span class="art__sigil"></span>{% endif %}
+    </div>
+    <div class="news-card__body">
+      <p class="news-card__meta"><span class="tag">{{ n.category }}</span> <time datetime="{{ n.date }}">{{ date_br(n.date) }}</time></p>
+      <h3 class="news-card__title">{{ n.title }}</h3>
+      <p class="news-card__excerpt">{{ n.excerpt }}</p>
+      <span class="news-card__more">Ler mais {{ icon("chevron", "ico--xs") }}</span>
+    </div>
+  </a>
+</article>
+{%- endmacro %}
+
+{% macro page_hero(eyebrow, title, lead="", variant="ember", image=None) -%}
+<section class="page-hero page-hero--{{ variant }}{% if image %} page-hero--photo{% endif %}">
+  {% if image %}<img class="page-hero__img" src="/static/img/art/{{ image }}-1376.webp" alt="" aria-hidden="true">{% endif %}
+  <div class="page-hero__bg" aria-hidden="true"></div>
+  <canvas class="embers" data-embers data-density="0.5" aria-hidden="true"></canvas>
+  <div class="container page-hero__content">
+    <p class="eyebrow">{{ eyebrow }}</p>
+    <h1 class="page-hero__title">{{ title }}</h1>
+    {% if lead %}<p class="page-hero__lead">{{ lead }}</p>{% endif %}
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro status_box(variant="") -%}
+<div class="status-box {{ variant }}" data-server-status>
+  <div class="status-box__item">
+    <span class="status-box__label">Servidor</span>
+    <span class="status-box__value"><span class="dot" data-status-dot></span> <span data-status-text>Verificando…</span></span>
+  </div>
+  <div class="status-box__item">
+    <span class="status-box__label">Fase</span>
+    <span class="status-box__value" data-status-phase>—</span>
+  </div>
+  <div class="status-box__item">
+    <span class="status-box__label">Contas criadas</span>
+    <span class="status-box__value" data-status-accounts>—</span>
+  </div>
+</div>
+{%- endmacro %}

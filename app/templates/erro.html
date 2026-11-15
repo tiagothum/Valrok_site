@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ code }} — Valrok{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+{% block content %}
+<section class="auth">
+  <div class="auth__bg" aria-hidden="true"></div>
+  <canvas class="embers" data-embers data-density="0.4" aria-hidden="true"></canvas>
+  <div class="auth-card center">
+    <img class="auth-card__logo" src="/static/img/logo-icon.png" alt="" width="76" height="76">
+    <p class="eyebrow">Erro {{ code }}</p>
+    {% if code == 404 %}
+    <h1>Caminho perdido</h1>
+    <p class="auth-card__sub">Esta trilha não leva a lugar nenhum. A página que você procura não existe ou foi movida.</p>
+    {% else %}
+    <h1>Algo deu errado</h1>
+    <p class="auth-card__sub">Não foi possível concluir sua solicitação. Tente novamente em instantes.</p>
+    {% endif %}
+    <a class="btn btn--ember btn--block" href="/">Voltar ao início</a>
+  </div>
+</section>
+{% endblock %}

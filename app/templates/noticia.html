@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "_macros.html" import news_card, date_br, icon %}
+{% block title %}{{ item.title }} — Valrok{% endblock %}
+{% block description %}{{ item.excerpt }}{% endblock %}
+{% block content %}
+<article class="section section--tight">
+  <div class="container">
+    <header class="article-head center">
+      <nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a><span aria-hidden="true">/</span><a href="/noticias">Notícias</a></nav>
+      <p class="news-card__meta news-card__meta--center"><span class="tag">{{ item.category }}</span> <time datetime="{{ item.date }}">{{ date_br(item.date) }}</time></p>
+      <h1 class="page-hero__title">{{ item.title }}</h1>
+    </header>
+    <div class="article-cover frame art art--{{ item.art }}{% if item.image %} art--photo{% endif %}" aria-hidden="true">
+      {% if item.image %}<img class="art__img" src="/static/img/art/{{ item.image }}-1376.webp" alt="">{% endif %}
+      <span class="frame__corner frame__corner--tl"></span><span class="frame__corner frame__corner--tr"></span>
+      <span class="frame__corner frame__corner--bl"></span><span class="frame__corner frame__corner--br"></span>
+      {% if not item.image %}<span class="art__sigil"></span>{% endif %}
+    </div>
+    <div class="prose">
+      <p class="section-lead">{{ item.excerpt }}</p>
+      {% for p in item.body %}<p>{{ p }}</p>{% endfor %}
+      <p class="mt-lg"><a class="link-arrow" href="/noticias">{{ icon("chevron", "ico--xs") }} Voltar às notícias</a></p>
+    </div>
+  </div>
+</article>
+
+{% if others %}
+<section class="section section--dark section--tight">
+  <div class="container">
+    <header class="section-head"><h2 class="section-title">Mais notícias</h2></header>
+    <div class="news-grid news-grid--list">{% for n in others %}{{ news_card(n) }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

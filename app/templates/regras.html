@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero %}
+{% block title %}Regras — Valrok{% endblock %}
+{% block content %}
+{{ page_hero("Código de conduta", "Regras", "Um mundo justo depende de todos. Ao criar uma conta você concorda com estas regras.", "steel") }}
+
+<section class="section section--tight">
+  <div class="container prose">
+    <p class="alert alert--info">Versão preliminar — sujeita a revisão antes do Alfa. Última atualização: 15/11/2026.</p>
+
+    <h2>1. Conta</h2>
+    <ul>
+      <li>A conta é pessoal e intransferível. Você é responsável por manter sua senha segura.</li>
+      <li>A equipe nunca pede sua senha — nem no jogo, nem no Discord, nem por e-mail.</li>
+      <li>Nomes de usuário ou personagem ofensivos ou que imitem a equipe podem ser alterados ou bloqueados.</li>
+    </ul>
+
+    <h2>2. Jogo justo</h2>
+    <ul>
+      <li>É proibido usar programas de terceiros, bots, macros de automação ou cheats.</li>
+      <li>Explorar bugs de forma intencional é proibido. Encontrou um? Reporte no suporte.</li>
+      <li>Comércio de itens ou contas por dinheiro real fora dos canais oficiais é proibido.</li>
+    </ul>
+
+    <h2>3. Convivência</h2>
+    <ul>
+      <li>Respeite os outros jogadores. Assédio, discriminação e ameaças não são tolerados.</li>
+      <li>Spam, divulgação de outros jogos e golpes resultam em punição.</li>
+      <li>Não se passe por membros da equipe.</li>
+    </ul>
+
+    <h2>4. Punições</h2>
+    <p>Dependendo da gravidade, as punições vão de advertência a banimento permanente. Contestações devem ser feitas pelo <a href="/suporte">suporte</a>.</p>
+  </div>
+</section>
+{% endblock %}

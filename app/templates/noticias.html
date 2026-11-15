@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, news_card %}
+{% block title %}Notícias — Valrok{% endblock %}
+{% block content %}
+{{ page_hero("Crônicas de Valrok", "Notícias", "Anúncios, diários de desenvolvimento e novidades sobre os testes.", image="magma-spires") }}
+
+<section class="section section--tight">
+  <div class="container">
+    <nav class="filters" aria-label="Filtrar por categoria">
+      <a class="chip{% if not current %} is-active{% endif %}" href="/noticias"{% if not current %} aria-current="page"{% endif %}>Todas</a>
+      {% for c in categories %}
+      <a class="chip{% if current and current|lower == c|lower %} is-active{% endif %}" href="/noticias?categoria={{ c|urlencode }}">{{ c }}</a>
+      {% endfor %}
+    </nav>
+    {% if news %}
+    <div class="news-grid news-grid--list">
+      {% for n in news %}{{ news_card(n) }}{% endfor %}
+    </div>
+    {% else %}
+    <p class="empty">Nenhuma notícia nesta categoria.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

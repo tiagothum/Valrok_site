@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "bem-vindo-ao-novo-portal",
+    "title": "Um novo portal para Valrok",
+    "date": "2026-11-15",
+    "category": "Anúncio",
+    "art": "ember",
+    "excerpt": "O site oficial foi reconstruído do zero: notícias, ranking, guia, suporte e sua conta em um só lugar.",
+    "body": [
+      "Valrok ganhou um novo portal. Reconstruímos o site do zero para acompanhar o ritmo do desenvolvimento e dar à comunidade um lugar fixo para notícias, guias e informações da conta.",
+      "Por aqui você poderá criar sua conta, reservar o nome do seu personagem, acompanhar o ranking assim que os testes começarem e falar com a equipe pelo suporte.",
+      "Este é só o começo. Cada nova fase do projeto será anunciada nesta página de notícias e no nosso Discord."
+    ],
+    "image": "magma-spires"
+  },
+  {
+    "slug": "diario-de-desenvolvimento-combate",
+    "title": "Diário de desenvolvimento: o peso de cada golpe",
+    "date": "2026-11-08",
+    "category": "Desenvolvimento",
+    "art": "steel",
+    "excerpt": "Como estamos construindo um combate melee físico, com combos, esquivas e reação real a cada impacto.",
+    "body": [
+      "Desde o primeiro protótipo, o combate de Valrok tem uma regra: nada de combate travado. Cada golpe precisa ter peso, alcance e consequência.",
+      "Os combos de espada são encadeados pelo jogador, as esquivas exigem tempo certo e os inimigos reagem fisicamente aos impactos. Errar o posicionamento custa caro.",
+      "Nas próximas semanas vamos mostrar mais desse sistema em vídeo. Fique de olho no Discord."
+    ],
+    "image": "viking-battle"
+  },
+  {
+    "slug": "alfa-fechado-como-participar",
+    "title": "Alfa fechado: como garantir sua vaga",
+    "date": "2026-10-30",
+    "category": "Testes",
+    "art": "rune",
+    "excerpt": "Crie sua conta agora para reservar o nome do personagem e entrar na fila do teste Alfa fechado.",
+    "body": [
+      "O teste Alfa fechado será a primeira vez que jogadores de fora da equipe entrarão no mundo de Valrok.",
+      "Para participar, basta criar uma conta no site. Contas criadas antes do Alfa reservam o nome do personagem e entram na fila de convites.",
+      "Os convites serão enviados por ondas. Mais detalhes sobre datas e requisitos serão publicados aqui."
+    ],
+    "image": "lethal-daggers"
+  },
+  {
+    "slug": "economia-e-guildas",
+    "title": "Economia de jogadores e guildas fortes",
+    "date": "2026-10-18",
+    "category": "Desenvolvimento",
+    "art": "blood",
+    "excerpt": "Um mundo baseado em cooperação e disputa territorial, com trocas diretas entre jogadores.",
+    "body": [
+      "Em Valrok, a economia é movida pelos jogadores. Itens, recursos e equipamentos circulam por trocas diretas, sem atalhos automatizados.",
+      "As guildas são o coração do jogo social: cooperação para crescer, disputa por território e a construção de um império junto com seus aliados.",
+      "Ainda estamos ajustando sistemas de comércio e de guildas, e o feedback do Alfa será decisivo."
+    ],
+    "image": "undead-clash"
+  }
+]

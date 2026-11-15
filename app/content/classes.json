@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "guerreiro",
+    "name": "Guerreiro",
+    "accent": "ember",
+    "tagline": "Aço, escudo e fúria na linha de frente.",
+    "tags": ["Corpo a corpo", "Linha de frente", "Resistência"],
+    "description": "Mestre do combate corpo a corpo, o Guerreiro avança onde os outros recuam. Machados pesados, escudos e golpes giratórios fazem dele o pilar de qualquer grupo — seja abrindo caminho com fúria ou segurando a linha com aço.",
+    "branches": [
+      { "key": "berserker", "name": "Berserker", "text": "Fúria e machados. Dano bruto, golpes sangrentos e ataques que ficam mais perigosos quanto maior o risco." },
+      { "key": "vanguard", "name": "Vanguarda", "text": "Escudo e aço. Proteção, investidas e controle do campo de batalha para defender os aliados." }
+    ],
+    "skills": [
+      { "key": "cleaving-strike", "name": "Golpe Fendente" },
+      { "key": "bloody-throw", "name": "Arremesso Sangrento" },
+      { "key": "rising-blade", "name": "Lâmina Ascendente" },
+      { "key": "predators-fury", "name": "Fúria do Predador" },
+      { "key": "battle-renewal", "name": "Renovação de Batalha" },
+      { "key": "disarming-charge", "name": "Investida Desarmante" },
+      { "key": "shield-charge", "name": "Investida de Escudo" },
+      { "key": "shield-throw", "name": "Arremesso de Escudo" },
+      { "key": "shield-wall", "name": "Muralha de Escudos" },
+      { "key": "steel-vortex", "name": "Vórtice de Aço" },
+      { "key": "whirling-slash", "name": "Corte Giratório" }
+    ]
+  },
+  {
+    "slug": "mercenario",
+    "name": "Mercenário",
+    "accent": "shadow",
+    "tagline": "Flechas certeiras e lâminas nas sombras.",
+    "tags": ["Distância", "Agilidade", "Golpes críticos"],
+    "description": "Ágil e letal, o Mercenário escolhe quando e onde lutar. Domina o arco com flechas de fogo, veneno e correntes, ou se esconde nas sombras para desferir punhaladas precisas antes que o inimigo perceba.",
+    "branches": [
+      { "key": "archer", "name": "Arqueiro", "text": "Arco e flechas especiais. Dano à distância, fogo, veneno e chuva de flechas para controlar o combate." },
+      { "key": "rogue", "name": "Ladino", "text": "Lâminas e sombras. Furtividade, mobilidade e golpes críticos a curta distância." }
+    ],
+    "skills": [
+      { "key": "fire-arrow", "name": "Flecha de Fogo" },
+      { "key": "pestilent-arrow", "name": "Flecha Pestilenta" },
+      { "key": "shackling-arrow", "name": "Flecha Aprisionadora" },
+      { "key": "arrow-rain", "name": "Chuva de Flechas" },
+      { "key": "eagle-eye", "name": "Olho de Águia" },
+      { "key": "piercing-mastery", "name": "Maestria Perfurante" },
+      { "key": "lethal-focus", "name": "Foco Letal" },
+      { "key": "shadow-stab", "name": "Punhalada Sombria" },
+      { "key": "hemlock-blade", "name": "Lâmina de Cicuta" },
+      { "key": "shadow-veil", "name": "Véu das Sombras" },
+      { "key": "ravens-step", "name": "Passo do Corvo" },
+      { "key": "wild-stride", "name": "Passada Selvagem" }
+    ]
+  },
+  {
+    "slug": "druida",
+    "name": "Druida",
+    "accent": "verdant",
+    "tagline": "A fúria da tempestade e a força da natureza.",
+    "tags": ["Natureza", "Controle", "Suporte"],
+    "description": "Guardião dos bosques antigos, o Druida canaliza o vento, o raio e a própria terra. Pode invocar tempestades sobre os inimigos ou fazer a vida brotar para proteger e curar seus aliados.",
+    "branches": [
+      { "key": "stormcaller", "name": "Conjurador da Tempestade", "text": "Vento, raio e terra. Controle de área e dano elemental que devasta grupos de inimigos." },
+      { "key": "verdant", "name": "Verdejante", "text": "Vida e raízes. Cura, proteção e venenos da natureza que sustentam o grupo." }
+    ],
+    "skills": [
+      { "key": "thunderstorm", "name": "Tempestade" },
+      { "key": "gale-strike", "name": "Golpe de Vendaval" },
+      { "key": "erosion", "name": "Erosão" },
+      { "key": "dust-veil", "name": "Véu de Poeira" },
+      { "key": "groves-blessing", "name": "Bênção do Bosque" },
+      { "key": "tree-of-life", "name": "Árvore da Vida" },
+      { "key": "renewing-touch", "name": "Toque Renovador" },
+      { "key": "lifeblood-sap", "name": "Seiva Vital" },
+      { "key": "natures-aegis", "name": "Égide da Natureza" },
+      { "key": "venomous-roots", "name": "Raízes Venenosas" },
+      { "key": "venomous-vine", "name": "Vinha Venenosa" },
+      { "key": "cursed-spores", "name": "Esporos Amaldiçoados" }
+    ]
+  }
+]

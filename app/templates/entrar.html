@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Entrar — Valrok{% endblock %}
+{% block content %}
+<section class="auth">
+  <div class="auth__bg" aria-hidden="true"></div>
+  <canvas class="embers" data-embers data-density="0.5" aria-hidden="true"></canvas>
+  <div class="auth-card">
+    <img class="auth-card__logo" src="/static/img/logo-icon.png" alt="" width="76" height="76">
+    <h1>Entrar</h1>
+    <p class="auth-card__sub">Retorne ao mundo de Valrok.</p>
+
+    <form class="form" data-login-form novalidate>
+      <div class="alert alert--error" data-form-alert tabindex="-1" hidden></div>
+      <div class="field">
+        <label for="login-user">Usuário</label>
+        <input id="login-user" name="username" type="text" autocomplete="username" required maxlength="32" aria-describedby="err-login-user">
+        <span class="field__error" id="err-login-user" data-error-for="username"></span>
+      </div>
+      <div class="field">
+        <label for="login-pass">Senha</label>
+        <div class="pass-wrap">
+          <input id="login-pass" name="password" type="password" autocomplete="current-password" required maxlength="128" aria-describedby="err-login-pass">
+          <button class="pass-toggle" type="button" data-pass-toggle aria-pressed="false" aria-controls="login-pass">Mostrar</button>
+        </div>
+        <span class="field__error" id="err-login-pass" data-error-for="password"></span>
+      </div>
+      <button class="btn btn--ember btn--block btn--lg" type="submit">Entrar</button>
+    </form>
+
+    <p class="auth-card__foot">Esqueceu a senha? <a href="/suporte#conta">Fale com o suporte</a></p>
+    <p class="auth-card__foot mt-0">Ainda não tem conta? <a href="/cadastro">Crie agora</a></p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero %}
+{% block title %}Ranking — Valrok{% endblock %}
+{% block content %}
+{{ page_hero("Salão dos Campeões", "Ranking", "Os aventureiros e guildas mais poderosos de Valrok. O ranking oficial começa com o teste Alfa.", "rune", image="soul-burst") }}
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="tabs" role="tablist" aria-label="Tipo de ranking">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="rank-panel" data-rank-tab="players">Jogadores</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="rank-panel" data-rank-tab="guilds">Guildas</button>
+    </div>
+    <div class="grid-2" id="rank-panel" role="tabpanel">
+      <div class="field">
+        <label for="rank-search">Buscar por nome</label>
+        <input id="rank-search" type="search" data-rank-search autocomplete="off" maxlength="32">
+      </div>
+      <p class="muted center" data-rank-status aria-live="polite"></p>
+    </div>
+    <div class="table-wrap mt-lg">
+      <table class="table" data-rank-table>
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

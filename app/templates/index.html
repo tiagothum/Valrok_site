@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, news_card, status_box %}
+{% block body_class %}is-home{% endblock %}
+{% block content %}
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true">
+    <img class="hero__art" src="/static/img/art/magma-spires-1376.webp" alt="" width="1376" height="768" fetchpriority="high">
+    {% if hero_video %}
+    <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="/static/img/logo-icon.png">
+      <source src="/static/media/hero.mp4" type="video/mp4">
+    </video>
+    {% endif %}
+    <div class="hero__glow hero__glow--ember"></div>
+    <div class="hero__glow hero__glow--rune"></div>
+    <div class="hero__fog"></div>
+    <div class="hero__vignette"></div>
+  </div>
+  <canvas class="embers" data-embers data-density="1" aria-hidden="true"></canvas>
+
+  <div class="container hero__content">
+    <img class="hero__logo" src="/static/img/logo-icon.png" alt="" width="200" height="200">
+    <p class="eyebrow eyebrow--glow">O renascimento dos MMORPGs clássicos</p>
+    <h1 class="hero__title" id="hero-title">Valrok</h1>
+    <p class="hero__lead">Um RPG de ação multiplayer persistente, forjado no Brasil. A essência desafiadora e a progressão profunda dos RPGs que marcaram os anos 2000, com combate melee físico e um mundo em constante evolução.</p>
+    <div class="hero__cta">
+      <a class="btn btn--ember btn--lg" href="/cadastro">Criar conta grátis</a>
+      <a class="btn btn--steel btn--lg" href="/jogo">{{ icon("play", "ico--sm") }} Conheça o jogo</a>
+    </div>
+    <p class="hero__note">Alfa fechado em breve · Reserve o nome do seu personagem</p>
+  </div>
+
+  <a class="hero__scroll" href="#novidades" aria-label="Rolar para as novidades"><span></span></a>
+</section>
+
+<div class="container status-strip">
+  {{ status_box() }}
+</div>
+
+<section class="section" id="novidades" aria-labelledby="news-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">Crônicas de Valrok</p>
+      <h2 class="section-title" id="news-title">Últimas notícias</h2>
+      <a class="link-arrow" href="/noticias">Todas as notícias {{ icon("chevron", "ico--xs") }}</a>
+    </header>
+    <div class="news-grid">
+      {% for n in news %}
+        {{ news_card(n, featured=loop.first) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark pillars" aria-labelledby="pillars-title">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">Forjado em aço e sangue</p>
+      <h2 class="section-title" id="pillars-title">Os pilares de Valrok</h2>
+      <p class="section-lead">Sem atalhos automatizados. Sem combate travado. Cada vitória é conquistada.</p>
+    </header>
+
+    <div class="pillar" data-reveal>
+      <div class="pillar__media frame art art--steel art--photo" aria-hidden="true">
+        <img class="art__img" src="/static/img/art/viking-battle-1376.webp" alt="" loading="lazy" width="1376" height="768">
+        <span class="frame__corner frame__corner--tl"></span><span class="frame__corner frame__corner--tr"></span>
+        <span class="frame__corner frame__corner--bl"></span><span class="frame__corner frame__corner--br"></span>
+        <span class="pillar__glyph pillar__glyph--badge">{{ icon("sword") }}</span>
+      </div>
+      <div class="pillar__text">
+        <p class="pillar__num">I</p>
+        <h3 class="pillar__title">Combate de ação dinâmico</h3>
+        <p>Controle combos fluidos de espada, esquivas táticas e reações físicas reais a cada impacto. Posicionamento e tempo decidem o confronto — não a quantidade de cliques.</p>
+        <ul class="checklist">
+          <li>{{ icon("check", "ico--sm") }} Combos encadeados pelo jogador</li>
+          <li>{{ icon("check", "ico--sm") }} Esquiva com janela de tempo</li>
+          <li>{{ icon("check", "ico--sm") }} Reação física aos golpes</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar pillar--reverse" data-reveal>
+      <div class="pillar__media frame art art--blood art--photo" aria-hidden="true">
+        <img class="art__img" src="/static/img/art/undead-clash-1376.webp" alt="" loading="lazy" width="1376" height="768">
+        <span class="frame__corner frame__corner--tl"></span><span class="frame__corner frame__corner--tr"></span>
+        <span class="frame__corner frame__corner--bl"></span><span class="frame__corner frame__corner--br"></span>
+        <span class="pillar__glyph pillar__glyph--badge">{{ icon("shield") }}</span>
+      </div>
+      <div class="pillar__text">
+        <p class="pillar__num">II</p>
+        <h3 class="pillar__title">Economia e guildas fortes</h3>
+        <p>Um mundo baseado em cooperação e disputa territorial. Comércio direto entre jogadores e a construção de um império ao lado da sua guilda.</p>
+        <ul class="checklist">
+          <li>{{ icon("check", "ico--sm") }} Economia orgânica movida por jogadores</li>
+          <li>{{ icon("check", "ico--sm") }} Trocas diretas, sem leilão automático</li>
+          <li>{{ icon("check", "ico--sm") }} Disputa por território entre guildas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar" data-reveal>
+      <div class="pillar__media frame art art--rune art--photo" aria-hidden="true">
+        <img class="art__img" src="/static/img/art/soul-burst-1376.webp" alt="" loading="lazy" width="1376" height="768">
+        <span class="frame__corner frame__corner--tl"></span><span class="frame__corner frame__corner--tr"></span>
+        <span class="frame__corner frame__corner--bl"></span><span class="frame__corner frame__corner--br"></span>
+        <span class="pillar__glyph pillar__glyph--badge">{{ icon("rise") }}</span>
+      </div>
+      <div class="pillar__text">
+        <p class="pillar__num">III</p>
+        <h3 class="pillar__title">Progressão profunda</h3>
+        <p>Evolução de atributos, habilidades ativas e personalização de build que recompensam estratégia. O grind volta a ter significado.</p>
+        <ul class="checklist">
+          <li>{{ icon("check", "ico--sm") }} Distribuição de atributos</li>
+          <li>{{ icon("check", "ico--sm") }} Habilidades ativas e barra de atalhos</li>
+          <li>{{ icon("check", "ico--sm") }} Builds que recompensam estratégia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section classes-teaser" aria-labelledby="classes-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">Escolha seu caminho</p>
+      <h2 class="section-title" id="classes-title">Classes</h2>
+      <a class="link-arrow" href="/classes">Conheça as classes {{ icon("chevron", "ico--xs") }}</a>
+    </header>
+    <div class="class-picker">
+      {% for c in classes %}
+      <a class="class-pick class--{{ c.accent }}" href="/classes#{{ c.slug }}" data-reveal>
+        <span class="class-pick__glow" aria-hidden="true"></span>
+        <img class="class-pick__img" src="/static/img/classes/{{ c.slug }}-retrato-420.webp" alt="" width="420" height="560" loading="lazy">
+        <span class="class-pick__name">{{ c.name }}</span>
+        <span class="class-pick__tag">{{ c.tagline }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section ranking-teaser" aria-labelledby="rank-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">Salão dos Campeões</p>
+      <h2 class="section-title" id="rank-title">Ranking</h2>
+      <a class="link-arrow" href="/ranking">Ranking completo {{ icon("chevron", "ico--xs") }}</a>
+    </header>
+    <div class="rank-duo">
+      <div class="panel">
+        <h3 class="panel__title">{{ icon("crown", "ico--sm") }} Top jogadores</h3>
+        <ol class="rank-list" data-rank-preview="players" aria-busy="true">
+          <li class="skeleton"></li><li class="skeleton"></li><li class="skeleton"></li><li class="skeleton"></li><li class="skeleton"></li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h3 class="panel__title">{{ icon("shield", "ico--sm") }} Top guildas</h3>
+        <ol class="rank-list" data-rank-preview="guilds" aria-busy="true">
+          <li class="skeleton"></li><li class="skeleton"></li><li class="skeleton"></li><li class="skeleton"></li><li class="skeleton"></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark journey" aria-labelledby="journey-title">
+  <div class="container journey__grid">
+    <div class="journey__text" data-reveal>
+      <p class="eyebrow">Nossa jornada</p>
+      <h2 class="section-title" id="journey-title">Feito por quem viveu a era de ouro</h2>
+      <p>Valrok nasceu para resgatar a era de ouro dos jogos online. Uma produção <strong>100% brasileira e independente</strong>, construída na Godot Engine, com um objetivo claro: devolver a progressão desafiadora, a economia orgânica e o combate baseado em habilidade.</p>
+      <p>O projeto está em desenvolvimento ativo. Crie sua conta para reservar o nome do personagem e acompanhar o lançamento do teste Alfa fechado.</p>
+    </div>
+    <ol class="roadmap" aria-label="Fases do desenvolvimento" data-reveal>
+      <li class="roadmap__step is-done"><span class="roadmap__dot"></span><div><h3>Protótipo</h3><p>Combate, movimentação e servidor persistente.</p></div></li>
+      <li class="roadmap__step is-current"><span class="roadmap__dot"></span><div><h3>Pré-Alfa <span class="tag tag--ember">Agora</span></h3><p>Habilidades, inventário, economia e telemetria.</p></div></li>
+      <li class="roadmap__step"><span class="roadmap__dot"></span><div><h3>Alfa fechado</h3><p>Primeiros jogadores convidados por ondas.</p></div></li>
+      <li class="roadmap__step"><span class="roadmap__dot"></span><div><h3>Beta aberto</h3><p>Guildas, territórios e balanceamento.</p></div></li>
+      <li class="roadmap__step"><span class="roadmap__dot"></span><div><h3>Lançamento</h3><p>O mundo de Valrok aberto a todos.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="cta-band" aria-labelledby="cta-title">
+  <img class="cta-band__img" src="/static/img/art/lethal-daggers-1376.webp" alt="" aria-hidden="true" loading="lazy">
+  <canvas class="embers" data-embers data-density="0.6" aria-hidden="true"></canvas>
+  <div class="container cta-band__inner">
+    <h2 class="cta-band__title" id="cta-title">Seu nome. Sua lenda.</h2>
+    <p>Crie sua conta agora, reserve o nome do personagem e entre na fila do Alfa fechado.</p>
+    <div class="hero__cta">
+      <a class="btn btn--ember btn--lg" href="/cadastro">Criar conta grátis</a>
+      <a class="btn btn--steel btn--lg" href="{{ settings.discord_url }}" rel="noopener" target="_blank">{{ icon("discord", "ico--sm") }} Entrar no Discord</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

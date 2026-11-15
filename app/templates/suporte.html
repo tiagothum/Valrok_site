@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, icon %}
+{% block title %}Suporte &amp; FAQ — Valrok{% endblock %}
+{% block content %}
+{{ page_hero("Estamos aqui para ajudar", "Suporte", "Respostas rápidas para as dúvidas mais comuns e canais para falar com a equipe.", "steel") }}
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="card-grid">
+      <a class="card" href="{{ settings.discord_url }}" rel="noopener" target="_blank"><div class="card__icon">{{ icon("discord") }}</div><h3>Discord</h3><p>Canal mais rápido: comunidade, anúncios e suporte.</p></a>
+      <a class="card" href="#faq"><div class="card__icon">{{ icon("help") }}</div><h3>Perguntas frequentes</h3><p>Conta, Alfa, download e jogo.</p></a>
+      <a class="card" href="/regras"><div class="card__icon">{{ icon("gavel") }}</div><h3>Regras</h3><p>Código de conduta e punições.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark section--tight" id="faq">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="section-title">Perguntas frequentes</h2>
+    </header>
+    <div class="faq">
+      <details><summary>Valrok é gratuito?</summary><div><p>Sim. Criar conta e participar dos testes é gratuito.</p></div></details>
+      <details><summary>Quando começa o Alfa fechado?</summary><div><p>A data será anunciada em <a href="/noticias">Notícias</a> e no Discord. Contas criadas antes entram na fila de convites.</p></div></details>
+      <details><summary>Como reservo o nome do meu personagem?</summary><div><p>Crie sua conta no site. O nome de usuário fica reservado e você poderá criar seu personagem quando o Alfa abrir.</p></div></details>
+      <details id="conta"><summary>Esqueci minha senha. E agora?</summary><div><p>A recuperação automática ainda não está disponível. Fale com a equipe no Discord informando seu nome de usuário. <strong>Nunca</strong> envie sua senha para ninguém.</p></div></details>
+      <details><summary>Em quais plataformas posso jogar?</summary><div><p>O cliente Alfa será para Windows. Outras plataformas estão em avaliação.</p></div></details>
+      <details><summary>Encontrei um bug. Como reporto?</summary><div><p>Use o canal de bugs no Discord, descrevendo o que aconteceu, onde e como reproduzir. Explorar bugs intencionalmente é contra as regras.</p></div></details>
+    </div>
+  </div>
+</section>
+{% endblock %}

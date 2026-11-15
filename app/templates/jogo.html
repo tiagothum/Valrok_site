@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, icon %}
+{% block title %}O Jogo — Valrok{% endblock %}
+{% block content %}
+{{ page_hero("RPG de ação multiplayer persistente", "O Jogo", "Valrok resgata a essência desafiadora e a progressão profunda dos RPGs que marcaram os anos 2000, unindo combate melee físico e um mundo em constante evolução.", image="undead-clash") }}
+
+<section class="section">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">Visão geral</p>
+      <h2 class="section-title">O que é Valrok</h2>
+    </header>
+    <div class="card-grid">
+      <div class="card" data-reveal><div class="card__icon">{{ icon("sword") }}</div><h3>Ação de verdade</h3><p>Combate melee físico com combos, esquivas e reação real a cada golpe.</p></div>
+      <div class="card" data-reveal><div class="card__icon">{{ icon("flame") }}</div><h3>Mundo persistente</h3><p>Um servidor vivo que guarda seu progresso e evolui junto com a comunidade.</p></div>
+      <div class="card" data-reveal><div class="card__icon">{{ icon("shield") }}</div><h3>Guildas e território</h3><p>Cooperação, rivalidade e disputa territorial entre guildas.</p></div>
+      <div class="card" data-reveal><div class="card__icon">{{ icon("coin") }}</div><h3>Economia de jogadores</h3><p>Comércio direto e uma economia orgânica, sem atalhos automatizados.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark pillars">
+  <div class="container">
+    <div class="pillar" data-reveal>
+      <div class="pillar__media frame art art--steel art--photo" aria-hidden="true">
+        <img class="art__img" src="/static/img/art/lethal-daggers-1376.webp" alt="" loading="lazy" width="1376" height="768">
+        <span class="frame__corner frame__corner--tl"></span><span class="frame__corner frame__corner--tr"></span>
+        <span class="frame__corner frame__corner--bl"></span><span class="frame__corner frame__corner--br"></span>
+        <span class="pillar__glyph pillar__glyph--badge">{{ icon("sword") }}</span>
+      </div>
+      <div class="pillar__text">
+        <p class="eyebrow">Combate</p>
+        <h3 class="pillar__title">Nada de combate travado</h3>
+        <p>Cada ataque tem peso, alcance e consequência. Você encadeia combos de espada, escolhe o momento da esquiva e lê o inimigo. Os adversários reagem fisicamente aos impactos — e você também.</p>
+        <p class="muted">Habilidades ativas complementam o combate básico e ficam na sua barra de atalhos.</p>
+      </div>
+    </div>
+
+    <div class="pillar pillar--reverse" data-reveal>
+      <div class="pillar__media frame art art--rune art--photo" aria-hidden="true">
+        <img class="art__img" src="/static/img/art/soul-burst-1376.webp" alt="" loading="lazy" width="1376" height="768">
+        <span class="frame__corner frame__corner--tl"></span><span class="frame__corner frame__corner--tr"></span>
+        <span class="frame__corner frame__corner--bl"></span><span class="frame__corner frame__corner--br"></span>
+        <span class="pillar__glyph pillar__glyph--badge">{{ icon("rise") }}</span>
+      </div>
+      <div class="pillar__text">
+        <p class="eyebrow">Progressão</p>
+        <h3 class="pillar__title">Seu personagem, sua build</h3>
+        <p>Distribua atributos, evolua habilidades e monte uma build que combine com seu estilo. A progressão é longa e recompensa quem planeja — como nos clássicos.</p>
+        <p class="muted">Inventário, consumíveis e equipamentos são persistidos e validados pelo servidor.</p>
+      </div>
+    </div>
+
+    <div class="pillar" data-reveal>
+      <div class="pillar__media frame art art--blood art--photo" aria-hidden="true">
+        <img class="art__img" src="/static/img/art/undead-clash-1376.webp" alt="" loading="lazy" width="1376" height="768">
+        <span class="frame__corner frame__corner--tl"></span><span class="frame__corner frame__corner--tr"></span>
+        <span class="frame__corner frame__corner--bl"></span><span class="frame__corner frame__corner--br"></span>
+        <span class="pillar__glyph pillar__glyph--badge">{{ icon("coin") }}</span>
+      </div>
+      <div class="pillar__text">
+        <p class="eyebrow">Economia e guildas</p>
+        <h3 class="pillar__title">Um império se constrói junto</h3>
+        <p>Negocie diretamente com outros jogadores, comercie com mercadores e una forças com sua guilda para disputar território. O valor das coisas é decidido por quem joga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">Tecnologia</p>
+      <h2 class="section-title">Construído para durar</h2>
+      <p class="section-lead">Cliente desenvolvido na Godot Engine e servidor autoritativo: decisões críticas são validadas no servidor, para um jogo justo.</p>
+    </header>
+    <div class="card-grid">
+      <div class="card"><div class="card__icon">{{ icon("monitor") }}</div><h3>Godot Engine</h3><p>Cliente leve, moderno e de código aberto.</p></div>
+      <div class="card"><div class="card__icon">{{ icon("shield") }}</div><h3>Servidor autoritativo</h3><p>Regras e estado do jogo controlados pelo servidor, não pelo cliente.</p></div>
+      <div class="card"><div class="card__icon">{{ icon("rune") }}</div><h3>Desenvolvimento ativo</h3><p>Atualizações frequentes, guiadas pelo feedback da comunidade.</p></div>
+    </div>
+    <div class="center mt-lg">
+      <a class="btn btn--ember btn--lg" href="/cadastro">Criar conta grátis</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

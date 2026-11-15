@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Valrok — RPG de Ação Multiplayer{% endblock %}</title>
+  <meta name="description" content="{% block description %}Valrok é um RPG de ação multiplayer persistente, desenvolvido no Brasil. Combate melee físico, progressão profunda e um mundo em constante evolução.{% endblock %}">
+  <meta name="theme-color" content="#07060a">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  <meta property="og:image" content="{{ settings.site_url }}/static/img/logo-icon.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="/static/img/logo-icon.png">
+  <link rel="preload" href="/static/fonts/Cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/fonts/fonts.css?v={{ v }}">
+  <link rel="stylesheet" href="/static/css/main.css?v={{ v }}">
+  <script type="module" src="/static/js/app.js?v={{ v }}"></script>
+  {% block head %}{% endblock %}
+</head>
+<body data-page="{{ page }}" data-mock-api="{{ 'true' if settings.mock_api else 'false' }}" class="{% block body_class %}{% endblock %}">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  {% if settings.mock_api %}
+  <div class="mock-banner" role="status">
+    <strong>Modo simulado</strong><span> — respostas da API são fictícias (desenvolvimento). Desligue com <code>MOCK_API=false</code>.</span>
+  </div>
+  {% endif %}
+
+  {% from "_macros.html" import icon %}
+  <header class="site-header" data-header>
+    <div class="nav-bar">
+      <a class="nav-bar__brand" href="/" aria-label="Valrok — página inicial">
+        <img class="nav-bar__logo" src="/static/img/logo-icon.png" alt="" width="64" height="64">
+        <span class="nav-bar__wordmark">Valrok</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Principal" data-nav>
+        <ul class="main-nav__list">
+          <li><a href="/jogo" class="main-nav__link{% if page == 'jogo' %} is-active{% endif %}"{% if page == 'jogo' %} aria-current="page"{% endif %}>Visão geral</a></li>
+          <li class="has-sub">
+            <button class="main-nav__link main-nav__toggle{% if page == 'classes' %} is-active{% endif %}" type="button" aria-expanded="false" aria-controls="sub-classes" data-subtoggle>
+              Classes {{ icon("chevron", "ico--xs chev") }}
+            </button>
+            <ul class="dropdown dropdown--classes" id="sub-classes">
+              <li><a class="dd-item dd-item--media" href="/classes#guerreiro"><img src="/static/img/classes/guerreiro-ramo-berserker.webp" alt="" width="40" height="40"><span><span class="dd-item__title">Guerreiro</span><span class="dd-item__sub">Aço, escudo e fúria</span></span></a></li>
+              <li><a class="dd-item dd-item--media" href="/classes#mercenario"><img src="/static/img/classes/mercenario-ramo-archer.webp" alt="" width="40" height="40"><span><span class="dd-item__title">Mercenário</span><span class="dd-item__sub">Flechas e lâminas nas sombras</span></span></a></li>
+              <li><a class="dd-item dd-item--media" href="/classes#druida"><img src="/static/img/classes/druida-ramo-verdant.webp" alt="" width="40" height="40"><span><span class="dd-item__title">Druida</span><span class="dd-item__sub">Tempestade e natureza</span></span></a></li>
+              <li><a class="dd-item" href="/classes"><span class="dd-item__title">Ver todas as classes {{ icon("chevron", "ico--xs") }}</span></a></li>
+            </ul>
+          </li>
+          <li><a href="/noticias" class="main-nav__link{% if page == 'noticias' %} is-active{% endif %}"{% if page == 'noticias' %} aria-current="page"{% endif %}><span class="badge">Novo</span> Notícias</a></li>
+          <li class="has-sub">
+            <button class="main-nav__link main-nav__toggle{% if page == 'ranking' %} is-active{% endif %}" type="button" aria-expanded="false" aria-controls="sub-ranking" data-subtoggle>
+              Ranking {{ icon("chevron", "ico--xs chev") }}
+            </button>
+            <ul class="dropdown" id="sub-ranking">
+              <li><a class="dd-item" href="/ranking#jogadores"><span class="dd-item__title">Jogadores</span><span class="dd-item__sub">Os aventureiros mais poderosos</span></a></li>
+              <li><a class="dd-item" href="/ranking#guildas"><span class="dd-item__title">Guildas</span><span class="dd-item__sub">Impérios em disputa</span></a></li>
+            </ul>
+          </li>
+          <li><a href="/download" class="main-nav__link{% if page == 'download' %} is-active{% endif %}"{% if page == 'download' %} aria-current="page"{% endif %}><span class="badge badge--ember">Alfa</span> Download</a></li>
+          <li class="has-sub has-sub--more">
+            <button class="main-nav__more{% if page in ['suporte','regras','guia'] %} is-active{% endif %}" type="button" aria-expanded="false" aria-controls="sub-more" aria-label="Mais links" data-subtoggle>
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="more-label">Comunidade {{ icon("chevron", "ico--xs chev") }}</span>
+            </button>
+            <ul class="dropdown" id="sub-more">
+              <li><a class="dd-item" href="/guia"><span class="dd-item__title">Guia do iniciante</span><span class="dd-item__sub">Primeiros passos em Valrok</span></a></li>
+              <li><a class="dd-item" href="/suporte"><span class="dd-item__title">Suporte &amp; FAQ</span><span class="dd-item__sub">Dúvidas sobre conta e jogo</span></a></li>
+              <li><a class="dd-item" href="/regras"><span class="dd-item__title">Regras</span><span class="dd-item__sub">Código de conduta</span></a></li>
+              <li><a class="dd-item" href="{{ settings.discord_url }}" rel="noopener" target="_blank"><span class="dd-item__title">Discord {{ icon("discord", "ico--xs") }}</span><span class="dd-item__sub">Comunidade e anúncios</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-bar__actions">
+        <div class="has-sub account-menu" aria-live="polite">
+          <button class="nav-account" type="button" aria-expanded="false" aria-controls="sub-account" data-subtoggle>
+            {{ icon("user") }}
+            <span class="nav-account__label" data-guest-only>Conta</span>
+            <span class="nav-account__label" data-user-only data-username hidden></span>
+            {{ icon("chevron", "ico--xs chev") }}
+          </button>
+          <ul class="dropdown dropdown--right" id="sub-account">
+            <li data-guest-only><a class="dd-item" href="/entrar"><span class="dd-item__title">Entrar</span><span class="dd-item__sub">Acesse sua conta Valrok</span></a></li>
+            <li data-guest-only><a class="dd-item" href="/cadastro"><span class="dd-item__title">Criar conta</span><span class="dd-item__sub">Grátis · reserve seu nome</span></a></li>
+            <li data-user-only hidden><a class="dd-item" href="/conta"><span class="dd-item__title">Minha conta</span><span class="dd-item__sub">Dados e personagens</span></a></li>
+            <li data-user-only hidden><button class="dd-item" type="button" data-logout><span class="dd-item__title">{{ icon("logout", "ico--xs") }} Sair</span></button></li>
+          </ul>
+        </div>
+        <a class="btn btn--cta" href="/cadastro" data-guest-only>Jogar grátis</a>
+        <a class="btn btn--cta" href="/download" data-user-only hidden>Baixar</a>
+        <button class="nav-burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav" data-burger>
+          {{ icon("menu") }}
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="ornament-divider" aria-hidden="true"><span></span></div>
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="brand brand--lg" href="/">
+          <img src="/static/img/logo-icon.png" alt="" width="56" height="56">
+          <span class="brand__name">Valrok</span>
+        </a>
+        <p>RPG de ação multiplayer persistente. Produção 100% brasileira e independente, desenvolvida na Godot Engine.</p>
+        <div class="socials">
+          <a href="{{ settings.discord_url }}" aria-label="Discord" rel="noopener" target="_blank"><svg class="ico" aria-hidden="true"><use href="/static/img/icons.svg#i-discord"></use></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="ico" aria-hidden="true"><use href="/static/img/icons.svg#i-youtube"></use></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="/static/img/icons.svg#i-instagram"></use></svg></a>
+          <a href="#" aria-label="TikTok"><svg class="ico" aria-hidden="true"><use href="/static/img/icons.svg#i-tiktok"></use></svg></a>
+        </div>
+      </div>
+      <nav aria-label="O jogo">
+        <h2 class="site-footer__title">O Jogo</h2>
+        <ul>
+          <li><a href="/jogo">Sobre Valrok</a></li>
+          <li><a href="/classes">Classes</a></li>
+          <li><a href="/noticias">Notícias</a></li>
+          <li><a href="/download">Download</a></li>
+          <li><a href="/ranking">Ranking</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h2 class="site-footer__title">Ajuda</h2>
+        <ul>
+          <li><a href="/guia">Guia do iniciante</a></li>
+          <li><a href="/suporte">Suporte &amp; FAQ</a></li>
+          <li><a href="/regras">Regras</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Conta">
+        <h2 class="site-footer__title">Conta</h2>
+        <ul>
+          <li><a href="/cadastro">Criar conta</a></li>
+          <li><a href="/entrar">Entrar</a></li>
+          <li><a href="/conta">Minha conta</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container site-footer__legal">
+      <p>© 2026 Valrok. Todos os direitos reservados.</p>
+      <p>Em desenvolvimento ativo — conteúdo sujeito a mudanças.</p>
+    </div>
+  </footer>
+
+  <div class="toast-region" aria-live="polite" data-toasts></div>
+</body>
+</html>

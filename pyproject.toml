@@ -1,0 +1,17 @@
+[project]
+name = "valrok-site"
+version = "1.0.0"
+description = "Site oficial do Valrok (FastAPI + HTML/CSS/JS puro)"
+requires-python = ">=3.12"
+# Dependências de runtime (Vercel instala a partir daqui).
+# requirements.txt mantém as mesmas versões + ferramentas locais (uvicorn, pytest).
+dependencies = [
+  "fastapi==0.115.6",
+  "starlette==0.41.3",
+  "jinja2==3.1.4",
+  "httpx==0.28.1",
+]
+
+[tool.vercel]
+# app/main.py usa imports relativos (from .config ...), então a entrada é o módulo do pacote.
+entrypoint = "app.main:app"

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, icon %}
+{% block title %}Guia do iniciante — Valrok{% endblock %}
+{% block content %}
+{{ page_hero("Seus primeiros passos", "Guia do iniciante", "Tudo o que você precisa saber para começar sua jornada em Valrok.", "rune", image="lethal-daggers") }}
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="card-grid">
+      <a class="card" href="#comecando"><div class="card__icon">{{ icon("flame") }}</div><h3>Começando</h3><p>Conta, download e primeiro acesso.</p></a>
+      <a class="card" href="#combate"><div class="card__icon">{{ icon("sword") }}</div><h3>Combate</h3><p>Combos, esquiva e habilidades.</p></a>
+      <a class="card" href="#progressao"><div class="card__icon">{{ icon("rise") }}</div><h3>Progressão</h3><p>Atributos, níveis e builds.</p></a>
+      <a class="card" href="#economia"><div class="card__icon">{{ icon("coin") }}</div><h3>Economia</h3><p>Comércio, mercadores e guildas.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark section--tight">
+  <div class="container prose">
+    <p class="alert alert--info">O guia será expandido a cada fase do desenvolvimento. Controles e sistemas podem mudar até o lançamento.</p>
+
+    <h2 id="comecando">Começando</h2>
+    <ol>
+      <li><strong>Crie sua conta</strong> no site. O nome de usuário é usado para entrar no jogo.</li>
+      <li><strong>Aguarde o convite</strong> do Alfa fechado e baixe o cliente na página de <a href="/download">download</a>.</li>
+      <li><strong>Entre no jogo</strong> com a mesma conta e crie seu personagem.</li>
+    </ol>
+
+    <h2 id="combate">Combate</h2>
+    <p>O combate de Valrok é de ação: você controla cada golpe. Encadeie ataques para formar combos, use a esquiva no momento certo para evitar dano e observe o padrão dos inimigos.</p>
+    <ul>
+      <li>Posicionamento importa: ataques têm alcance e direção.</li>
+      <li>Esquivar no tempo certo é mais eficiente do que trocar golpes.</li>
+      <li>Habilidades ativas ficam na barra de atalhos e consomem recursos.</li>
+    </ul>
+
+    <h2 id="progressao">Progressão</h2>
+    <p>Ao subir de nível você recebe pontos para distribuir entre atributos. Combine atributos e habilidades para montar uma build que funcione com seu estilo de jogo. Não existe build pronta — experimente.</p>
+
+    <h2 id="economia">Economia e guildas</h2>
+    <p>Itens e recursos circulam entre jogadores por troca direta. Mercadores vendem o básico, mas os melhores equipamentos vêm de outros aventureiros. Entre em uma guilda para cooperar, negociar e disputar território.</p>
+  </div>
+</section>
+{% endblock %}

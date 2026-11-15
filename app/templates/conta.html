@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, icon %}
+{% block title %}Minha conta — Valrok{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+{% block content %}
+{{ page_hero("Painel do aventureiro", "Minha conta", variant="steel") }}
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="state" data-state="loading" role="status">
+      <p class="muted">Carregando sua conta…</p>
+    </div>
+
+    <div class="state" data-state="auth" hidden>
+      <h2>Você não está conectado</h2>
+      <p class="muted">Entre na sua conta para ver seus dados e personagens.</p>
+      <a class="btn btn--ember" href="/entrar?next=/conta">Entrar</a>
+    </div>
+
+    <div class="state" data-state="forbidden" hidden>
+      <h2>Acesso negado</h2>
+      <p class="muted">Você não tem permissão para ver este conteúdo.</p>
+    </div>
+
+    <div class="state" data-state="error" hidden>
+      <h2>Não foi possível carregar</h2>
+      <p class="muted" data-error-msg></p>
+      <button class="btn btn--steel" type="button" data-retry>Tentar novamente</button>
+    </div>
+
+    <div class="account" data-state="ready" hidden>
+      <aside class="panel account__side">
+        <div class="avatar"><span data-avatar></span></div>
+        <h2 class="account__name" data-acc-name></h2>
+        <p class="account__role"><span class="tag tag--ember" data-acc-role></span></p>
+        <dl class="kv" data-acc-kv></dl>
+        <button class="btn btn--steel btn--block mt-lg" type="button" data-logout>{{ icon("logout", "ico--sm") }} Sair</button>
+      </aside>
+      <div>
+        <div class="panel">
+          <h3 class="panel__title">{{ icon("sword", "ico--sm") }} Personagens (<span data-char-count>0</span>)</h3>
+          <div class="chars" data-chars></div>
+        </div>
+        <div class="panel mt-lg">
+          <h3 class="panel__title">{{ icon("flame", "ico--sm") }} Alfa fechado</h3>
+          <p class="mt-0">Sua conta está na fila de convites. Quando sua onda for liberada, avisaremos pelo e-mail cadastrado e no Discord.</p>
+          <a class="link-arrow" href="/download">Ver página de download {{ icon("chevron", "ico--xs") }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
