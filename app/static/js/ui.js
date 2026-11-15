@@ -127,7 +127,8 @@ export function initEmbers() {
       vx: (Math.random() - 0.5) * 0.3,
       life: 0,
       max: Math.random() * 500 + 300,
-      hue: Math.random() < 0.12 ? 220 : 18 + Math.random() * 22,
+      // Partículas rúnicas em azul gelo (#69C0CA ~ hue 186); algumas faíscas douradas mantêm o clima medieval.
+      hue: Math.random() < 0.12 ? 36 : 184 + Math.random() * 10,
       phase: Math.random() * Math.PI * 2,
     });
     const resize = () => {
@@ -148,10 +149,10 @@ export function initEmbers() {
         const t = p.life / p.max;
         const alpha = Math.sin(Math.min(t, 1) * Math.PI) * 0.9;
         if (t >= 1 || p.y < -10) { parts[i] = spawn(false); continue; }
-        const light = p.hue > 200 ? 70 : 60;
+        const light = p.hue > 100 ? 72 : 62;
         const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-        g.addColorStop(0, `hsla(${p.hue},100%,${light}%,${alpha})`);
-        g.addColorStop(1, `hsla(${p.hue},100%,50%,0)`);
+        g.addColorStop(0, `hsla(${p.hue},${p.hue > 100 ? 55 : 60}%,${light}%,${alpha})`);
+        g.addColorStop(1, `hsla(${p.hue},55%,50%,0)`);
         ctx.fillStyle = g;
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fill();
       }

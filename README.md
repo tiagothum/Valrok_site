@@ -49,7 +49,7 @@ app/
   content/news.json  notícias (conteúdo editorial do site, não do banco do jogo)
   content/classes.json  classes, especializações e skills (textos editáveis)
   templates/         Jinja2: base.html (header/footer), _macros.html e uma página por rota
-  static/css/main.css   design system (tokens em :root)
+  static/css/main.css   design system: paleta "Azul Gelo Rúnico" (tokens --vk-* em :root)
   static/js/
     app.js           entrada comum (header, efeitos, sessão, módulo da página)
     api.js           ÚNICO cliente HTTP: base /api, fetch, parsing, ApiError (0/400/401/403/409/422/429/5xx)
@@ -57,7 +57,7 @@ app/
     mock.js          simulação da valrokapi (somente dev)
     ui.js widgets.js utilidades de interface e widgets públicos
     pages/           login.js, register.js, account.js, ranking.js
-  static/fonts/      Cinzel, Alegreya Sans, Archivo — auto-hospedadas (OFL)
+  static/fonts/      Alegreya (principal: títulos e texto) e Lato (interface) — auto-hospedadas (OFL)
   static/img/        logo e sprite de ícones SVG
   static/media/      coloque hero.mp4 aqui para ativar o vídeo de fundo da home
 tests/test_site.py
