@@ -15,6 +15,7 @@
       { "key": "bloody-throw", "name": "Arremesso Sangrento" },
       { "key": "rising-blade", "name": "Lâmina Ascendente" },
       { "key": "predators-fury", "name": "Fúria do Predador" },
+      { "key": "seismic-impact", "name": "Impacto Sísmico" },
       { "key": "battle-renewal", "name": "Renovação de Batalha" },
       { "key": "disarming-charge", "name": "Investida Desarmante" },
       { "key": "shield-charge", "name": "Investida de Escudo" },
@@ -64,7 +65,7 @@
     "skills": [
       { "key": "thunderstorm", "name": "Tempestade" },
       { "key": "gale-strike", "name": "Golpe de Vendaval" },
-      { "key": "erosion", "name": "Erosão" },
+      { "key": "wither", "name": "Definhar" },
       { "key": "dust-veil", "name": "Véu de Poeira" },
       { "key": "groves-blessing", "name": "Bênção do Bosque" },
       { "key": "tree-of-life", "name": "Árvore da Vida" },
@@ -74,6 +75,32 @@
       { "key": "venomous-roots", "name": "Raízes Venenosas" },
       { "key": "venomous-vine", "name": "Vinha Venenosa" },
       { "key": "cursed-spores", "name": "Esporos Amaldiçoados" }
+    ]
+  },
+  {
+    "slug": "mago",
+    "name": "Mago",
+    "accent": "arcane",
+    "tagline": "Fogo, gelo e runas arcanas.",
+    "tags": ["Distância", "Magia elemental", "Controle"],
+    "description": "Estudioso das runas antigas, o Mago dobra o fogo e o gelo à sua vontade e grava selos arcanos no próprio campo de batalha. Pode devastar grupos com meteoros e lanças glaciais ou aprisionar e confundir inimigos com inscrições rúnicas.",
+    "branches": [
+      { "key": "elemental", "name": "Elementalista", "text": "Fogo e gelo. Dano explosivo à distância, áreas de efeito e o equilíbrio entre chamas e geada." },
+      { "key": "runebinder", "name": "Selador de Runas", "text": "Runas e selos arcanos. Controle do campo, armadilhas rúnicas e mobilidade para manter a distância." }
+    ],
+    "skills": [
+      { "key": "fireball", "name": "Bola de Fogo" },
+      { "key": "meteor", "name": "Meteoro" },
+      { "key": "glacial-lance", "name": "Lança Glacial" },
+      { "key": "glacial-prison", "name": "Prisão Glacial" },
+      { "key": "frostfire-aura", "name": "Aura de Fogo Gélido" },
+      { "key": "elemental-focus", "name": "Foco Elemental" },
+      { "key": "arcane-inscription", "name": "Inscrição Arcana" },
+      { "key": "runic-detonation", "name": "Detonação Rúnica" },
+      { "key": "domain-of-seals", "name": "Domínio dos Selos" },
+      { "key": "arcane-collapse", "name": "Colapso Arcano" },
+      { "key": "runic-reflection", "name": "Reflexo Rúnico" },
+      { "key": "blink", "name": "Lampejo" }
     ]
   }
 ]

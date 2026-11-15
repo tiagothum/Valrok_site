@@ -174,8 +174,8 @@ CSP no Nginx.
 - Fechar política de senha, formato de erros e recuperação de senha (hoje a página orienta o suporte).
 - Substituir as artes procedurais por screenshots/vídeo do jogo (`static/media/hero.mp4`).
 - Revisar textos de notícias, regras, roadmap e requisitos de sistema (são rascunhos).
-- Revisar em `content/classes.json` os nomes em português das skills e especializações (traduzidos a partir dos nomes dos arquivos) e as descrições das classes. A skill `SeismicImpact` do Guerreiro não tem ícone principal no pacote e ficou de fora.
+- Revisar em `content/classes.json` os nomes em português das skills e especializações (traduzidos a partir dos nomes dos arquivos) e as descrições das classes. Os ícones de classes e skills foram atualizados a partir do `UI.zip` (base do jogo): inclui o Mago, a skill Definhar (Wither) do Druida, que substituiu Erosão, e o Impacto Sísmico do Guerreiro.
 
 ### Arte do jogo
 
-As imagens em `static/img/art/` (telas de loading) e `static/img/classes/` (retratos, emblemas e ícones de skills) vieram do pacote `Icons_Valrok.zip` do Drive, convertidas para WebP. Para adicionar uma skill: coloque `{classe}-{chave}.webp` (128×128) em `static/img/classes/skills/` e inclua `{"key", "name"}` no `classes.json`.
+As imagens em `static/img/art/` (telas de loading) e `static/img/classes/` (retratos, emblemas e ícones de skills) vieram dos pacotes `Icons_Valrok.zip` e `UI.zip`, convertidas para WebP. Para adicionar uma skill: coloque `{classe}-{chave}.webp` (128×128) em `static/img/classes/skills/` e inclua `{"key", "name"}` no `classes.json`.

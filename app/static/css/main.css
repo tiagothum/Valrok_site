@@ -724,13 +724,14 @@ a.card:hover { transform: translateY(-3px); color: inherit; }
 .cta-band::before { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, rgba(9, 13, 15, .3), rgba(9, 13, 15, .85)); }
 
 /* --- Classes ------------------------------------------------------------- */
-.class--ember, .class--shadow, .class--verdant { --accent: var(--vk-ice-glow); --accent-2: var(--vk-ice-mist); --accent-glow: rgba(105, 192, 202, .22); }
+.class--ember, .class--shadow, .class--verdant, .class--arcane { --accent: var(--vk-ice-glow); --accent-2: var(--vk-ice-mist); --accent-glow: rgba(105, 192, 202, .22); }
 .class--ember   { --halo: rgba(214, 168, 104, .28); }
 .class--shadow  { --halo: rgba(120, 110, 170, .3); }
 .class--verdant { --halo: rgba(117, 184, 107, .28); }
+.class--arcane  { --halo: rgba(105, 192, 202, .32); }
 
 .class-picker-wrap { padding-bottom: 0; }
-.class-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.class-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .class-pick {
   position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
   min-height: 360px; padding: 20px 16px 22px; text-align: center; color: var(--bone);
@@ -785,7 +786,7 @@ a.card:hover { transform: translateY(-3px); color: inherit; }
 .classes-teaser .class-pick { min-height: 420px; }
 
 @media (max-width: 820px) {
-  .class-picker { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .class-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .class-pick { min-height: 230px; padding: 12px 8px 14px; }
   .class-pick__img { top: 6px; }
   .class-pick__name { font-size: 1rem; letter-spacing: .06em; }
@@ -799,7 +800,10 @@ a.card:hover { transform: translateY(-3px); color: inherit; }
 .dd-item--media img { width: 40px; height: 40px; flex: none; filter: drop-shadow(0 0 8px rgba(105, 192, 202, .17)); }
 .dd-item--media > span { display: flex; flex-direction: column; gap: 1px; }
 @media (max-width: 560px) {
-  .class-pick__name { font-size: .8rem; letter-spacing: .02em; }
+  .class-pick__name { font-size: .95rem; letter-spacing: .04em; }
+}
+@media (min-width: 821px) and (max-width: 1100px) {
+  .class-pick__name { font-size: 1.25rem; letter-spacing: .08em; }
 }
 .field input::placeholder, .field textarea::placeholder { color: var(--vk-text-dim); }
 .field input:hover, .field select:hover, .field textarea:hover { border-color: var(--vk-ice-base); }
