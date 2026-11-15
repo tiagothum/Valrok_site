@@ -909,3 +909,94 @@ button.branch { width: 100%; text-align: left; color: inherit; font: inherit; cu
 @media (max-width: 1080px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .video-grid { grid-template-columns: 1fr; } }
 .nav-bar__wordmark { line-height: 1; display: block; }
+
+/* ==========================================================================
+   BOTÕES MEDIEVAIS (inspirados no site do Diablo IV, na paleta Azul Gelo Rúnico)
+   Moldura de ferro + ornamentos espinhosos no topo/base + painel com textura
+   gasta + filete interno que acende no hover. Texto em Alegreya, caixa alta.
+   ::before = ornamentos (::after continua livre para o spinner de carregamento).
+   ========================================================================== */
+:root {
+  --btn-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* ornamento de ferro com espinhos (topo); a base usa a mesma forma espelhada */
+  --btn-crest-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='12' viewBox='0 0 64 12'%3E%3Cpath d='M0 12 L18 12 L22 8 L26 9 L29 4 L32 0 L35 4 L38 9 L42 8 L46 12 L64 12 Z' fill='%23506167' stroke='%23182024' stroke-width='1'/%3E%3Cpath d='M29 7 L32 3 L35 7 L32 10 Z' fill='%2369C0CA'/%3E%3C/svg%3E");
+  --btn-crest-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='12' viewBox='0 0 64 12'%3E%3Cpath d='M0 0 L18 0 L22 4 L26 3 L29 8 L32 12 L35 8 L38 3 L42 4 L46 0 L64 0 Z' fill='%23506167' stroke='%23182024' stroke-width='1'/%3E%3Cpath d='M29 5 L32 9 L35 5 L32 2 Z' fill='%2369C0CA'/%3E%3C/svg%3E");
+  /* rebite de canto */
+  --btn-stud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cpath d='M5 0 L10 5 L5 10 L0 5 Z' fill='%236b7c82' stroke='%230b1114' stroke-width='1'/%3E%3C/svg%3E");
+  --btn-frame:
+    0 0 0 2px #05090b,
+    0 0 0 4px #3a4a50,
+    0 0 0 5px #11191c,
+    0 10px 22px -10px #000;
+}
+
+.btn {
+  font-family: var(--font-display); font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  border-radius: 0;
+}
+.btn--sm { letter-spacing: .12em; }
+
+/* --- Principal (gelo rúnico) ---------------------------------------------- */
+.btn--ember, .vk-btn-cta {
+  isolation: isolate; color: var(--vk-text-primary); text-shadow: 0 1px 0 #000, 0 0 12px rgba(105, 192, 202, .35);
+  border: 1px solid var(--vk-ice-base); border-radius: 0;
+  background:
+    var(--btn-grain),
+    radial-gradient(ellipse 80% 120% at 50% 50%, rgba(62, 145, 163, .35), transparent 70%),
+    linear-gradient(180deg, #1b4049 0%, #102a31 55%, #0b1d22 100%);
+  box-shadow: inset 0 0 0 1px rgba(156, 237, 255, .08), inset 0 0 14px rgba(0, 0, 0, .7), var(--btn-frame);
+  transition: color .2s, border-color .25s, box-shadow .25s, background .25s, transform .2s var(--ease), filter .25s;
+}
+.btn--ember::before, .vk-btn-cta::before {
+  content: ""; position: absolute; inset: -12px -9px; pointer-events: none; z-index: 1;
+  background-image: var(--btn-crest-top), var(--btn-crest-bottom), var(--btn-stud), var(--btn-stud), var(--btn-stud), var(--btn-stud);
+  background-repeat: no-repeat;
+  background-size: 64px 12px, 64px 12px, 10px 10px, 10px 10px, 10px 10px, 10px 10px;
+  background-position: 50% 0, 50% 100%, 0 7px, 100% 7px, 0 calc(100% - 7px), 100% calc(100% - 7px);
+  filter: drop-shadow(0 1px 1px #000);
+}
+.btn--ember:hover, .vk-btn-cta:hover, .btn--ember:focus-visible {
+  color: #fff; filter: none; border-color: var(--vk-ice-glow);
+  background:
+    var(--btn-grain),
+    radial-gradient(ellipse 80% 120% at 50% 50%, rgba(105, 192, 202, .5), transparent 72%),
+    linear-gradient(180deg, #22525c 0%, #153a43 55%, #0e262c 100%);
+  box-shadow: inset 0 0 0 1px rgba(156, 237, 255, .3), inset 0 0 18px rgba(105, 192, 202, .35), var(--btn-frame), 0 0 24px -4px rgba(105, 192, 202, .55);
+}
+.btn--ember:active { transform: translateY(1px); }
+
+/* --- Secundário (painel escuro com filete de bronze) ----------------------- */
+.btn--steel, .vk-btn-rune {
+  color: var(--vk-text-primary); border: 1px solid rgba(142, 115, 88, .75); border-radius: 0;
+  background:
+    var(--btn-grain),
+    linear-gradient(180deg, #1d2427 0%, #12181a 60%, #0d1214 100%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .6), inset 0 0 12px rgba(0, 0, 0, .65), 0 0 0 2px #05090b, 0 0 0 3px #2c3438, 0 8px 18px -10px #000;
+}
+.btn--steel:hover, .vk-btn-rune:hover, .btn--steel:focus-visible {
+  color: var(--vk-ice-mist); border-color: var(--vk-ice-glow);
+  background:
+    var(--btn-grain),
+    linear-gradient(180deg, #20373e 0%, #16262b 60%, #102025 100%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .5), inset 0 0 16px rgba(105, 192, 202, .25), 0 0 0 2px #05090b, 0 0 0 3px #3a4a50, 0 0 20px -4px rgba(105, 192, 202, .45);
+}
+.btn--steel:active { background: var(--btn-grain), var(--vk-bg-ice-active); }
+
+/* --- Header "Jogar grátis": versão compacta do principal, sem ornamentos ----- */
+.btn--cta {
+  font-family: var(--font-display); font-weight: 700; font-size: .95rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--vk-text-primary); text-shadow: 0 1px 0 #000; border: 1px solid var(--vk-ice-base); border-radius: 0;
+  background: var(--btn-grain), radial-gradient(ellipse 80% 120% at 50% 50%, rgba(62, 145, 163, .35), transparent 70%), linear-gradient(180deg, #1b4049, #0b1d22);
+  box-shadow: inset 0 0 0 1px rgba(156, 237, 255, .08), inset 0 0 12px rgba(0, 0, 0, .7), 0 0 0 2px #05090b, 0 0 0 3px #3a4a50;
+}
+.btn--cta:hover {
+  color: #fff; filter: none; border-color: var(--vk-ice-glow);
+  background: var(--btn-grain), radial-gradient(ellipse 80% 120% at 50% 50%, rgba(105, 192, 202, .5), transparent 72%), linear-gradient(180deg, #22525c, #0e262c);
+  box-shadow: inset 0 0 18px rgba(105, 192, 202, .35), 0 0 0 2px #05090b, 0 0 0 3px #4a5a60, 0 0 20px -4px rgba(105, 192, 202, .55);
+}
+
+/* Botões pequenos e de bloco: sem os espinhos (só a moldura) */
+.btn--sm.btn--ember::before, .btn--block.btn--ember::before { background-image: var(--btn-stud), var(--btn-stud), var(--btn-stud), var(--btn-stud); background-size: 10px 10px; background-position: 0 7px, 100% 7px, 0 calc(100% - 7px), 100% calc(100% - 7px); }
+
+/* Carregando: spinner claro sobre o painel escuro */
+.btn--ember.is-loading::after { border-color: rgba(228, 225, 216, .25); border-top-color: var(--vk-ice-mist); }
