@@ -36,6 +36,9 @@ function boot() {
 
   const mod = PAGE_MODULES[document.body.dataset.page];
   if (mod) import(mod).then((m) => m.init && m.init());
+
+  // Roadmap cinematográfico (home e Classes): carrega só onde a seção existe.
+  if (document.querySelector("[data-saga]")) import("./saga.js").then((m) => m.initSaga());
 }
 
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

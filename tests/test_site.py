@@ -247,3 +247,13 @@ def test_classes_saga_roadmap_section():
     assert '/static/css/saga.css' in html
     # nada do que já existia foi removido
     assert html.count("data-class-panel=") == n and html.count('data-branch="') == 2 * n
+
+
+def test_home_has_saga_instead_of_classes_teaser():
+    from app.main import load_classes
+
+    n = len(load_classes())
+    html = client.get("/").text
+    assert "classes-teaser" not in html and "Escolha seu caminho" not in html
+    assert html.count("data-saga-scene=") == n and "/static/css/saga.css" in html
+    assert 'href="/classes#guerreiro"' in html  # "Ver a classe" leva à página de Classes

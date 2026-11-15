@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% from "_macros.html" import icon, news_card, status_box %}
+{% block head %}<link rel="stylesheet" href="/static/css/saga.css?v={{ v }}">{% endblock %}
 {% block body_class %}is-home{% endblock %}
 {% block content %}
 
@@ -155,24 +156,7 @@
   </div>
 </section>
 
-<section class="section classes-teaser" aria-labelledby="classes-title">
-  <div class="container">
-    <header class="section-head">
-      <p class="eyebrow">Escolha seu caminho</p>
-      <h2 class="section-title" id="classes-title">Classes</h2>
-      <a class="link-arrow" href="/classes">Conheça as classes {{ icon("chevron", "ico--xs") }}</a>
-    </header>
-    <div class="class-picker">
-      {% for c in classes %}
-      <a class="class-pick class--{{ c.accent }}" href="/classes#{{ c.slug }}" data-reveal>
-        <span class="class-pick__glow" aria-hidden="true"></span>
-        <img class="class-pick__img" src="/static/img/classes/{{ c.slug }}-retrato-420.webp" alt="" width="420" height="560" loading="lazy">
-        <span class="class-pick__name">{{ c.name }}</span>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+{% set saga_link_base = "/classes#" %}{% include "_saga.html" %}
 
 <section class="section ranking-teaser" aria-labelledby="rank-title">
   <div class="container">

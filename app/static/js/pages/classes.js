@@ -1,4 +1,3 @@
-import { initSaga } from "../saga.js";
 
 /** Seletor de classes: abas com hash (#guerreiro). Sem JS, todas as classes ficam visíveis. */
 /**
@@ -29,7 +28,6 @@ function initBranches(panel) {
 }
 
 export function init() {
-  initSaga();
   document.querySelectorAll("[data-class-panel]").forEach(initBranches);
 
   const tabs = [...document.querySelectorAll("[data-class-tab]")];
