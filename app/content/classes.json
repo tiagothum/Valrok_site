@@ -14,62 +14,112 @@
       {
         "key": "berserker",
         "name": "Berserker",
-        "text": "Fúria e machados. Dano bruto, golpes sangrentos e ataques que ficam mais perigosos quanto maior o risco."
+        "text": "Fúria e machados. Dano bruto, golpes sangrentos e ataques que ficam mais perigosos quanto maior o risco.",
+        "specialization_id": "warrior_berserker"
       },
       {
         "key": "vanguard",
         "name": "Vanguard",
-        "text": "Escudo e aço. Proteção, investidas e controle do campo de batalha para defender os aliados."
+        "text": "Escudo e aço. Proteção, investidas e controle do campo de batalha para defender os aliados.",
+        "specialization_id": "warrior_vanguard"
       }
     ],
     "skills": [
       {
-        "key": "cleaving-strike",
-        "name": "Cleaving Strike"
-      },
-      {
-        "key": "bloody-throw",
-        "name": "Bloody Throw"
-      },
-      {
         "key": "rising-blade",
-        "name": "Rising Blade"
-      },
-      {
-        "key": "predators-fury",
-        "name": "Predator's Fury"
-      },
-      {
-        "key": "seismic-impact",
-        "name": "Seismic Impact"
-      },
-      {
-        "key": "battle-renewal",
-        "name": "Battle Renewal"
-      },
-      {
-        "key": "disarming-charge",
-        "name": "Disarming Charge"
-      },
-      {
-        "key": "shield-charge",
-        "name": "Shield Charge"
-      },
-      {
-        "key": "shield-throw",
-        "name": "Shield Throw"
-      },
-      {
-        "key": "shield-wall",
-        "name": "Shield Wall"
+        "skill_id": "warrior_rising_blade",
+        "name": "Rising Blade",
+        "branch": "berserker",
+        "required_level": 5,
+        "description": "Corte ascendente que lança a lâmina para cima e desequilibra o alvo."
       },
       {
         "key": "steel-vortex",
-        "name": "Steel Vortex"
+        "skill_id": "warrior_steel_vortex",
+        "name": "Steel Vortex",
+        "branch": "berserker",
+        "required_level": 5,
+        "description": "Gira em um vórtice de aço que atrai e fere os inimigos ao redor."
+      },
+      {
+        "key": "disarming-charge",
+        "skill_id": "warrior_disarming_charge",
+        "name": "Disarming Charge",
+        "branch": "berserker",
+        "required_level": 7,
+        "description": "Investida que atinge o alvo e reduz temporariamente o dano dos ataques dele."
+      },
+      {
+        "key": "cleaving-strike",
+        "skill_id": "warrior_cleaving_strike",
+        "name": "Cleaving Strike",
+        "branch": "berserker",
+        "required_level": 10,
+        "description": "Golpe pesado de machado que fende tudo à frente, atingindo vários inimigos próximos."
+      },
+      {
+        "key": "bloody-throw",
+        "skill_id": "warrior_bloody_throw",
+        "name": "Bloody Throw",
+        "branch": "berserker",
+        "required_level": 15,
+        "description": "Arremessa o machado em um inimigo distante, causando dano e sangramento."
+      },
+      {
+        "key": "predators-fury",
+        "skill_id": "warrior_predators_fury",
+        "name": "Predator's Fury",
+        "branch": "berserker",
+        "required_level": 20,
+        "description": "Explosão de fúria rubra que aumenta o dano e a velocidade de ataque por alguns segundos."
+      },
+      {
+        "key": "shield-wall",
+        "skill_id": "warrior_shield_wall",
+        "name": "Shield Wall",
+        "branch": "vanguard",
+        "required_level": 5,
+        "description": "Ergue o escudo como uma muralha, reduzindo muito o dano recebido de frente."
+      },
+      {
+        "key": "seismic-impact",
+        "skill_id": "warrior_seismic_impact",
+        "name": "Seismic Impact",
+        "branch": "vanguard",
+        "required_level": 5,
+        "description": "Golpeia o chão com força e libera uma onda de choque que atinge todos ao redor."
+      },
+      {
+        "key": "shield-charge",
+        "skill_id": "warrior_shield_charge",
+        "name": "Shield Charge",
+        "branch": "vanguard",
+        "required_level": 7,
+        "description": "Avança com o escudo erguido e derruba o primeiro inimigo no caminho."
       },
       {
         "key": "whirling-slash",
-        "name": "Whirling Slash"
+        "skill_id": "warrior_whirling_slash",
+        "name": "Whirling Slash",
+        "branch": "vanguard",
+        "required_level": 10,
+        "description": "Corte giratório que atinge todos os inimigos em volta."
+      },
+      {
+        "key": "shield-throw",
+        "skill_id": "warrior_shield_throw",
+        "name": "Shield Throw",
+        "branch": "vanguard",
+        "required_level": 15,
+        "description": "Arremessa o escudo, que atinge o alvo e ricocheteia em inimigos próximos."
+      },
+      {
+        "key": "battle-renewal",
+        "skill_id": "warrior_battle_renewal",
+        "name": "Battle Renewal",
+        "branch": "vanguard",
+        "required_level": 20,
+        "description": "Canaliza a energia do combate para recuperar vida a cada golpe acertado."
       }
     ]
   },
@@ -88,62 +138,112 @@
       {
         "key": "archer",
         "name": "Archer",
-        "text": "Arco e flechas especiais. Dano à distância, fogo, veneno e chuva de flechas para controlar o combate."
+        "text": "Arco e flechas especiais. Dano à distância, fogo, veneno e chuva de flechas para controlar o combate.",
+        "specialization_id": "mercenary_archer"
       },
       {
         "key": "rogue",
         "name": "Rogue",
-        "text": "Lâminas e sombras. Furtividade, mobilidade e golpes críticos a curta distância."
+        "text": "Lâminas e sombras. Furtividade, mobilidade e golpes críticos a curta distância.",
+        "specialization_id": "mercenary_rogue"
       }
     ],
     "skills": [
       {
-        "key": "fire-arrow",
-        "name": "Fire Arrow"
+        "key": "eagle-eye",
+        "skill_id": "mercenary_eagle_eye",
+        "name": "Eagle Eye",
+        "branch": "archer",
+        "required_level": 5,
+        "description": "Concentra a mira, aumentando o alcance e a chance de acerto crítico por um tempo."
       },
       {
-        "key": "pestilent-arrow",
-        "name": "Pestilent Arrow"
+        "key": "fire-arrow",
+        "skill_id": "mercenary_fire_arrow",
+        "name": "Fire Arrow",
+        "branch": "archer",
+        "required_level": 5,
+        "description": "Flecha incendiária que causa dano e deixa o alvo em chamas."
       },
       {
         "key": "shackling-arrow",
-        "name": "Shackling Arrow"
+        "skill_id": "mercenary_shackling_arrow",
+        "name": "Shackling Arrow",
+        "branch": "archer",
+        "required_level": 7,
+        "description": "Flecha com correntes que prende o alvo no lugar por alguns instantes."
       },
       {
         "key": "arrow-rain",
-        "name": "Arrow Rain"
+        "skill_id": "mercenary_arrow_rain",
+        "name": "Arrow Rain",
+        "branch": "archer",
+        "required_level": 10,
+        "description": "Dispara uma chuva de flechas sobre uma área, atingindo todos os inimigos nela."
       },
       {
-        "key": "eagle-eye",
-        "name": "Eagle Eye"
-      },
-      {
-        "key": "piercing-mastery",
-        "name": "Piercing Mastery"
-      },
-      {
-        "key": "lethal-focus",
-        "name": "Lethal Focus"
-      },
-      {
-        "key": "shadow-stab",
-        "name": "Shadow Stab"
-      },
-      {
-        "key": "hemlock-blade",
-        "name": "Hemlock Blade"
-      },
-      {
-        "key": "shadow-veil",
-        "name": "Shadow Veil"
-      },
-      {
-        "key": "ravens-step",
-        "name": "Raven's Step"
+        "key": "pestilent-arrow",
+        "skill_id": "mercenary_pestilent_arrow",
+        "name": "Pestilent Arrow",
+        "branch": "archer",
+        "required_level": 15,
+        "description": "Flecha envenenada que espalha uma praga e causa dano contínuo."
       },
       {
         "key": "wild-stride",
-        "name": "Wild Stride"
+        "skill_id": "mercenary_wild_stride",
+        "name": "Wild Stride",
+        "branch": "archer",
+        "required_level": 20,
+        "description": "Passos ligeiros pelo ermo que aumentam a velocidade de movimento para perseguir ou escapar."
+      },
+      {
+        "key": "lethal-focus",
+        "skill_id": "mercenary_lethal_focus",
+        "name": "Lethal Focus",
+        "branch": "rogue",
+        "required_level": 5,
+        "description": "Foco absoluto que aumenta o dano crítico do próximo ataque."
+      },
+      {
+        "key": "shadow-veil",
+        "skill_id": "mercenary_shadow_veil",
+        "name": "Shadow Veil",
+        "branch": "rogue",
+        "required_level": 5,
+        "description": "Envolve-se em sombras e fica mais difícil de ser visto e atingido por alguns segundos."
+      },
+      {
+        "key": "shadow-stab",
+        "skill_id": "mercenary_shadow_stab",
+        "name": "Shadow Stab",
+        "branch": "rogue",
+        "required_level": 7,
+        "description": "Punhalada rápida vinda das sombras, com dano extra ao atingir o alvo pelas costas."
+      },
+      {
+        "key": "ravens-step",
+        "skill_id": "mercenary_ravens_step",
+        "name": "Raven's Step",
+        "branch": "rogue",
+        "required_level": 10,
+        "description": "Passo veloz como o de um corvo, avançando uma curta distância em um instante."
+      },
+      {
+        "key": "hemlock-blade",
+        "skill_id": "mercenary_hemlock_blade",
+        "name": "Hemlock Blade",
+        "branch": "rogue",
+        "required_level": 15,
+        "description": "Envenena as lâminas com cicuta, fazendo os ataques causarem dano contínuo."
+      },
+      {
+        "key": "piercing-mastery",
+        "skill_id": "mercenary_piercing_mastery",
+        "name": "Piercing Mastery",
+        "branch": "rogue",
+        "required_level": 20,
+        "description": "Maestria em golpes perfurantes: os ataques do ladino atravessam parte da armadura do alvo."
       }
     ]
   },
@@ -162,62 +262,112 @@
       {
         "key": "stormcaller",
         "name": "Stormcaller",
-        "text": "Vento, raio e terra. Controle de área e dano elemental que devasta grupos de inimigos."
+        "text": "Vento, raio, terra e decadência. Controle de área, dano elemental e maldições que enfraquecem grupos de inimigos.",
+        "specialization_id": "druid_stormcaller"
       },
       {
         "key": "verdant",
         "name": "Verdant",
-        "text": "Vida e raízes. Cura, proteção e venenos da natureza que sustentam o grupo."
+        "text": "Vida e vinhas. Cura, proteção e plantas venenosas que sustentam o grupo e punem quem se aproxima.",
+        "specialization_id": "druid_verdant"
       }
     ],
     "skills": [
       {
+        "key": "cursed-spores",
+        "skill_id": "druid_cursed_spores",
+        "name": "Cursed Spores",
+        "branch": "stormcaller",
+        "required_level": 5,
+        "description": "Cogumelos amaldiçoados liberam esporos que envenenam quem estiver por perto."
+      },
+      {
         "key": "thunderstorm",
-        "name": "Thunderstorm"
+        "skill_id": "druid_thunderstorm",
+        "name": "Thunderstorm",
+        "branch": "stormcaller",
+        "required_level": 5,
+        "description": "Invoca uma tempestade que lança raios sobre os inimigos na área."
       },
       {
         "key": "gale-strike",
-        "name": "Gale Strike"
-      },
-      {
-        "key": "wither",
-        "name": "Wither"
-      },
-      {
-        "key": "dust-veil",
-        "name": "Dust Veil"
-      },
-      {
-        "key": "groves-blessing",
-        "name": "Grove's Blessing"
-      },
-      {
-        "key": "tree-of-life",
-        "name": "Tree of Life"
-      },
-      {
-        "key": "renewing-touch",
-        "name": "Renewing Touch"
-      },
-      {
-        "key": "lifeblood-sap",
-        "name": "Lifeblood Sap"
-      },
-      {
-        "key": "natures-aegis",
-        "name": "Nature's Aegis"
-      },
-      {
-        "key": "venomous-roots",
-        "name": "Venomous Roots"
+        "skill_id": "druid_gale_strike",
+        "name": "Gale Strike",
+        "branch": "stormcaller",
+        "required_level": 7,
+        "description": "Golpe de vento cortante, a habilidade básica de vento do druida."
       },
       {
         "key": "venomous-vine",
-        "name": "Venomous Vine"
+        "skill_id": "druid_venomous_vine",
+        "name": "Venomous Vine",
+        "branch": "stormcaller",
+        "required_level": 10,
+        "description": "Vinhas espinhosas e venenosas que ferem e enfraquecem os inimigos ao alcance."
       },
       {
-        "key": "cursed-spores",
-        "name": "Cursed Spores"
+        "key": "dust-veil",
+        "skill_id": "druid_dust_veil",
+        "name": "Dust Veil",
+        "branch": "stormcaller",
+        "required_level": 15,
+        "description": "Levanta um véu de poeira que atrapalha a visão e a mira dos inimigos."
+      },
+      {
+        "key": "wither",
+        "skill_id": "druid_wither",
+        "name": "Wither",
+        "branch": "stormcaller",
+        "required_level": 20,
+        "description": "Magia de decadência que corrói as defesas do alvo e o deixa mais vulnerável."
+      },
+      {
+        "key": "groves-blessing",
+        "skill_id": "druid_groves_blessing",
+        "name": "Grove's Blessing",
+        "branch": "verdant",
+        "required_level": 5,
+        "description": "Bênção do bosque antigo que fortalece os aliados próximos."
+      },
+      {
+        "key": "tree-of-life",
+        "skill_id": "druid_tree_of_life",
+        "name": "Tree of Life",
+        "branch": "verdant",
+        "required_level": 5,
+        "description": "Faz brotar uma árvore da vida que cura continuamente os aliados ao redor."
+      },
+      {
+        "key": "renewing-touch",
+        "skill_id": "druid_renewing_touch",
+        "name": "Renewing Touch",
+        "branch": "verdant",
+        "required_level": 7,
+        "description": "Toque de cura que restaura vida e purifica efeitos negativos do aliado."
+      },
+      {
+        "key": "venomous-roots",
+        "skill_id": "druid_venomous_roots",
+        "name": "Venomous Roots",
+        "branch": "verdant",
+        "required_level": 10,
+        "description": "Raízes espinhosas e venenosas brotam do chão, prendendo e envenenando os inimigos."
+      },
+      {
+        "key": "lifeblood-sap",
+        "skill_id": "druid_lifeblood_sap",
+        "name": "Lifeblood Sap",
+        "branch": "verdant",
+        "required_level": 15,
+        "description": "Seiva vital que cura um aliado ao longo do tempo."
+      },
+      {
+        "key": "natures-aegis",
+        "skill_id": "druid_natures_aegis",
+        "name": "Nature's Aegis",
+        "branch": "verdant",
+        "required_level": 20,
+        "description": "Escudo de casca e folhas que absorve dano por alguns segundos."
       }
     ]
   },
@@ -236,62 +386,112 @@
       {
         "key": "elemental",
         "name": "Elemental",
-        "text": "Fogo e gelo. Dano explosivo à distância, áreas de efeito e o equilíbrio entre chamas e geada."
+        "text": "Fogo e gelo. Dano explosivo à distância, áreas de efeito e o equilíbrio entre chamas e geada.",
+        "specialization_id": "mage_elemental"
       },
       {
         "key": "runebinder",
         "name": "Runebinder",
-        "text": "Runas e selos arcanos. Controle do campo, armadilhas rúnicas e mobilidade para manter a distância."
+        "text": "Runas e selos arcanos. Controle do campo, armadilhas rúnicas e mobilidade para manter a distância.",
+        "specialization_id": "mage_runebinder"
       }
     ],
     "skills": [
       {
-        "key": "fireball",
-        "name": "Fireball"
-      },
-      {
-        "key": "meteor",
-        "name": "Meteor"
-      },
-      {
-        "key": "glacial-lance",
-        "name": "Glacial Lance"
+        "key": "elemental-focus",
+        "skill_id": "mage_elemental_focus",
+        "name": "Elemental Focus",
+        "branch": "elemental",
+        "required_level": 5,
+        "description": "Concentra o poder elemental e aumenta o dano dos próximos feitiços de fogo e gelo."
       },
       {
         "key": "glacial-prison",
-        "name": "Glacial Prison"
+        "skill_id": "mage_glacial_prison",
+        "name": "Glacial Prison",
+        "branch": "elemental",
+        "required_level": 5,
+        "description": "Aprisiona o inimigo em gelo, deixando-o imóvel por alguns instantes."
+      },
+      {
+        "key": "fireball",
+        "skill_id": "mage_fireball",
+        "name": "Fireball",
+        "branch": "elemental",
+        "required_level": 7,
+        "description": "Lança uma bola de fogo que explode ao atingir o alvo."
+      },
+      {
+        "key": "glacial-lance",
+        "skill_id": "mage_glacial_lance",
+        "name": "Glacial Lance",
+        "branch": "elemental",
+        "required_level": 10,
+        "description": "Dispara uma lança de gelo que perfura e desacelera o alvo."
+      },
+      {
+        "key": "meteor",
+        "skill_id": "mage_meteor",
+        "name": "Meteor",
+        "branch": "elemental",
+        "required_level": 15,
+        "description": "Invoca um meteoro que cai sobre uma área e causa dano devastador."
       },
       {
         "key": "frostfire-aura",
-        "name": "Frostfire Aura"
-      },
-      {
-        "key": "elemental-focus",
-        "name": "Elemental Focus"
+        "skill_id": "mage_frostfire_aura",
+        "name": "Frostfire Aura",
+        "branch": "elemental",
+        "required_level": 20,
+        "description": "Aura de fogo e gelo que fere e desacelera quem se aproxima do mago."
       },
       {
         "key": "arcane-inscription",
-        "name": "Arcane Inscription"
+        "skill_id": "mage_arcane_inscription",
+        "name": "Arcane Inscription",
+        "branch": "runebinder",
+        "required_level": 5,
+        "description": "Inscreve runas arcanas que potencializam os próximos feitiços rúnicos."
       },
       {
         "key": "runic-detonation",
-        "name": "Runic Detonation"
+        "skill_id": "mage_runic_detonation",
+        "name": "Runic Detonation",
+        "branch": "runebinder",
+        "required_level": 5,
+        "description": "Detona as runas ativas em uma explosão arcana em área."
       },
       {
         "key": "domain-of-seals",
-        "name": "Domain of Seals"
+        "skill_id": "mage_domain_of_seals",
+        "name": "Domain of Seals",
+        "branch": "runebinder",
+        "required_level": 7,
+        "description": "Cria um domínio de selos arcanos que restringe os inimigos dentro da área."
       },
       {
         "key": "arcane-collapse",
-        "name": "Arcane Collapse"
-      },
-      {
-        "key": "temporal-arcane",
-        "name": "Temporal Arcane"
+        "skill_id": "mage_arcane_collapse",
+        "name": "Arcane Collapse",
+        "branch": "runebinder",
+        "required_level": 10,
+        "description": "Abre um vórtice arcano que puxa os inimigos para o centro."
       },
       {
         "key": "blink",
-        "name": "Blink"
+        "skill_id": "mage_blink",
+        "name": "Blink",
+        "branch": "runebinder",
+        "required_level": 15,
+        "description": "Teletransporta o mago por uma curta distância na direção desejada."
+      },
+      {
+        "key": "temporal-arcane",
+        "skill_id": "mage_temporal_arcane",
+        "name": "Temporal Arcane",
+        "branch": "runebinder",
+        "required_level": 20,
+        "description": "Distorce o tempo, acelerando o mago e reduzindo a recarga das habilidades."
       }
     ]
   }

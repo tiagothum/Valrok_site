@@ -52,7 +52,13 @@ def test_no_secrets_or_token_storage_in_frontend():
     """Nada de JWT/token em localStorage nem segredos do gameserver no código do navegador."""
     for js in (APP_DIR / "static" / "js").rglob("*.js"):
         src = js.read_text(encoding="utf-8")
-        assert "localStorage" not in src, js.name
+        if js.name == "news-read.js":
+            # Único uso permitido: lista de notícias já lidas (preferência de leitura, não é sessão).
+            code = src.lower()
+            for forbidden in ("token", "csrf", "session", "password", "senha", "cookie", "auth"):
+                assert forbidden not in code.replace("nenhum dado de conta, sessão ou token", ""), forbidden
+        else:
+            assert "localStorage" not in src, js.name
         assert "X-Game-Server-Token" not in src, js.name
         assert "Authorization" not in src, js.name
         assert ".innerHTML" not in src, js.name
@@ -130,3 +136,47 @@ def test_skill_icon_master_rule():
     assert chosen[("Druid", "wither")].endswith("wither_m.png")
     assert ("Mage", "runic-reflection") in missing and ("Mage", "runic-reflection") not in chosen
     assert ("Warrior", "shield-wall") not in chosen  # arquivo sem "_m" nunca é usado
+
+
+def test_header_full_menu_and_news_dropdown():
+    """Header: todos os itens visíveis (sem "..."), Discord como ícone, Notícias com contador e dropdown."""
+    html = client.get("/").text
+    assert "main-nav__more" not in html and "Mais links" not in html
+    for href in ('href="/jogo"', 'href="/guia"', 'href="/suporte"', 'href="/regras"', 'href="/download"'):
+        assert href in html, href
+    assert 'class="nav-icon"' in html and 'aria-label="Discord do Valrok"' in html
+    assert "data-news-count" in html and 'id="sub-news"' in html
+    assert '<span class="badge">Novo</span>' not in html
+
+
+def test_week_news_window():
+    from datetime import date
+    from app.main import week_news
+
+    slugs = [n["slug"] for n in week_news(date(2026, 11, 15))]
+    assert "bem-vindo-ao-novo-portal" in slugs and "diario-de-desenvolvimento-combate" in slugs
+    assert "alfa-fechado-como-participar" not in slugs  # 30/10: fora da semana
+    assert week_news(date(2027, 1, 1)) == []
+
+
+def test_classes_data_complete():
+    """Toda skill tem especialização válida, skill_id, nível necessário e campo de descrição."""
+    from app.main import load_classes
+
+    for c in load_classes():
+        branch_keys = {b["key"] for b in c["branches"]}
+        assert all(b.get("specialization_id") for b in c["branches"])
+        for b in branch_keys:
+            assert sum(1 for s in c["skills"] if s["branch"] == b) == 6, (c["slug"], b)
+        for s in c["skills"]:
+            assert s["branch"] in branch_keys, s
+            assert s["skill_id"].endswith(s["key"].replace("-", "_")), s
+            assert isinstance(s["required_level"], int), s
+            assert "description" in s, s
+
+
+def test_classes_page_branch_filter_markup():
+    html = client.get("/classes").text
+    assert html.count('data-branch="') == 8
+    assert html.count("data-skill-branch=") == 48
+    assert 'class="skill__desc"' in html and "skill__level" not in html

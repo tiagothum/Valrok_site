@@ -1,5 +1,34 @@
 /** Seletor de classes: abas com hash (#guerreiro). Sem JS, todas as classes ficam visíveis. */
+/**
+ * Especializações clicáveis: cada botão [data-branch] mostra só as skills
+ * [data-skill-branch] daquela especialização. Sem JS, todas ficam visíveis.
+ */
+function initBranches(panel) {
+  const buttons = [...panel.querySelectorAll("[data-branch]")];
+  const skills = [...panel.querySelectorAll("[data-skill-branch]")];
+  const label = panel.querySelector("[data-skills-label]");
+  if (!buttons.length) return;
+
+  const show = (key) => {
+    let count = 0;
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.branch === key)));
+    skills.forEach((s) => {
+      const on = s.dataset.skillBranch === key;
+      s.hidden = !on;
+      if (on) count += 1;
+    });
+    const active = buttons.find((b) => b.dataset.branch === key);
+    if (label && active) label.textContent = `· ${active.dataset.branchName} (${count})`;
+  };
+
+  buttons.forEach((b) => b.addEventListener("click", () => show(b.dataset.branch)));
+  const initial = buttons.find((b) => b.getAttribute("aria-pressed") === "true") || buttons[0];
+  show(initial.dataset.branch);
+}
+
 export function init() {
+  document.querySelectorAll("[data-class-panel]").forEach(initBranches);
+
   const tabs = [...document.querySelectorAll("[data-class-tab]")];
   const panels = [...document.querySelectorAll("[data-class-panel]")];
   if (!tabs.length) return;

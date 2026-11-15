@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import time
+from datetime import date
 from functools import lru_cache
 from pathlib import Path
 
@@ -96,8 +97,25 @@ def load_classes() -> list[dict]:
     return _load_classes_cached((CONTENT_DIR / "classes.json").stat().st_mtime)
 
 
+MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+NEWS_WINDOW_DAYS = 7  # dropdown "Notícias" do header: publicadas na última semana
+NEWS_DROPDOWN_MAX = 5
+
+
+def week_news(today: date | None = None) -> list[dict]:
+    """Notícias dos últimos 7 dias (mais recentes primeiro) para o dropdown do header."""
+    today = today or date.today()
+    out = []
+    for n in load_news():
+        d = date.fromisoformat(n["date"])
+        if 0 <= (today - d).days <= NEWS_WINDOW_DAYS:
+            out.append({**n, "date_br": f"{d.day} {MESES[d.month - 1]} {d.year}"})
+    return out[:NEWS_DROPDOWN_MAX]
+
+
 def ctx(request: Request, page: str, **extra) -> dict:
     return {
+        "header_news": week_news(),
         "request": request,
         "page": page,
         "settings": settings,

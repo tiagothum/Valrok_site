@@ -46,7 +46,6 @@ w(f'''<p align="center">
   <a href="{SITE}"><b>valrok.com.br</b></a> &nbsp;·&nbsp;
   <a href="#classes">Classes</a> &nbsp;·&nbsp;
   <a href="#paginas">Páginas</a> &nbsp;·&nbsp;
-  <a href="#identidade-visual">Identidade visual</a> &nbsp;·&nbsp;
   <a href="#fase-do-projeto">Fase do projeto</a>
 </p>
 
@@ -81,14 +80,24 @@ progressão profunda dos RPGs que marcaram os anos 2000, unindo **combate melee 
   </tr>
 </table>
 
+### Arte do jogo
+
+<p align="center">
+  <img src="{IMG}/art/viking-battle-800.webp" width="19%" alt="Viking Battle">
+  <img src="{IMG}/art/undead-clash-800.webp" width="19%" alt="Undead Clash">
+  <img src="{IMG}/art/soul-burst-800.webp" width="19%" alt="Soul Burst">
+  <img src="{IMG}/art/magma-spires-800.webp" width="19%" alt="Magma Spires">
+  <img src="{IMG}/art/lethal-daggers-800.webp" width="19%" alt="Lethal Daggers">
+</p>
+<p align="center"><sub>Telas de carregamento do jogo.</sub></p>
+
 {DIV}
 
 <a id="classes"></a>
 
 ## 🛡️ As classes
 
-**{len(classes)} classes, {n_branches} especializações e {n_skills} habilidades.** Cada classe tem duas formas de lutar.
-Os nomes seguem os arquivos do jogo, e os ícones são sempre a versão **master** de cada skill.
+**{len(classes)} classes, {n_branches} especializações e {n_skills} habilidades.** Cada classe tem duas formas de lutar — abra uma especialização para ver as habilidades dela.
 
 <table>
   <tr>''')
@@ -102,7 +111,6 @@ for c in classes:
 w("  </tr>\n</table>\n")
 
 for c in classes:
-    b1, b2 = c["branches"]
     w(f'''### {c["name"]}
 
 <img align="right" src="{IMG}/classes/{c["slug"]}-retrato-420.webp" alt="" width="150">
@@ -110,22 +118,25 @@ for c in classes:
 {c["description"]}
 
 **Estilo:** {" · ".join(c["tags"])}
-
-| | Especialização | |
-|:-:|:--|:--|
-| <img src="{IMG}/classes/{c["slug"]}-ramo-{b1["key"]}.webp" width="56" alt=""> | **{b1["name"]}** | {b1["text"]} |
-| <img src="{IMG}/classes/{c["slug"]}-ramo-{b2["key"]}.webp" width="56" alt=""> | **{b2["name"]}** | {b2["text"]} |
-
-<p>''')
-    icons = []
-    for s in c["skills"]:
-        icons.append(f'<img src="{IMG}/classes/skills/{c["slug"]}-{s["key"]}.webp" width="52" title="{s["name"]}" alt="{s["name"]}">')
-    w("  " + "\n  ".join(icons))
-    w(f'''</p>
-<sub>{" · ".join(s["name"] for s in c["skills"])}</sub>
-
-<br clear="right">
 ''')
+    for b in c["branches"]:
+        skills = [s for s in c["skills"] if s["branch"] == b["key"]]
+        rows = "\n".join(
+            f'<tr><td><img src="{IMG}/classes/skills/{c["slug"]}-{s["key"]}.webp" width="44" alt=""></td>'
+            f'<td><b>{s["name"]}</b></td>'
+            f'<td>{s.get("description", "")}</td></tr>'
+            for s in skills
+        )
+        w(f'''<details>
+<summary><img src="{IMG}/classes/{c["slug"]}-ramo-{b["key"]}.webp" width="32" alt="" align="absmiddle"> <b>{b["name"]}</b> — {b["text"]} <i>({len(skills)} habilidades)</i></summary>
+
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+{rows}
+</table>
+</details>
+''')
+    w('<br clear="right">\n')
 
 w(f'''<p align="center"><img src="{DOCS}/print-classes.webp" alt="Página de classes do site" width="100%"></p>
 
@@ -135,17 +146,17 @@ w(f'''<p align="center"><img src="{DOCS}/print-classes.webp" alt="Página de cla
 
 ## 🗺️ O site, página por página
 
-O menu segue o padrão dos sites da Blizzard: uma barra flutuante com a marca à esquerda, menus com título e subtítulo,
-selos de destaque e a área da conta com o botão **Jogar grátis** à direita.
-
 | Menu | O que tem lá |
 |:--|:--|
 | **Visão geral** | O que é Valrok, combate, progressão, economia e guildas, e a tecnologia por trás do jogo. |
 | **Classes** ▾ | Warrior, Mercenary, Druid e Mage — retrato, estilo de jogo, especializações e todas as habilidades. |
-| **Notícias** <sub>`NOVO`</sub> | Anúncios, diários de desenvolvimento e novidades sobre os testes, com filtro por categoria. |
+| **Notícias** ▾ | As notícias da semana, com contador das que você ainda não leu, e o arquivo completo com filtro por categoria. |
 | **Ranking** ▾ | Top jogadores e top guildas, com busca por nome. O ranking oficial começa com o Alfa. |
 | **Download** <sub>`ALFA`</sub> | Plataformas, como entrar no Alfa fechado e requisitos de sistema. |
-| **···** | Guia do iniciante, Suporte & FAQ, Regras e Discord. |
+| **Guia** | Primeiros passos: conta, combate, progressão e economia. |
+| **Suporte** | Perguntas frequentes e canais de contato. |
+| **Regras** | Código de conduta do jogo. |
+| **Discord** | Comunidade e anúncios. |
 | **Conta** ▾ | Entrar e Criar conta — ou, já conectado, Minha conta e Sair. |
 
 **Início** reúne tudo: o hero com a arte do jogo, o status do servidor, as últimas notícias, os pilares, as classes,
@@ -184,44 +195,6 @@ w(f'''  </tr>
 
 A sessão é protegida pelo servidor do jogo: o site nunca guarda senha, token ou dados sensíveis no navegador.
 <sub>Enquanto a integração com o servidor é concluída, essas telas funcionam com dados de demonstração.</sub>
-
-{DIV}
-
-<a id="identidade-visual"></a>
-
-## 🧊 Identidade visual
-
-A identidade do site nasce da **tela de habilidades do jogo** e do **ValrokLauncher**: a paleta **Azul Gelo Rúnico**,
-com detalhes em bronze e ouro para manter o clima de fantasia sombria medieval.
-
-<p align="center"><img src="{DOCS}/paleta.png" alt="Paleta Azul Gelo Rúnico" width="100%"></p>
-
-<p align="center"><img src="{DOCS}/tipografia.png" alt="Tipografia: Alegreya e Lato" width="100%"></p>
-
-<p align="center"><img src="{DOCS}/componentes.png" alt="Botões, selos e etiquetas" width="100%"></p>
-
-- **Botão principal** — gradiente de gelo luminoso com texto escuro, para ações como *Criar conta grátis* e *Jogar grátis*.
-- **Botão rúnico** — fundo de gelo escuro com borda azul, fiel aos botões da tela de habilidades.
-- **Cards** — superfície escura com borda ardósia; ao passar o mouse, ganham tinta de gelo e um brilho rúnico.
-- **Molduras e ornamentos** — cantos e divisores em bronze, com o losango rúnico como assinatura.
-- **Efeitos** — partículas rúnicas azul-gelo com algumas faíscas douradas, e arte do jogo em movimento lento no topo das páginas.
-
-### A marca
-
-<p align="center"><img src="{IMG}/logo-icon.png" alt="Logo do Valrok" width="160"></p>
-
-<p align="center">O emblema <b>VK</b> em ferro forjado, com runas azuis e veios de brasa.</p>
-
-### Arte do jogo
-
-<p align="center">
-  <img src="{IMG}/art/viking-battle-800.webp" width="19%" alt="Viking Battle">
-  <img src="{IMG}/art/undead-clash-800.webp" width="19%" alt="Undead Clash">
-  <img src="{IMG}/art/soul-burst-800.webp" width="19%" alt="Soul Burst">
-  <img src="{IMG}/art/magma-spires-800.webp" width="19%" alt="Magma Spires">
-  <img src="{IMG}/art/lethal-daggers-800.webp" width="19%" alt="Lethal Daggers">
-</p>
-<p align="center"><sub>Telas de carregamento do jogo, usadas no topo das páginas, nas notícias e nos destaques.</sub></p>
 
 {DIV}
 

@@ -4,7 +4,7 @@
 > Este documento cobre instalação, configuração, testes e publicação. Os caminhos abaixo são relativos à raiz do repositório.
 >
 > **README:** ele é gerado a partir de `app/content/classes.json` e `app/content/news.json`. Depois de mudar classes,
-> skills ou notícias, rode `python tools/gerar_readme.py`. As imagens fixas dele (banner, paleta, tipografia, prints)
+> skills ou notícias, rode `python tools/gerar_readme.py`. As imagens fixas dele (banner e prints)
 > ficam em `docs/readme/`.
 
 Site do Valrok em **HTML/CSS/JS puro** servido por **FastAPI** (Python 3.12), seguindo o
@@ -182,6 +182,23 @@ CSP no Nginx.
 - Substituir as artes procedurais por screenshots/vídeo do jogo (`static/media/hero.mp4`).
 - Revisar textos de notícias, regras, roadmap e requisitos de sistema (são rascunhos).
 - Classes, especializações e skills usam os nomes em inglês dos arquivos do jogo (`UI.zip`); as descrições em `content/classes.json` estão em português e devem ser revisadas. Wither (Druid) substituiu Erosion, que saiu do jogo.
+
+#### Estrutura das skills em `content/classes.json`
+
+Cada especialização (`branches[]`) tem `key`, `name`, `text` e `specialization_id` (ex.: `druid_stormcaller`).
+Cada skill (`skills[]`) tem:
+
+| Campo | Uso |
+|:--|:--|
+| `key` | nome do ícone (`{classe}-{key}.webp`) e identificador no site |
+| `skill_id` | id do jogo (ex.: `druid_wither`) |
+| `name` | nome exibido (inglês, como nos arquivos do jogo) |
+| `branch` | `key` da especialização à qual a skill pertence — define o filtro ao clicar na especialização |
+| `required_level` | nível necessário no jogo; **não é exibido**, só define a ordem das skills |
+| `description` | breve descrição exibida no card (rascunho — substituir pelos textos oficiais) |
+
+A distribuição das skills por especialização e os níveis vieram do mapa oficial enviado pela equipe
+(6 skills por especialização). O teste `test_classes_data_complete` garante que todos os campos existem.
 
 ### Arte do jogo
 

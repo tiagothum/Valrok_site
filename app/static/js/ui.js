@@ -67,7 +67,7 @@ export function initHeader() {
   };
   if (burger && nav) {
     burger.addEventListener("click", () => setNav(!nav.classList.contains("is-open")));
-    window.addEventListener("resize", () => { if (window.innerWidth > 1180 && nav.classList.contains("is-open")) setNav(false); });
+    window.addEventListener("resize", () => { if (window.innerWidth > 1279 && nav.classList.contains("is-open")) setNav(false); });
   }
 
   const closeAll = (except) => {

@@ -11,7 +11,6 @@
   <a href="https://valrok.com.br"><b>valrok.com.br</b></a> &nbsp;·&nbsp;
   <a href="#classes">Classes</a> &nbsp;·&nbsp;
   <a href="#paginas">Páginas</a> &nbsp;·&nbsp;
-  <a href="#identidade-visual">Identidade visual</a> &nbsp;·&nbsp;
   <a href="#fase-do-projeto">Fase do projeto</a>
 </p>
 
@@ -46,14 +45,24 @@ progressão profunda dos RPGs que marcaram os anos 2000, unindo **combate melee 
   </tr>
 </table>
 
+### Arte do jogo
+
+<p align="center">
+  <img src="app/static/img/art/viking-battle-800.webp" width="19%" alt="Viking Battle">
+  <img src="app/static/img/art/undead-clash-800.webp" width="19%" alt="Undead Clash">
+  <img src="app/static/img/art/soul-burst-800.webp" width="19%" alt="Soul Burst">
+  <img src="app/static/img/art/magma-spires-800.webp" width="19%" alt="Magma Spires">
+  <img src="app/static/img/art/lethal-daggers-800.webp" width="19%" alt="Lethal Daggers">
+</p>
+<p align="center"><sub>Telas de carregamento do jogo.</sub></p>
+
 <p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
 
 <a id="classes"></a>
 
 ## 🛡️ As classes
 
-**4 classes, 8 especializações e 48 habilidades.** Cada classe tem duas formas de lutar.
-Os nomes seguem os arquivos do jogo, e os ícones são sempre a versão **master** de cada skill.
+**4 classes, 8 especializações e 48 habilidades.** Cada classe tem duas formas de lutar — abra uma especialização para ver as habilidades dela.
 
 <table>
   <tr>
@@ -88,26 +97,33 @@ Mestre do combate corpo a corpo, o Warrior avança onde os outros recuam. Machad
 
 **Estilo:** Corpo a corpo · Linha de frente · Resistência
 
-| | Especialização | |
-|:-:|:--|:--|
-| <img src="app/static/img/classes/guerreiro-ramo-berserker.webp" width="56" alt=""> | **Berserker** | Fúria e machados. Dano bruto, golpes sangrentos e ataques que ficam mais perigosos quanto maior o risco. |
-| <img src="app/static/img/classes/guerreiro-ramo-vanguard.webp" width="56" alt=""> | **Vanguard** | Escudo e aço. Proteção, investidas e controle do campo de batalha para defender os aliados. |
+<details>
+<summary><img src="app/static/img/classes/guerreiro-ramo-berserker.webp" width="32" alt="" align="absmiddle"> <b>Berserker</b> — Fúria e machados. Dano bruto, golpes sangrentos e ataques que ficam mais perigosos quanto maior o risco. <i>(6 habilidades)</i></summary>
 
-<p>
-  <img src="app/static/img/classes/skills/guerreiro-cleaving-strike.webp" width="52" title="Cleaving Strike" alt="Cleaving Strike">
-  <img src="app/static/img/classes/skills/guerreiro-bloody-throw.webp" width="52" title="Bloody Throw" alt="Bloody Throw">
-  <img src="app/static/img/classes/skills/guerreiro-rising-blade.webp" width="52" title="Rising Blade" alt="Rising Blade">
-  <img src="app/static/img/classes/skills/guerreiro-predators-fury.webp" width="52" title="Predator's Fury" alt="Predator's Fury">
-  <img src="app/static/img/classes/skills/guerreiro-seismic-impact.webp" width="52" title="Seismic Impact" alt="Seismic Impact">
-  <img src="app/static/img/classes/skills/guerreiro-battle-renewal.webp" width="52" title="Battle Renewal" alt="Battle Renewal">
-  <img src="app/static/img/classes/skills/guerreiro-disarming-charge.webp" width="52" title="Disarming Charge" alt="Disarming Charge">
-  <img src="app/static/img/classes/skills/guerreiro-shield-charge.webp" width="52" title="Shield Charge" alt="Shield Charge">
-  <img src="app/static/img/classes/skills/guerreiro-shield-throw.webp" width="52" title="Shield Throw" alt="Shield Throw">
-  <img src="app/static/img/classes/skills/guerreiro-shield-wall.webp" width="52" title="Shield Wall" alt="Shield Wall">
-  <img src="app/static/img/classes/skills/guerreiro-steel-vortex.webp" width="52" title="Steel Vortex" alt="Steel Vortex">
-  <img src="app/static/img/classes/skills/guerreiro-whirling-slash.webp" width="52" title="Whirling Slash" alt="Whirling Slash">
-</p>
-<sub>Cleaving Strike · Bloody Throw · Rising Blade · Predator's Fury · Seismic Impact · Battle Renewal · Disarming Charge · Shield Charge · Shield Throw · Shield Wall · Steel Vortex · Whirling Slash</sub>
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-rising-blade.webp" width="44" alt=""></td><td><b>Rising Blade</b></td><td>Corte ascendente que lança a lâmina para cima e desequilibra o alvo.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-steel-vortex.webp" width="44" alt=""></td><td><b>Steel Vortex</b></td><td>Gira em um vórtice de aço que atrai e fere os inimigos ao redor.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-disarming-charge.webp" width="44" alt=""></td><td><b>Disarming Charge</b></td><td>Investida que atinge o alvo e reduz temporariamente o dano dos ataques dele.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-cleaving-strike.webp" width="44" alt=""></td><td><b>Cleaving Strike</b></td><td>Golpe pesado de machado que fende tudo à frente, atingindo vários inimigos próximos.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-bloody-throw.webp" width="44" alt=""></td><td><b>Bloody Throw</b></td><td>Arremessa o machado em um inimigo distante, causando dano e sangramento.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-predators-fury.webp" width="44" alt=""></td><td><b>Predator's Fury</b></td><td>Explosão de fúria rubra que aumenta o dano e a velocidade de ataque por alguns segundos.</td></tr>
+</table>
+</details>
+
+<details>
+<summary><img src="app/static/img/classes/guerreiro-ramo-vanguard.webp" width="32" alt="" align="absmiddle"> <b>Vanguard</b> — Escudo e aço. Proteção, investidas e controle do campo de batalha para defender os aliados. <i>(6 habilidades)</i></summary>
+
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-shield-wall.webp" width="44" alt=""></td><td><b>Shield Wall</b></td><td>Ergue o escudo como uma muralha, reduzindo muito o dano recebido de frente.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-seismic-impact.webp" width="44" alt=""></td><td><b>Seismic Impact</b></td><td>Golpeia o chão com força e libera uma onda de choque que atinge todos ao redor.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-shield-charge.webp" width="44" alt=""></td><td><b>Shield Charge</b></td><td>Avança com o escudo erguido e derruba o primeiro inimigo no caminho.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-whirling-slash.webp" width="44" alt=""></td><td><b>Whirling Slash</b></td><td>Corte giratório que atinge todos os inimigos em volta.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-shield-throw.webp" width="44" alt=""></td><td><b>Shield Throw</b></td><td>Arremessa o escudo, que atinge o alvo e ricocheteia em inimigos próximos.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/guerreiro-battle-renewal.webp" width="44" alt=""></td><td><b>Battle Renewal</b></td><td>Canaliza a energia do combate para recuperar vida a cada golpe acertado.</td></tr>
+</table>
+</details>
 
 <br clear="right">
 
@@ -119,26 +135,33 @@ Mestre do combate corpo a corpo, o Warrior avança onde os outros recuam. Machad
 
 **Estilo:** Distância · Agilidade · Golpes críticos
 
-| | Especialização | |
-|:-:|:--|:--|
-| <img src="app/static/img/classes/mercenario-ramo-archer.webp" width="56" alt=""> | **Archer** | Arco e flechas especiais. Dano à distância, fogo, veneno e chuva de flechas para controlar o combate. |
-| <img src="app/static/img/classes/mercenario-ramo-rogue.webp" width="56" alt=""> | **Rogue** | Lâminas e sombras. Furtividade, mobilidade e golpes críticos a curta distância. |
+<details>
+<summary><img src="app/static/img/classes/mercenario-ramo-archer.webp" width="32" alt="" align="absmiddle"> <b>Archer</b> — Arco e flechas especiais. Dano à distância, fogo, veneno e chuva de flechas para controlar o combate. <i>(6 habilidades)</i></summary>
 
-<p>
-  <img src="app/static/img/classes/skills/mercenario-fire-arrow.webp" width="52" title="Fire Arrow" alt="Fire Arrow">
-  <img src="app/static/img/classes/skills/mercenario-pestilent-arrow.webp" width="52" title="Pestilent Arrow" alt="Pestilent Arrow">
-  <img src="app/static/img/classes/skills/mercenario-shackling-arrow.webp" width="52" title="Shackling Arrow" alt="Shackling Arrow">
-  <img src="app/static/img/classes/skills/mercenario-arrow-rain.webp" width="52" title="Arrow Rain" alt="Arrow Rain">
-  <img src="app/static/img/classes/skills/mercenario-eagle-eye.webp" width="52" title="Eagle Eye" alt="Eagle Eye">
-  <img src="app/static/img/classes/skills/mercenario-piercing-mastery.webp" width="52" title="Piercing Mastery" alt="Piercing Mastery">
-  <img src="app/static/img/classes/skills/mercenario-lethal-focus.webp" width="52" title="Lethal Focus" alt="Lethal Focus">
-  <img src="app/static/img/classes/skills/mercenario-shadow-stab.webp" width="52" title="Shadow Stab" alt="Shadow Stab">
-  <img src="app/static/img/classes/skills/mercenario-hemlock-blade.webp" width="52" title="Hemlock Blade" alt="Hemlock Blade">
-  <img src="app/static/img/classes/skills/mercenario-shadow-veil.webp" width="52" title="Shadow Veil" alt="Shadow Veil">
-  <img src="app/static/img/classes/skills/mercenario-ravens-step.webp" width="52" title="Raven's Step" alt="Raven's Step">
-  <img src="app/static/img/classes/skills/mercenario-wild-stride.webp" width="52" title="Wild Stride" alt="Wild Stride">
-</p>
-<sub>Fire Arrow · Pestilent Arrow · Shackling Arrow · Arrow Rain · Eagle Eye · Piercing Mastery · Lethal Focus · Shadow Stab · Hemlock Blade · Shadow Veil · Raven's Step · Wild Stride</sub>
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-eagle-eye.webp" width="44" alt=""></td><td><b>Eagle Eye</b></td><td>Concentra a mira, aumentando o alcance e a chance de acerto crítico por um tempo.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-fire-arrow.webp" width="44" alt=""></td><td><b>Fire Arrow</b></td><td>Flecha incendiária que causa dano e deixa o alvo em chamas.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-shackling-arrow.webp" width="44" alt=""></td><td><b>Shackling Arrow</b></td><td>Flecha com correntes que prende o alvo no lugar por alguns instantes.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-arrow-rain.webp" width="44" alt=""></td><td><b>Arrow Rain</b></td><td>Dispara uma chuva de flechas sobre uma área, atingindo todos os inimigos nela.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-pestilent-arrow.webp" width="44" alt=""></td><td><b>Pestilent Arrow</b></td><td>Flecha envenenada que espalha uma praga e causa dano contínuo.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-wild-stride.webp" width="44" alt=""></td><td><b>Wild Stride</b></td><td>Passos ligeiros pelo ermo que aumentam a velocidade de movimento para perseguir ou escapar.</td></tr>
+</table>
+</details>
+
+<details>
+<summary><img src="app/static/img/classes/mercenario-ramo-rogue.webp" width="32" alt="" align="absmiddle"> <b>Rogue</b> — Lâminas e sombras. Furtividade, mobilidade e golpes críticos a curta distância. <i>(6 habilidades)</i></summary>
+
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-lethal-focus.webp" width="44" alt=""></td><td><b>Lethal Focus</b></td><td>Foco absoluto que aumenta o dano crítico do próximo ataque.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-shadow-veil.webp" width="44" alt=""></td><td><b>Shadow Veil</b></td><td>Envolve-se em sombras e fica mais difícil de ser visto e atingido por alguns segundos.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-shadow-stab.webp" width="44" alt=""></td><td><b>Shadow Stab</b></td><td>Punhalada rápida vinda das sombras, com dano extra ao atingir o alvo pelas costas.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-ravens-step.webp" width="44" alt=""></td><td><b>Raven's Step</b></td><td>Passo veloz como o de um corvo, avançando uma curta distância em um instante.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-hemlock-blade.webp" width="44" alt=""></td><td><b>Hemlock Blade</b></td><td>Envenena as lâminas com cicuta, fazendo os ataques causarem dano contínuo.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mercenario-piercing-mastery.webp" width="44" alt=""></td><td><b>Piercing Mastery</b></td><td>Maestria em golpes perfurantes: os ataques do ladino atravessam parte da armadura do alvo.</td></tr>
+</table>
+</details>
 
 <br clear="right">
 
@@ -150,26 +173,33 @@ Guardião dos bosques antigos, o Druid canaliza o vento, o raio e a própria ter
 
 **Estilo:** Natureza · Controle · Suporte
 
-| | Especialização | |
-|:-:|:--|:--|
-| <img src="app/static/img/classes/druida-ramo-stormcaller.webp" width="56" alt=""> | **Stormcaller** | Vento, raio e terra. Controle de área e dano elemental que devasta grupos de inimigos. |
-| <img src="app/static/img/classes/druida-ramo-verdant.webp" width="56" alt=""> | **Verdant** | Vida e raízes. Cura, proteção e venenos da natureza que sustentam o grupo. |
+<details>
+<summary><img src="app/static/img/classes/druida-ramo-stormcaller.webp" width="32" alt="" align="absmiddle"> <b>Stormcaller</b> — Vento, raio, terra e decadência. Controle de área, dano elemental e maldições que enfraquecem grupos de inimigos. <i>(6 habilidades)</i></summary>
 
-<p>
-  <img src="app/static/img/classes/skills/druida-thunderstorm.webp" width="52" title="Thunderstorm" alt="Thunderstorm">
-  <img src="app/static/img/classes/skills/druida-gale-strike.webp" width="52" title="Gale Strike" alt="Gale Strike">
-  <img src="app/static/img/classes/skills/druida-wither.webp" width="52" title="Wither" alt="Wither">
-  <img src="app/static/img/classes/skills/druida-dust-veil.webp" width="52" title="Dust Veil" alt="Dust Veil">
-  <img src="app/static/img/classes/skills/druida-groves-blessing.webp" width="52" title="Grove's Blessing" alt="Grove's Blessing">
-  <img src="app/static/img/classes/skills/druida-tree-of-life.webp" width="52" title="Tree of Life" alt="Tree of Life">
-  <img src="app/static/img/classes/skills/druida-renewing-touch.webp" width="52" title="Renewing Touch" alt="Renewing Touch">
-  <img src="app/static/img/classes/skills/druida-lifeblood-sap.webp" width="52" title="Lifeblood Sap" alt="Lifeblood Sap">
-  <img src="app/static/img/classes/skills/druida-natures-aegis.webp" width="52" title="Nature's Aegis" alt="Nature's Aegis">
-  <img src="app/static/img/classes/skills/druida-venomous-roots.webp" width="52" title="Venomous Roots" alt="Venomous Roots">
-  <img src="app/static/img/classes/skills/druida-venomous-vine.webp" width="52" title="Venomous Vine" alt="Venomous Vine">
-  <img src="app/static/img/classes/skills/druida-cursed-spores.webp" width="52" title="Cursed Spores" alt="Cursed Spores">
-</p>
-<sub>Thunderstorm · Gale Strike · Wither · Dust Veil · Grove's Blessing · Tree of Life · Renewing Touch · Lifeblood Sap · Nature's Aegis · Venomous Roots · Venomous Vine · Cursed Spores</sub>
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-cursed-spores.webp" width="44" alt=""></td><td><b>Cursed Spores</b></td><td>Cogumelos amaldiçoados liberam esporos que envenenam quem estiver por perto.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-thunderstorm.webp" width="44" alt=""></td><td><b>Thunderstorm</b></td><td>Invoca uma tempestade que lança raios sobre os inimigos na área.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-gale-strike.webp" width="44" alt=""></td><td><b>Gale Strike</b></td><td>Golpe de vento cortante, a habilidade básica de vento do druida.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-venomous-vine.webp" width="44" alt=""></td><td><b>Venomous Vine</b></td><td>Vinhas espinhosas e venenosas que ferem e enfraquecem os inimigos ao alcance.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-dust-veil.webp" width="44" alt=""></td><td><b>Dust Veil</b></td><td>Levanta um véu de poeira que atrapalha a visão e a mira dos inimigos.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-wither.webp" width="44" alt=""></td><td><b>Wither</b></td><td>Magia de decadência que corrói as defesas do alvo e o deixa mais vulnerável.</td></tr>
+</table>
+</details>
+
+<details>
+<summary><img src="app/static/img/classes/druida-ramo-verdant.webp" width="32" alt="" align="absmiddle"> <b>Verdant</b> — Vida e vinhas. Cura, proteção e plantas venenosas que sustentam o grupo e punem quem se aproxima. <i>(6 habilidades)</i></summary>
+
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-groves-blessing.webp" width="44" alt=""></td><td><b>Grove's Blessing</b></td><td>Bênção do bosque antigo que fortalece os aliados próximos.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-tree-of-life.webp" width="44" alt=""></td><td><b>Tree of Life</b></td><td>Faz brotar uma árvore da vida que cura continuamente os aliados ao redor.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-renewing-touch.webp" width="44" alt=""></td><td><b>Renewing Touch</b></td><td>Toque de cura que restaura vida e purifica efeitos negativos do aliado.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-venomous-roots.webp" width="44" alt=""></td><td><b>Venomous Roots</b></td><td>Raízes espinhosas e venenosas brotam do chão, prendendo e envenenando os inimigos.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-lifeblood-sap.webp" width="44" alt=""></td><td><b>Lifeblood Sap</b></td><td>Seiva vital que cura um aliado ao longo do tempo.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/druida-natures-aegis.webp" width="44" alt=""></td><td><b>Nature's Aegis</b></td><td>Escudo de casca e folhas que absorve dano por alguns segundos.</td></tr>
+</table>
+</details>
 
 <br clear="right">
 
@@ -181,26 +211,33 @@ Estudioso das runas antigas, o Mage dobra o fogo e o gelo à sua vontade e grava
 
 **Estilo:** Distância · Magia elemental · Controle
 
-| | Especialização | |
-|:-:|:--|:--|
-| <img src="app/static/img/classes/mago-ramo-elemental.webp" width="56" alt=""> | **Elemental** | Fogo e gelo. Dano explosivo à distância, áreas de efeito e o equilíbrio entre chamas e geada. |
-| <img src="app/static/img/classes/mago-ramo-runebinder.webp" width="56" alt=""> | **Runebinder** | Runas e selos arcanos. Controle do campo, armadilhas rúnicas e mobilidade para manter a distância. |
+<details>
+<summary><img src="app/static/img/classes/mago-ramo-elemental.webp" width="32" alt="" align="absmiddle"> <b>Elemental</b> — Fogo e gelo. Dano explosivo à distância, áreas de efeito e o equilíbrio entre chamas e geada. <i>(6 habilidades)</i></summary>
 
-<p>
-  <img src="app/static/img/classes/skills/mago-fireball.webp" width="52" title="Fireball" alt="Fireball">
-  <img src="app/static/img/classes/skills/mago-meteor.webp" width="52" title="Meteor" alt="Meteor">
-  <img src="app/static/img/classes/skills/mago-glacial-lance.webp" width="52" title="Glacial Lance" alt="Glacial Lance">
-  <img src="app/static/img/classes/skills/mago-glacial-prison.webp" width="52" title="Glacial Prison" alt="Glacial Prison">
-  <img src="app/static/img/classes/skills/mago-frostfire-aura.webp" width="52" title="Frostfire Aura" alt="Frostfire Aura">
-  <img src="app/static/img/classes/skills/mago-elemental-focus.webp" width="52" title="Elemental Focus" alt="Elemental Focus">
-  <img src="app/static/img/classes/skills/mago-arcane-inscription.webp" width="52" title="Arcane Inscription" alt="Arcane Inscription">
-  <img src="app/static/img/classes/skills/mago-runic-detonation.webp" width="52" title="Runic Detonation" alt="Runic Detonation">
-  <img src="app/static/img/classes/skills/mago-domain-of-seals.webp" width="52" title="Domain of Seals" alt="Domain of Seals">
-  <img src="app/static/img/classes/skills/mago-arcane-collapse.webp" width="52" title="Arcane Collapse" alt="Arcane Collapse">
-  <img src="app/static/img/classes/skills/mago-temporal-arcane.webp" width="52" title="Temporal Arcane" alt="Temporal Arcane">
-  <img src="app/static/img/classes/skills/mago-blink.webp" width="52" title="Blink" alt="Blink">
-</p>
-<sub>Fireball · Meteor · Glacial Lance · Glacial Prison · Frostfire Aura · Elemental Focus · Arcane Inscription · Runic Detonation · Domain of Seals · Arcane Collapse · Temporal Arcane · Blink</sub>
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-elemental-focus.webp" width="44" alt=""></td><td><b>Elemental Focus</b></td><td>Concentra o poder elemental e aumenta o dano dos próximos feitiços de fogo e gelo.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-glacial-prison.webp" width="44" alt=""></td><td><b>Glacial Prison</b></td><td>Aprisiona o inimigo em gelo, deixando-o imóvel por alguns instantes.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-fireball.webp" width="44" alt=""></td><td><b>Fireball</b></td><td>Lança uma bola de fogo que explode ao atingir o alvo.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-glacial-lance.webp" width="44" alt=""></td><td><b>Glacial Lance</b></td><td>Dispara uma lança de gelo que perfura e desacelera o alvo.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-meteor.webp" width="44" alt=""></td><td><b>Meteor</b></td><td>Invoca um meteoro que cai sobre uma área e causa dano devastador.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-frostfire-aura.webp" width="44" alt=""></td><td><b>Frostfire Aura</b></td><td>Aura de fogo e gelo que fere e desacelera quem se aproxima do mago.</td></tr>
+</table>
+</details>
+
+<details>
+<summary><img src="app/static/img/classes/mago-ramo-runebinder.webp" width="32" alt="" align="absmiddle"> <b>Runebinder</b> — Runas e selos arcanos. Controle do campo, armadilhas rúnicas e mobilidade para manter a distância. <i>(6 habilidades)</i></summary>
+
+<table>
+<tr><th></th><th>Habilidade</th><th>Descrição</th></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-arcane-inscription.webp" width="44" alt=""></td><td><b>Arcane Inscription</b></td><td>Inscreve runas arcanas que potencializam os próximos feitiços rúnicos.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-runic-detonation.webp" width="44" alt=""></td><td><b>Runic Detonation</b></td><td>Detona as runas ativas em uma explosão arcana em área.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-domain-of-seals.webp" width="44" alt=""></td><td><b>Domain of Seals</b></td><td>Cria um domínio de selos arcanos que restringe os inimigos dentro da área.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-arcane-collapse.webp" width="44" alt=""></td><td><b>Arcane Collapse</b></td><td>Abre um vórtice arcano que puxa os inimigos para o centro.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-blink.webp" width="44" alt=""></td><td><b>Blink</b></td><td>Teletransporta o mago por uma curta distância na direção desejada.</td></tr>
+<tr><td><img src="app/static/img/classes/skills/mago-temporal-arcane.webp" width="44" alt=""></td><td><b>Temporal Arcane</b></td><td>Distorce o tempo, acelerando o mago e reduzindo a recarga das habilidades.</td></tr>
+</table>
+</details>
 
 <br clear="right">
 
@@ -212,17 +249,17 @@ Estudioso das runas antigas, o Mage dobra o fogo e o gelo à sua vontade e grava
 
 ## 🗺️ O site, página por página
 
-O menu segue o padrão dos sites da Blizzard: uma barra flutuante com a marca à esquerda, menus com título e subtítulo,
-selos de destaque e a área da conta com o botão **Jogar grátis** à direita.
-
 | Menu | O que tem lá |
 |:--|:--|
 | **Visão geral** | O que é Valrok, combate, progressão, economia e guildas, e a tecnologia por trás do jogo. |
 | **Classes** ▾ | Warrior, Mercenary, Druid e Mage — retrato, estilo de jogo, especializações e todas as habilidades. |
-| **Notícias** <sub>`NOVO`</sub> | Anúncios, diários de desenvolvimento e novidades sobre os testes, com filtro por categoria. |
+| **Notícias** ▾ | As notícias da semana, com contador das que você ainda não leu, e o arquivo completo com filtro por categoria. |
 | **Ranking** ▾ | Top jogadores e top guildas, com busca por nome. O ranking oficial começa com o Alfa. |
 | **Download** <sub>`ALFA`</sub> | Plataformas, como entrar no Alfa fechado e requisitos de sistema. |
-| **···** | Guia do iniciante, Suporte & FAQ, Regras e Discord. |
+| **Guia** | Primeiros passos: conta, combate, progressão e economia. |
+| **Suporte** | Perguntas frequentes e canais de contato. |
+| **Regras** | Código de conduta do jogo. |
+| **Discord** | Comunidade e anúncios. |
 | **Conta** ▾ | Entrar e Criar conta — ou, já conectado, Minha conta e Sair. |
 
 **Início** reúne tudo: o hero com a arte do jogo, o status do servidor, as últimas notícias, os pilares, as classes,
@@ -278,44 +315,6 @@ o ranking, a jornada do projeto e o convite para criar conta.
 
 A sessão é protegida pelo servidor do jogo: o site nunca guarda senha, token ou dados sensíveis no navegador.
 <sub>Enquanto a integração com o servidor é concluída, essas telas funcionam com dados de demonstração.</sub>
-
-<p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
-
-<a id="identidade-visual"></a>
-
-## 🧊 Identidade visual
-
-A identidade do site nasce da **tela de habilidades do jogo** e do **ValrokLauncher**: a paleta **Azul Gelo Rúnico**,
-com detalhes em bronze e ouro para manter o clima de fantasia sombria medieval.
-
-<p align="center"><img src="docs/readme/paleta.png" alt="Paleta Azul Gelo Rúnico" width="100%"></p>
-
-<p align="center"><img src="docs/readme/tipografia.png" alt="Tipografia: Alegreya e Lato" width="100%"></p>
-
-<p align="center"><img src="docs/readme/componentes.png" alt="Botões, selos e etiquetas" width="100%"></p>
-
-- **Botão principal** — gradiente de gelo luminoso com texto escuro, para ações como *Criar conta grátis* e *Jogar grátis*.
-- **Botão rúnico** — fundo de gelo escuro com borda azul, fiel aos botões da tela de habilidades.
-- **Cards** — superfície escura com borda ardósia; ao passar o mouse, ganham tinta de gelo e um brilho rúnico.
-- **Molduras e ornamentos** — cantos e divisores em bronze, com o losango rúnico como assinatura.
-- **Efeitos** — partículas rúnicas azul-gelo com algumas faíscas douradas, e arte do jogo em movimento lento no topo das páginas.
-
-### A marca
-
-<p align="center"><img src="app/static/img/logo-icon.png" alt="Logo do Valrok" width="160"></p>
-
-<p align="center">O emblema <b>VK</b> em ferro forjado, com runas azuis e veios de brasa.</p>
-
-### Arte do jogo
-
-<p align="center">
-  <img src="app/static/img/art/viking-battle-800.webp" width="19%" alt="Viking Battle">
-  <img src="app/static/img/art/undead-clash-800.webp" width="19%" alt="Undead Clash">
-  <img src="app/static/img/art/soul-burst-800.webp" width="19%" alt="Soul Burst">
-  <img src="app/static/img/art/magma-spires-800.webp" width="19%" alt="Magma Spires">
-  <img src="app/static/img/art/lethal-daggers-800.webp" width="19%" alt="Lethal Daggers">
-</p>
-<p align="center"><sub>Telas de carregamento do jogo, usadas no topo das páginas, nas notícias e nos destaques.</sub></p>
 
 <p align="center"><img src="docs/readme/divisor.png" width="640" alt=""></p>
 

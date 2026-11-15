@@ -2,6 +2,7 @@
 import { initHeader, initReveal, initEmbers, initPasswordToggles } from "./ui.js";
 import { loadSession, logout } from "./session.js";
 import { initServerStatus, initRankPreview } from "./widgets.js";
+import { initNewsRead } from "./news-read.js";
 
 document.documentElement.classList.add("js");
 
@@ -20,6 +21,7 @@ function boot() {
   initPasswordToggles();
   initServerStatus();
   initRankPreview();
+  initNewsRead();
 
   document.querySelectorAll("[data-logout]").forEach((btn) =>
     btn.addEventListener("click", async () => {

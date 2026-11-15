@@ -35,25 +35,30 @@
       <ul class="class-tags">{% for t in c.tags %}<li>{{ t }}</li>{% endfor %}</ul>
       <p class="class-detail__desc">{{ c.description }}</p>
 
-      <h3 class="class-sub">Especializações</h3>
-      <div class="branches">
+      <h3 class="class-sub">Especializações <span class="muted class-sub__hint">· escolha uma para ver as habilidades</span></h3>
+      <div class="branches" role="group" aria-label="Especializações do {{ c.name }}" data-branches>
         {% for b in c.branches %}
-        <div class="branch">
+        {% set n = c.skills|selectattr("branch", "equalto", b.key)|list|length %}
+        <button class="branch" type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="skills-{{ c.slug }}" data-branch="{{ b.key }}" data-branch-name="{{ b.name }}">
           <img class="branch__emblem" src="/static/img/classes/{{ c.slug }}-ramo-{{ b.key }}.webp" alt="" width="96" height="96" loading="lazy">
-          <div>
-            <h4 class="branch__name">{{ b.name }}</h4>
-            <p>{{ b.text }}</p>
-          </div>
-        </div>
+          <span class="branch__body">
+            <span class="branch__name">{{ b.name }}</span>
+            <span class="branch__text">{{ b.text }}</span>
+            <span class="branch__count">{{ n }} habilidades {{ icon("chevron", "ico--xs") }}</span>
+          </span>
+        </button>
         {% endfor %}
       </div>
 
-      <h3 class="class-sub">Habilidades <span class="muted">({{ c.skills|length }})</span></h3>
-      <ul class="skills">
+      <h3 class="class-sub">Habilidades <span class="muted" data-skills-label>({{ c.skills|length }})</span></h3>
+      <ul class="skills skills--detailed" id="skills-{{ c.slug }}" aria-live="polite">
         {% for s in c.skills %}
-        <li class="skill" tabindex="0">
+        <li class="skill" data-skill-branch="{{ s.branch }}">
           <span class="skill__frame"><img src="/static/img/classes/skills/{{ c.slug }}-{{ s.key }}.webp" alt="" width="128" height="128" loading="lazy"></span>
-          <span class="skill__name">{{ s.name }}</span>
+          <span class="skill__info">
+            <span class="skill__name">{{ s.name }}</span>
+            {% if s.description %}<span class="skill__desc">{{ s.description }}</span>{% endif %}
+          </span>
         </li>
         {% endfor %}
       </ul>

@@ -3,7 +3,7 @@
 {% block title %}{{ item.title }} — Valrok{% endblock %}
 {% block description %}{{ item.excerpt }}{% endblock %}
 {% block content %}
-<article class="section section--tight">
+<article class="section section--tight" data-news-slug="{{ item.slug }}">
   <div class="container">
     <header class="article-head center">
       <nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a><span aria-hidden="true">/</span><a href="/noticias">Notícias</a></nav>
